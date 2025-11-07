@@ -1,0 +1,234 @@
+/* Navbar.css - Soft Corporate Slate Theme (Updated) */
+
+/* Corporate Color Palette */
+:root {
+  --slate-light: #f8f9fa;
+  --slate-medium: #e9ecef;
+  --slate-dark: #495057;
+  --navy-primary: #1e3a5f;
+  --navy-dark: #0f2b4a;
+  --navy-light: #2c5282;
+  --text-primary: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --border-light: #e2e8f0;
+  --border-medium: #cbd5e0;
+  --white: #ffffff;
+  --shadow-soft: 0 1px 6px rgba(0, 0, 0, 0.06);
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* NAVBAR CONTAINER */
+.navbar-corporate {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: var(--slate-light);
+  z-index: 1000;
+  box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid var(--border-light);
+  backdrop-filter: blur(8px);
+  font-family: "Segoe UI", sans-serif;
+  padding: 10px 0px;
+}
+
+/* Container */
+.navbar-corporate__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  height: 64px;
+  /* slightly smaller height */
+}
+
+/* BRAND SECTION */
+.navbar-corporate__brand {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.navbar-corporate__brand:hover {
+  opacity: 0.85;
+}
+
+.navbar-corporate__title {
+  margin: 0;
+  font-size: 1.25rem;
+  /* smaller font */
+  font-weight: 600;
+  color: var(--navy-primary);
+  letter-spacing: -0.02em;
+  /* background-color: red; */
+  width: fit-content;
+}
+
+.navbar-corporate__designation {
+  font-size: 0.85rem;
+  /* slightly smaller */
+  font-weight: 400;
+  color: var(--text-muted);
+  margin-left: 0.5rem;
+  margin-top: -50px;
+  font-style: italic;
+  display: inline-block;
+  width: fit-content;
+}
+
+/* NAVIGATION MENU */
+.navbar-corporate__menu {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.navbar-corporate__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  /* slightly smaller */
+  padding: 0.6rem 1.1rem;
+  /* smaller padding */
+  border-radius: 10px;
+  /* slightly more rounded */
+  transition: all 0.25s ease-in-out;
+  position: relative;
+  background: transparent;
+  border: 1px solid transparent;
+}
+
+.navbar-corporate__link-icon {
+  font-size: 1rem;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+/* HOVER STATES */
+.navbar-corporate__link:hover {
+  color: var(--navy-primary);
+  background: var(--slate-medium);
+  /* softer background */
+  border-color: var(--border-medium);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-soft);
+}
+
+.navbar-corporate__link:hover .navbar-corporate__link-icon {
+  opacity: 1;
+}
+
+/* ACTIVE STATE */
+.navbar-corporate__link.active {
+  color: var(--navy-primary);
+  background: var(--white);
+  border-color: var(--navy-light);
+  box-shadow: var(--shadow-soft);
+  font-weight: 600;
+}
+
+.navbar-corporate__link.active::before {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 2px;
+  background: var(--navy-primary);
+  border-radius: 2px;
+}
+
+/* FOCUS ACCESSIBILITY */
+.navbar-corporate__link:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 58, 95, 0.15);
+  border-color: var(--navy-primary);
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+  .navbar-corporate__container {
+    padding: 0 1.5rem;
+  }
+
+  .navbar-corporate__menu {
+    gap: 0.25rem;
+  }
+
+  .navbar-corporate__link {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar-corporate__container {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .navbar-corporate__brand {
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .navbar-corporate__menu {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .navbar-corporate__title {
+    font-size: 1.15rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-corporate__container {
+    padding: 0.5rem;
+  }
+
+  .navbar-corporate__link {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+  }
+
+  .navbar-corporate__link-icon {
+    font-size: 0.95rem;
+  }
+
+  .navbar-corporate__title {
+    font-size: 1.1rem;
+  }
+
+  .navbar-corporate__designation {
+    font-size: 0.75rem;
+  }
+}
+
+/* SCROLL BEHAVIOR */
+.navbar-corporate.scrolled {
+  background: rgba(248, 249, 250, 0.95);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* SMOOTH TRANSITIONS */
+.navbar-corporate__link,
+.navbar-corporate__brand {
+  transition: all 0.25s ease-in-out;
+}

@@ -1,0 +1,216 @@
+.jcd-main-container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #f0f0f0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.jcd-main-container h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.jcd-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label:nth-child(1) {
+    padding-top: 10px;
+    border-top: .5px solid rgba(68, 66, 66, 0.218);
+    color: rgb(214, 214, 214);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Dropdown Select */
+.form-group select,
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="date"],
+.form-group input[type="file"] {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* background: rgba(255, 255, 255, 0.05); */
+    background-color: transparent;
+    color: #666464;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+    border-color: #00ffae;
+    background: rgba(0, 255, 174, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 255, 174, 0.2);
+}
+
+/* Checkbox Group */
+.checkbox-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+}
+
+/* File Upload */
+.form-group input[type="file"] {
+    padding: 8px;
+    background: transparent;
+    border: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+/* Checklist and Spares */
+.form-group .form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.form-group .form-control:focus {
+    border-color: #00ffae;
+    background: rgba(0, 255, 174, 0.1);
+    box-shadow: 0 0 0 3px rgba(0, 255, 174, 0.2);
+}
+
+/* Button Styles */
+button[type="submit"],
+button[type="button"] {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: #00ffae;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-size: 14px;
+}
+
+button[type="submit"]:hover,
+button[type="button"]:hover {
+    background: #00e6a0;
+}
+
+/* Spares & Checklist Items */
+.form-group .form-control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.form-control-group div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form-control-group input[type="text"] {
+    flex: 1;
+}
+
+.form-control-group button {
+    background: #e74c3c;
+    color: white;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.form-control-group button:hover {
+    background: #c0392b;
+}
+
+/* Radio Buttons */
+.form-group input[type="radio"] {
+    accent-color: #00ffae;
+}
+
+/* Checkboxes */
+.form-group input[type="checkbox"] {
+    accent-color: #00ffae;
+}
+
+/* Button Group */
+.FTH-ED-btn-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+}
+
+th {
+    background: rgba(255, 255, 255, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .jcd-main-container {
+        padding: 20px 10px;
+        margin: 20px 10px;
+    }
+
+    .form-group select,
+    .form-group input[type="text"],
+    .form-group input[type="number"],
+    .form-group input[type="date"] {
+        font-size: 13px;
+    }
+
+    button[type="submit"],
+    button[type="button"] {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+}

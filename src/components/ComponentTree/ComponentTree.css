@@ -1,0 +1,53 @@
+.tree-node {
+    transition: all 0.3s ease;
+}
+
+.tree-node-label {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.tree-node-label:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.tree-toggle-icon {
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.tree-toggle-icon[open="true"] {
+    transform: rotate(90deg);
+}
+
+.tree-label-text {
+    word-break: break-word;
+    font-size: 14px;
+}
+
+.tree-children {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.tree-node-label[open="true"] + .tree-children {
+    max-height: 1000px;
+    opacity: 1;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.tree-node-label[open="false"] + .tree-children {
+    max-height: 0;
+    opacity: 0;
+}

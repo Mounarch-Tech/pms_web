@@ -1,0 +1,749 @@
+/* JCD_page.css */
+/* form-section */
+th {
+  text-align: center;
+  /* background-color: red; */
+  /* border-right: 1px solid black; */
+}
+
+.jcd-page-layout {
+  display: flex;
+  min-height: 80vh;
+  /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); */
+  color: #f1f5f9;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  position: relative;
+  /* padding: 20px; */
+
+  /* background-color: red; */
+
+  margin-top: 20px;
+  gap: 20px;
+}
+
+#left-side-container {
+  width: 45%;
+  height: 83vh;
+  background-color: rgba(0, 0, 0, 0.419);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tree-section {
+  flex: 1;
+  padding: 20px;
+  /* background: rgba(30, 41, 59, 0.7); */
+  background-color: rgba(255, 255, 255, 0.053);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+}
+
+.tree-section h2 {
+  color: #60a5fa;
+  margin-top: 0;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.form-section {
+  flex: 1;
+  padding: 0px 20px;
+  /* background: rgba(30, 41, 59, 0.7); */
+  background-color: rgba(0, 0, 0, 0.311);
+
+
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  height: 83vh;
+}
+
+/* Modern CSS for Ship Selection Dropdown */
+#select-ships-container {
+  /* background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); */
+  background-color: rgba(255, 255, 255, 0.097);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#ship-selection {
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #f1f5f9;
+  /* background-color: rgba(15, 23, 42, 0.5); */
+  background-color: rgba(255, 255, 255, 0.042);
+
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2393c5fd' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2em;
+}
+
+#ship-selection:hover {
+  border-color: #60a5fa;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+#ship-selection:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.3);
+  background-color: rgba(15, 23, 42, 0.7);
+}
+
+#ship-selection option {
+  padding: 12px;
+  background-color: #1e293b;
+  color: #f1f5f9;
+}
+
+/* Placeholder styling */
+#ship-selection:valid {
+  color: #f1f5f9;
+}
+
+#ship-selection:invalid {
+  color: #94a3b8;
+}
+
+/* Content placeholders */
+.form-section h1 {
+  color: #60a5fa;
+  text-align: center;
+  font-weight: 500;
+  margin: 40px 0;
+  font-size: 1.8rem;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .jcd-page-layout {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  #left-side-container {
+    width: 40%;
+  }
+}
+
+@media (max-width: 900px) {
+  .jcd-page-layout {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  #left-side-container {
+    width: 100%;
+  }
+
+  .tree-section {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px;
+  }
+
+  .form-section {
+    padding: 15px;
+  }
+
+  #select-ships-container {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+
+  #ship-selection {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .jcd-page-layout {
+    padding: 8px;
+    gap: 12px;
+  }
+
+  .tree-section,
+  .form-section {
+    padding: 12px;
+    border-radius: 12px;
+  }
+
+  .tree-section h2 {
+    font-size: 1.3rem;
+    padding-bottom: 10px;
+  }
+
+  .form-section h1 {
+    font-size: 1.5rem;
+    margin: 30px 0;
+  }
+
+  #select-ships-container {
+    padding: 12px;
+  }
+
+  #ship-selection {
+    padding: 10px 14px;
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .jcd-page-layout {
+    padding: 5px;
+    gap: 10px;
+  }
+
+  .tree-section,
+  .form-section {
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  .tree-section h2 {
+    font-size: 1.2rem;
+  }
+
+  .form-section h1 {
+    font-size: 1.3rem;
+    margin: 20px 0;
+  }
+
+  #ship-selection {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Scrollbar styling */
+.jcd-page-layout ::-webkit-scrollbar {
+  width: 8px;
+}
+
+.jcd-page-layout ::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 4px;
+}
+
+.jcd-page-layout ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+}
+
+.jcd-page-layout ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #60a5fa, #93c5fd);
+}
+
+
+/* ==================================================================================== 
+                            Css For View JCD's
+ ========================================================================================*/
+/* Modern Dark Theme CSS for View JCDs Component */
+
+#view-jcds-on-comp-main-container {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  /* background-color: rgba(255, 255, 255, 0.075); */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 1000px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* ==================================================================================== 
+                            Modern Button Styling for View JCDs
+   ========================================================================================*/
+/* Base Button Style */
+#view-jcds-on-comp-main-container button {
+  position: relative;
+  padding: 10px 20px;
+  font-size: 1rem;
+  /* Slightly reduced base font size */
+  font-weight: 600;
+  color: #f1f5f9;
+  /* Text color */
+  background-color: transparent;
+  /* Start transparent */
+  border: 2px solid #4f46e5;
+  /* Base border color */
+  border-radius: 8px;
+  /* Rounded corners */
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  /* Smooth transition for all changes */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  /* Subtle base shadow */
+  margin-top: 10px;
+  /* Add some space between buttons if multiple */
+  min-width: 100px;
+  /* Minimum width for better appearance */
+}
+
+/* Hover State */
+#view-jcds-on-comp-main-container button:hover {
+  background-color: rgba(79, 70, 229, 0.2);
+  /* Tinted background on hover */
+  border-color: #6366f1;
+  /* Lighter border on hover */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15), 0 0 0 4px rgba(79, 70, 229, 0.1);
+  /* Enhanced shadow and glow */
+  transform: translateY(-2px);
+  /* Lift effect on hover */
+}
+
+/* Active/Pressed State */
+#view-jcds-on-comp-main-container button:active {
+  background-color: rgba(79, 70, 229, 0.3);
+  border-color: #818cf8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  /* Inset shadow for press */
+  transform: translateY(1px);
+  /* Press down effect */
+}
+
+/* Focus State (Accessibility) */
+#view-jcds-on-comp-main-container button:focus {
+  outline: none;
+  /* Remove default outline */
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.5), 0 6px 8px rgba(0, 0, 0, 0.15);
+  /* Custom focus ring */
+}
+
+/* Responsive adjustments for buttons */
+@media (max-width: 768px) {
+  #view-jcds-on-comp-main-container button {
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    min-width: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  #view-jcds-on-comp-main-container button {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+    min-width: 70px;
+    border-radius: 6px;
+  }
+}
+
+/* ==================================================================================== 
+                            End Modern Button Styling
+   ========================================================================================*/
+
+
+
+#view-jcds-on-comp-main-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+#view-jcds-on-comp-selected-com {
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+  text-align: center;
+}
+
+#view-jcds-on-comp-selected-com::before {
+  content: '📋 ';
+}
+
+#view-jcds-on-comp-table {
+  overflow-x: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#view-jcds-on-comp-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+#view-jcds-on-comp-table thead {
+  background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+}
+
+#view-jcds-on-comp-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+#view-jcds-on-comp-table tbody tr {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#view-jcds-on-comp-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+#view-jcds-on-comp-table tbody tr:hover {
+  background: rgba(56, 70, 97, 0.5);
+  transform: scale(1.01);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#view-jcds-on-comp-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#view-jcds-on-comp-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Criticality badges */
+#view-jcds-on-comp-table tbody tr td:nth-child(2) {
+  font-weight: 600;
+}
+
+#view-jcds-on-comp-table tbody tr td:nth-child(2):contains('Critical') {
+  color: #f87171;
+  position: relative;
+  padding-left: 20px;
+}
+
+#view-jcds-on-comp-table tbody tr td:nth-child(2):contains('Critical')::before {
+  content: '⚠';
+  position: absolute;
+  left: 0;
+}
+
+#view-jcds-on-comp-table tbody tr td:nth-child(2):contains('Non Critical') {
+  color: #60a5fa;
+  position: relative;
+  padding-left: 20px;
+}
+
+#view-jcds-on-comp-table tbody tr td:nth-child(2):contains('Non Critical')::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  #view-jcds-on-comp-main-container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  #view-jcds-on-comp-selected-com {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  #view-jcds-on-comp-table {
+    font-size: 0.85rem;
+  }
+
+  #view-jcds-on-comp-table th,
+  #view-jcds-on-comp-table td {
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #view-jcds-on-comp-main-container {
+    padding: 12px;
+  }
+
+  #view-jcds-on-comp-selected-com {
+    font-size: 1.1rem;
+  }
+
+  #view-jcds-on-comp-table {
+    display: block;
+    overflow-x: auto;
+  }
+
+  #view-jcds-on-comp-table th,
+  #view-jcds-on-comp-table td {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Scrollbar styling */
+#view-jcds-on-comp-table::-webkit-scrollbar {
+  height: 8px;
+}
+
+#view-jcds-on-comp-table::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+#view-jcds-on-comp-table::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+}
+
+#view-jcds-on-comp-table::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+}
+
+/* ... (your existing CSS) ... */
+
+/* ==================================================================================== 
+                            CSS For Active Jobs
+ ========================================================================================*/
+/* Modern Dark Theme CSS for Active Jobs Component - Mirroring View JCDs */
+#active-jobs-main-container {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  padding: 25px;
+  margin: 20px auto;
+  max-width: 1000px;
+  /* Or match the width of #view-jcds-on-comp-main-container if different */
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  overflow-x: auto;
+  /* Allow horizontal scroll if needed */
+}
+
+#active-jobs-main-container:hover {
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(-2px);
+}
+
+#active-jobs-header {
+  color: #f1f5f9;
+  font-weight: 600;
+  font-size: 1.5rem;
+  margin-top: 0;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+  text-align: center;
+}
+
+#active-jobs-header::before {
+  content: '⚡ ';
+  /* Or another relevant icon */
+}
+
+#active-jobs-table-container {
+  overflow-x: auto;
+  /* Ensures table scrolls if wider than container */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+#active-jobs-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: rgba(30, 41, 59, 0.7);
+  color: #cbd5e1;
+  font-size: 0.95rem;
+}
+
+#active-jobs-table thead {
+  background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
+  /* Same as View JCDs */
+}
+
+#active-jobs-table th {
+  padding: 16px 20px;
+  text-align: left;
+  font-weight: 600;
+  color: #f1f5f9;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+#active-jobs-table tbody tr {
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#active-jobs-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+#active-jobs-table tbody tr:hover {
+  background: rgba(56, 70, 97, 0.5);
+  /* Same hover effect */
+  /* transform: scale(1.01); */
+  /* Optional: Uncomment if you want the scale effect */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#active-jobs-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#active-jobs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Optional: Style specific columns if needed, e.g., Planning ID
+#active-jobs-table tbody tr td:nth-child(1) {
+    font-weight: 500;
+    color: #a5b4fc; 
+}
+*/
+
+/* Responsive design for Active Jobs */
+@media (max-width: 768px) {
+  #active-jobs-main-container {
+    padding: 15px;
+    margin: 10px;
+  }
+
+  #active-jobs-header {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+
+  #active-jobs-table {
+    font-size: 0.85rem;
+  }
+
+  #active-jobs-table th,
+  #active-jobs-table td {
+    padding: 12px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  #active-jobs-main-container {
+    padding: 12px;
+  }
+
+  #active-jobs-header {
+    font-size: 1.1rem;
+  }
+
+  #active-jobs-table-container {
+    display: block;
+    /* Needed for horizontal scrolling */
+    overflow-x: auto;
+  }
+
+  #active-jobs-table th,
+  #active-jobs-table td {
+    padding: 10px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Scrollbar styling for the table container */
+#active-jobs-table-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+#active-jobs-table-container::-webkit-scrollbar-track {
+  background: #1e293b;
+  border-radius: 4px;
+}
+
+#active-jobs-table-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 4px;
+}
+
+#active-jobs-table-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #60a5fa, #93c5fd);
+}
+
+/* --- End Active Jobs Styling --- */
+
+
+
+#view-jobs-on-selected-jcd {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: rgba(130, 127, 127, 0.266);
+
+  backdrop-filter: blur(2px);
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  z-index: 999;
+
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#main-content-of-view-jobs-on-selected-jcd {
+  flex-direction: column;
+  background-color: white;
+  width: 50%;
+  height: fit-content;
+
+  border-radius: 10px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+#main-content-of-view-jobs-on-selected-jcd button {
+  padding: 10px 20px;
+  color: white;
+  background-color: crimson;
+  margin: 20px auto 2px auto;
+}
+
+
+
+/* form-section */
