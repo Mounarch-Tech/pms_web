@@ -25,6 +25,7 @@ const ShipManagementPage = () => {
     const [designFile, setDesignFile] = useState(null);
 
     const subTabOrder = ['vslOverview', 'vslParticular', 'vslAllocation', 'crewList'];
+    const API_URL = import.meta.env.VITE_API_URL;
 
     const handleNextSubTab = () => {
         const currentIndex = subTabOrder.indexOf(detailsSubActiveTab);
@@ -539,7 +540,7 @@ const ShipManagementPage = () => {
                             design_file: fileBase64, // Send as Base64 string
                             can_jcd_triggered: newCompCanJCDConfig ? 1 : 0 // 1 = Yes
                         };
-                        apiEndpoint = 'http://localhost:3000/api/add-sub-category';
+                        apiEndpoint = `${API_URL}add-sub-category`;
                         break;
 
                     case 'sub_category':
@@ -556,7 +557,7 @@ const ShipManagementPage = () => {
                             design_file: null, // No file for now
                             can_jcd_triggered: newCompCanJCDConfig ? 1 : 0
                         };
-                        apiEndpoint = 'http://localhost:3000/api/add-second-sub-category';
+                        apiEndpoint = `${API_URL}add-second-sub-category`;
                         break;
 
                     case 'second_sub_category':
@@ -576,7 +577,7 @@ const ShipManagementPage = () => {
                         };
 
                         console.log('payload :: ', payload)
-                        apiEndpoint = 'http://localhost:3000/api/add-third-sub-category';
+                        apiEndpoint = `${API_URL}add-third-sub-category`;
                         break;
 
                     case 'third_sub_category':
@@ -602,7 +603,7 @@ const ShipManagementPage = () => {
                     design_file: fileBase64,
                     can_jcd_triggered: newCompCanJCDConfig ? 1 : 0
                 };
-                apiEndpoint = 'http://localhost:3000/api/add-root-category';
+                apiEndpoint = `${API_URL}add-root-category`;
             }
 
             // 4. Send request to backend

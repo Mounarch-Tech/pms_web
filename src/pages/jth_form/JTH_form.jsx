@@ -32,6 +32,8 @@ const Jth_from = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5; // Adjust this number as needed
 
+    const API_URL = import.meta.env.VITE_API_URL;
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (theadRef.current && !theadRef.current.contains(event.target)) {
@@ -191,7 +193,7 @@ const Jth_from = () => {
                 return;
             }
             try {
-                const res = await axios.put('http://localhost:3000/api/updatejth', cleanedData);
+                const res = await axios.put(`${API_URL}updatejth`, cleanedData);
                 if (res.status === 200) {
                     setJTH_form_data({});
                     popUpToggling('Job updated successfully', 'limegreen');
@@ -210,7 +212,7 @@ const Jth_from = () => {
                     JTH_ID: `JTH_${paddedNumber}`,
                     JTH_status: 1 // Default status for new jobs
                 };
-                const res = await axios.post('http://localhost:3000/api/addjth', newJobData);
+                const res = await axios.post(`${API_URL}addjth`, newJobData);
                 if (res.status === 200) {
                     setJTH_form_data({});
                     refreshJobTypes(); // Refresh the list

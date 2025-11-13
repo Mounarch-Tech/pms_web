@@ -132,7 +132,7 @@ const JCDPage = () => {
     const fetchShipIDByEmployeeID = async (empID) => {
         if (!empID) return;
         try {
-            const response = await axios.get(`http://localhost:3000/api/getShipIDbyEmployeeID/${empID}`);
+            const response = await axios.get(`${API_BASE_URL}getShipIDbyEmployeeID/${empID}`);
             const shipData = response.data?.[0];
             if (shipData?.SHA_ID) {
                 // console.log("Fetched Ship ID for Employee:", shipData.SHA_ID);
