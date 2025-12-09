@@ -1,0 +1,49 @@
+/* src/index.css */
+/* ==================================================================
+   🎨 PURE THEME SYSTEM – No pseudo-element overlays
+   Real color switching for background, text, hover, etc.
+   ================================================================== */
+
+/* ===== RESET & BASE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== SCROLLBAR (Visible but subtle) ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-primary);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary-hover);
+}
+
+/* ===== FOCUS & ACCESSIBILITY ===== */
+/* *:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+} */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
+}
+
+button {
+  width: fit-content;
+}

@@ -1,0 +1,3627 @@
+/* status-badge */
+/* Modern UI with Glassmorphism & Flex Layout */
+:root {
+    --primary: #4f46e5;
+    --primary-light: #818cf8;
+    --primary-dark: #4338ca;
+    --success: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --info: #0ea5e9;
+    --gray: #6b7280;
+    --gray-light: #f3f4f6;
+    --gray-medium: #9ca3af;
+    --dark: #111827;
+    --white: #ffffff;
+    --border-radius: 16px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    --spacing: 1.2rem;
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --transition: all 0.2s ease-out;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#communication_module_main_container {
+    width: 100%;
+    height: 95%;
+    background: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    font: 400 0.95rem var(--font);
+    color: var(--dark);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Compact Communication Header */
+#communication_header {
+    padding: 1rem 1.2rem;
+    /* reduced padding */
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    /* less gap between cards */
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    /* slightly smaller radius */
+    padding: 0.8rem 1rem;
+    /* reduced inner padding */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    text-align: left;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.header-card:hover {
+    transform: translateY(-1px);
+    /* lighter hover effect */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.06);
+}
+
+.header-section-title {
+    font-size: 0.95rem;
+    /* slightly smaller font */
+    font-weight: 600;
+    color: var(--primary-dark);
+    margin: 0 0 0.6rem 0;
+    /* tighter bottom margin */
+    padding-bottom: 0.3rem;
+    /* compact underline spacing */
+    border-bottom: 1px solid rgba(79, 70, 229, 0.15);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.header-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.2rem 0;
+    /* reduced vertical spacing */
+    gap: 0.6rem;
+}
+
+.header-label {
+    font-size: 0.8rem;
+    /* slightly smaller */
+    font-weight: 500;
+    color: var(--gray);
+    min-width: 120px;
+    /* tighter label width */
+}
+
+.header-value {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--dark);
+    text-align: right;
+    flex: 1;
+}
+
+.status-badge-for-communication-header {
+    padding: 0.2rem 0.6rem;
+    /* compact padding */
+    border-radius: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-block;
+    /* makes width hug content */
+    width: auto;
+    /* overrides any stretch */
+    max-width: max-content;
+    /* modern safe way for fit-content */
+    white-space: nowrap;
+    /* prevents wrapping inside badge */
+}
+
+
+.status-pending {
+    background: rgba(245, 158, 11, 0.15);
+    color: var(--warning);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-in-progress {
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--primary);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.status-completed {
+    background: rgba(16, 185, 129, 0.15);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-closed {
+    background: rgba(156, 163, 175, 0.15);
+    color: var(--gray);
+    border: 1px solid rgba(156, 163, 175, 0.3);
+}
+
+.status-overdue {
+    background: rgba(239, 68, 68, 0.15);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .header-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .header-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.15rem;
+    }
+
+    .header-label {
+        min-width: auto;
+        text-align: left;
+    }
+
+    .header-value {
+        text-align: left;
+        margin-left: 0.4rem;
+    }
+}
+
+
+.tabs {
+    display: flex;
+    background: var(--white);
+    border-bottom: 1px solid #e2e8f0;
+    padding: 0.5rem 0;
+    gap: 0.5rem;
+}
+
+.tab {
+    padding: 0.8rem 1.4rem;
+    background: transparent;
+    border: none;
+    border-radius: 12px 12px 0 0;
+    color: var(--gray);
+    font: 500 0.95rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    min-width: 100px;
+    text-align: center;
+}
+
+.tab.active {
+    color: var(--primary);
+    background: var(--white);
+    border: 1px solid #e2e8f0;
+    border-bottom: none;
+    font-weight: 600;
+    box-shadow: 0 -3px 0 0 var(--primary) inset;
+}
+
+.attempt-header {
+    padding: 1rem 1.5rem;
+    background: #f9fafb;
+    border-bottom: 1px solid #e2e8f0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.attempt-header h4 {
+    color: var(--primary);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.attempt-header p {
+    margin: 0.4rem 0;
+    color: var(--dark);
+    font-size: 0.95rem;
+}
+
+/* ============== MAIN LAYOUT - SPLIT PANEL ============== */
+
+.main-content-wrapper {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.left-panel {
+    width: 30%;
+    background: #f8fafc;
+    border-right: 1px solid #e2e8f0;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.attempt-details-container {
+    flex: 1;
+    padding: 0.5rem 0;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.sub-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 10px;
+    background: #f3f4f6;
+    border-bottom: 1px solid #e2e8f0;
+    overflow-x: auto;
+}
+
+.sub-tab {
+    padding: 0.7rem 1rem;
+    margin: 0 0.25rem;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    color: var(--gray);
+    font: 500 0.9rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    white-space: nowrap;
+}
+
+.sub-tab:hover {
+    background: #e5e7eb;
+}
+
+.sub-tab.active {
+    background: var(--primary);
+    color: var(--white);
+    font-weight: 600;
+}
+
+.content-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background: #fafafa;
+    /* background-color: red; */
+}
+
+.subtab-scroll-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 10px;
+    min-height: 0;
+}
+
+/* ============== FILE ATTACHMENTS ============== */
+
+.attachments-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    padding: 0.6rem;
+    background: #f8fafc;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.attachment-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    font-size: 0.8rem;
+    max-width: 100%;
+}
+
+.attachment-icon {
+    font-size: 1.2rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.attachment-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.attachment-name {
+    font-weight: 500;
+    color: var(--dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 150px;
+}
+
+.attachment-size {
+    font-size: 0.7rem;
+    color: var(--gray-medium);
+}
+
+.remove-attachment {
+    background: none;
+    border: none;
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.remove-attachment:hover {
+    background: #fee2e2;
+}
+
+/* Message Attachments */
+.message-attachments {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.3);
+}
+
+.attachment-bubble {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    /* background: rgba(255, 255, 255, 0.1); */
+    padding: 0.6rem;
+    border-radius: 8px;
+    max-width: 100%;
+
+    flex-direction: column;
+}
+
+.message.received .attachment-bubble {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.attachment-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.attachment-content .attachment-name {
+    font-weight: 500;
+    font-size: 0.85rem;
+    margin-bottom: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.attachment-content .attachment-size {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.message.received .attachment-content .attachment-size {
+    color: var(--gray-medium);
+}
+
+.attachment-image-preview {
+    width: 220px;
+    /* height: fit-content; */
+    object-fit: contain;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-left: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.message.received .attachment-image-preview {
+    border-color: var(--gray-light);
+}
+
+/* Update chat input container spacing */
+.chat-sticky-footer {
+    background: #fafafa;
+    padding: 0.8rem 1rem;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+/* ============== CHAT CONTAINER WITH STICKY FOOTER ============== */
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 0;
+    background: #fafafa;
+    overflow: hidden;
+}
+
+.attach-file-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    /* background: var(--gray-light);
+    color: var(--gray); */
+    /* border: 1px solid #d1d5db; */
+    border-radius: 10px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: var(--transition);
+    flex-shrink: 0;
+
+    border-right: 1px solid black;
+}
+
+.attach-file-button:hover {
+    background-color: #57595c;
+    /* color: var(--primary); */
+    /* transform: translateY(-1px); */
+}
+
+.attach-file-button:active {
+    transform: translateY(0);
+}
+
+.chat-header h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--primary-dark);
+}
+
+.chat-messages-scrollable {
+    flex: 1;
+    overflow-y: auto;
+    background: #abababa1;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    border: 1px solid #e2e8f0;
+    padding: 0.8rem;
+    min-height: 0;
+}
+
+.message {
+    max-width: 75%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 14px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message.sent {
+    align-self: flex-end;
+    background: #08c764bc;
+    /* background: #12d463b4; */
+    color: var(--dark);
+    border-bottom-right-radius: 4px;
+}
+
+.message.received {
+    align-self: flex-start;
+    background: #ffffff;
+    color: var(--dark);
+    border-bottom-left-radius: 4px;
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.2rem;
+    font-size: 0.75rem;
+}
+
+.sender {
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+}
+
+.message.sent .sender {
+    color: rgb(0, 0, 0);
+}
+
+.timestamp {
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.message.received .timestamp {
+    color: var(--gray-medium);
+}
+
+.chat-sticky-footer {
+    background: #fafafa;
+    padding: 0.6rem 1rem;
+    border-top: 1px solid #e5e7eb;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+}
+
+.approval-status {
+    text-align: center;
+    padding: 0.4rem 0.8rem;
+    background: #f8fafc;
+    border-radius: 8px;
+    font-weight: 600;
+    color: var(--dark);
+    font-size: 0.85rem;
+}
+
+.chat-input-container {
+    display: flex;
+    gap: 0.4rem;
+
+    box-shadow: 2px 2px 1cap rgba(128, 128, 128, 0.234);
+}
+
+.chat-input {
+    flex: 1;
+    padding: 0.6rem 0.8rem;
+    font: 400 0.85rem var(--font);
+    outline: none;
+    transition: var(--transition);
+}
+
+.chat-input:focus {
+    border-color: none;
+    /* box-shadow: 0 0 0 3px rgba(231, 231, 231, 0); */
+}
+
+.send-button {
+    padding: 0.6rem 1rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.send-button:hover:not(:disabled) {
+    background-color: rgba(128, 128, 128, 0.186);
+    border-radius: 100%;
+    transform: translateY(-1px);
+}
+
+.send-button:disabled {
+    background: #d1d5db;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============== BUTTON STYLES ============== */
+
+.btn-accept,
+.btn-reject {
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font: 500 0.95rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    margin: 0.2rem;
+}
+
+.btn-accept {
+    background: var(--success);
+    color: var(--white);
+}
+
+.btn-accept:hover {
+    background: #059669;
+    transform: translateY(-1px);
+}
+
+.btn-reject {
+    background: var(--danger);
+    color: var(--white);
+}
+
+.btn-reject:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+.add-media-btn {
+    padding: 0.4rem 0.8rem;
+    background: var(--info);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font: 500 0.85rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 1rem;
+}
+
+.add-media-btn:hover {
+    background: #0284c7;
+    transform: scale(1.05);
+}
+
+.save-btn {
+    padding: 0.7rem 1.5rem;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font: 500 1rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1.5rem;
+    align-self: flex-start;
+}
+
+.save-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+}
+
+.generate-pdf-btn {
+    padding: 0.8rem 1.6rem;
+    background: var(--warning);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    font: 500 1rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+}
+
+.generate-pdf-btn:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+/* ============== EXECUTED JOB DETAILS SCROLL CONTAINER ============== */
+
+.executed-job-scroll-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 0 5px 1.8rem 5px;
+    /* Match padding of other tabs */
+    min-height: 0;
+}
+
+.executed-job-scroll-container>* {
+    margin-bottom: 1.2rem;
+}
+
+.executed-job-scroll-container> :last-child {
+    margin-bottom: 0;
+}
+
+.execution-note {
+    margin: 1.5rem 0;
+}
+
+.execution-note label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark);
+}
+
+.execution-note textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 0.8rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font: 400 0.95rem var(--font);
+    resize: vertical;
+    transition: var(--transition);
+}
+
+.execution-note textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.media-section {
+    margin: 2rem 0;
+}
+
+.media-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8rem;
+}
+
+.media-header h4 {
+    margin: 0;
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+.media-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem 0;
+    background: #f8fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    border: 1px solid #e2e8f0;
+}
+
+.media-section li {
+    padding: 0.5rem 0;
+    color: var(--gray);
+    font-size: 0.95rem;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.media-section li:last-child {
+    border-bottom: none;
+}
+
+/* ============== APPROVAL STATUS ============== */
+
+.approval-status .approved {
+    color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+.approval-status .rejected {
+    color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+}
+
+.btn-accept:disabled,
+.btn-reject:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ============== EXTENSION DETAILS — CLEAN & FIT CONTENT ============== */
+
+.extension-details {
+    background: linear-gradient(135deg, #f8fbff 0%, #f8fafc 100%);
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    border: 1px solid #e2e8f0;
+    margin: 1rem 0;
+    box-shadow: var(--shadow-sm);
+    /* Remove max-height — let content dictate height */
+    overflow: visible;
+    /* ← No scroll unless needed */
+}
+
+.extension-details h4 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: var(--primary-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(79, 70, 229, 0.1);
+}
+
+/* === Shared Group Styling === */
+.detail-group {
+    display: flex;
+    flex-direction: column;
+
+    /* gap: 0.2rem; */
+    margin-bottom: 0.8rem;
+}
+
+.detail-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gray);
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.detail-value {
+    font-weight: 500;
+    color: var(--dark);
+    font-size: 0.875rem;
+    padding: 0.25rem 0;
+    min-height: auto;
+    /* ← Let height fit content */
+}
+
+/* === THREE COLUMN ROW === */
+.three-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+/* === TWO COLUMN ROW === */
+.two-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+/* === CENTERED STATUS ROW === */
+.status-full {
+    display: flex;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.status-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    min-width: 140px;
+}
+
+.status-container .detail-label {
+    font-size: 0.9rem;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* .status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 120px;
+}
+
+.status-badge.pending {
+    background: rgba(245, 158, 11, 0.12);
+    color: var(--warning);
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.status-badge.approved {
+    background: rgba(16, 185, 129, 0.12);
+    color: var(--success);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.status-badge.rejected {
+    background: rgba(239, 68, 68, 0.12);
+    color: var(--danger);
+    border: 1px solid rgba(239, 68, 68, 0.25);
+} */
+
+/* ============== PLACEHOLDER ============== */
+
+.placeholder-text {
+    text-align: center;
+    color: var(--gray-medium);
+    font-style: italic;
+    margin: 2rem 0;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: var(--border-radius);
+    border: 1px dashed #e2e8f0;
+}
+
+/* ============== RESPONSIVE DESIGN ============== */
+
+@media (max-width: 1024px) {
+    .left-panel {
+        width: 35%;
+    }
+
+    .three-column {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .three-column .detail-group:nth-child(3) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        flex-direction: column;
+    }
+
+    .left-panel {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+        padding: 1rem;
+        order: 1;
+    }
+
+    .right-panel {
+        order: 2;
+    }
+
+    .sub-tabs {
+        flex-direction: row;
+        padding: 0.8rem 1rem;
+    }
+
+    .subtab-scroll-container {
+        padding: 1rem;
+    }
+
+    .extension-details {
+        padding: 1.2rem;
+        margin: 1rem 0;
+    }
+
+    .three-column,
+    .two-column {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .status-container {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .status-container .detail-label {
+        font-size: 0.95rem;
+    }
+
+    .detail-label {
+        font-size: 0.8rem;
+    }
+
+    .detail-value {
+        font-size: 0.9rem;
+    }
+}
+
+
+/* download button in send message */
+.download-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    margin-top: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    transition: var(--transition);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.download-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+}
+
+
+/* Zoomed Clicked Image Styling */
+/* Fullscreen overlay */
+#zoomed-image-overlay {
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    /* dark overlay */
+    backdrop-filter: blur(8px);
+    /* blur background */
+    z-index: 9999;
+}
+
+/* Image container */
+#zoomed-image-container {
+    width: 80%;
+    height: 90%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 12px;
+    overflow: hidden;
+    /* background: #000; */
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6); */
+
+}
+
+/* Image itself */
+#zoomed-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#close-zoom-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+
+    background: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: medium;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: background 0.2s ease;
+}
+
+#close-zoom-btn:hover {
+    background: rgba(255, 255, 255, 0.184);
+}
+
+/* message-attachments */
+
+/* message chatbox css */
+.message-bubble {
+    max-width: 70%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    margin: 6px 0;
+    position: relative;
+    display: inline-block;
+}
+
+.message-bubble.sent {
+    background: #dcf8c6;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.message-bubble.received {
+    background: #fff;
+    align-self: flex-start;
+    border: 1px solid #eee;
+}
+
+.bubble-status {
+    font-size: 12px;
+    margin-left: 6px;
+    display: inline-block;
+}
+
+.spinner {
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.retry-btn {
+    border: none;
+    background: transparent;
+    color: red;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.bubble-time {
+    font-size: 11px;
+    color: #666;
+    margin-left: 6px;
+}
+
+
+/* WhatsApp-Style Chat UI */
+.chat-container-whatsapp {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #efeae2;
+    /* WhatsApp chat background */
+}
+
+.chat-header-whatsapp {
+    padding: 12px 16px;
+    background: #075e54;
+    /* WhatsApp green header */
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    border-bottom: 1px solid #004d40;
+}
+
+.chat-messages-scrollable-whatsapp {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #efeae2;
+    min-height: 0;
+}
+
+/* Message Bubble */
+.message-bubble-whatsapp {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 7.5px;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message-bubble-whatsapp .sent {
+    align-self: flex-end;
+    background: #dcf8c6;
+    /* WhatsApp sent message green */
+    color: #000;
+    border-bottom-right-radius: 2px;
+}
+
+.message-bubble-whatsapp .received {
+    align-self: flex-start;
+    background: #ffffff;
+    /* WhatsApp received message white */
+    color: #000;
+    border: 1px solid #e5dfda;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+}
+
+.bubble-content-whatsapp {
+    margin-bottom: 4px;
+}
+
+.bubble-text-whatsapp {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* Attachments */
+.attachment-preview-whatsapp {
+    margin: 6px 0;
+}
+
+.attachment-image-whatsapp {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid #e5dfda;
+}
+
+.file-attachment-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #e5dfda;
+}
+
+.file-icon-whatsapp {
+    font-size: 1.5rem;
+}
+
+.file-info-whatsapp {
+    flex: 1;
+}
+
+.file-name-whatsapp {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.file-size-whatsapp {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Footer with timestamp & status */
+.bubble-footer-whatsapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 2px;
+}
+
+.bubble-time-whatsapp {
+    color: #666;
+    /* background-color: white; */
+}
+
+.bubble-status-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.spinner-whatsapp {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.retry-btn-whatsapp {
+    background: none;
+    border: none;
+    color: #ff0000;
+    font-size: 0.9rem;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+/* Footer Input Area */
+.chat-sticky-footer-whatsapp {
+    background: #f0f0f0;
+    padding: 8px 12px;
+    border-top: 1px solid #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+.approval-actions-whatsapp {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-whatsapp {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-whatsapp.approve {
+    background: #25d366;
+    /* WhatsApp green */
+    color: white;
+}
+
+.btn-whatsapp.reject {
+    background: #ea4c5b;
+    /* WhatsApp red */
+    color: white;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.approval-status-whatsapp {
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.approval-status-whatsapp.approved {
+    background: rgba(37, 211, 102, 0.2);
+    color: #25d366;
+}
+
+.approval-status-whatsapp.rejected,
+.approval-status-whatsapp.denied {
+    background: rgba(234, 76, 91, 0.2);
+    color: #ea4c5b;
+}
+
+.attachments-preview-whatsapp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+    background: #e9e9e9;
+    border-radius: 8px;
+}
+
+.attachment-item-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+    font-size: 0.8rem;
+}
+
+.attachment-icon-whatsapp {
+    font-size: 1.1rem;
+}
+
+.attachment-name-whatsapp {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+}
+
+.remove-attachment-whatsapp {
+    background: none;
+    border: none;
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-attachment-whatsapp:hover {
+    background: #ffeaea;
+}
+
+.chat-input-container-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 22px;
+    padding: 4px 8px;
+    border: 1px solid #d9d9d9;
+}
+
+.attach-file-button-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #54656f;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.attach-file-button-whatsapp:hover {
+    background: #e9edef;
+}
+
+.chat-input-whatsapp {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    outline: none;
+    font-size: 0.92rem;
+    background-color: white;
+    color: black;
+}
+
+/* approval-actions-whatsapp */
+
+.chat-input-whatsapp:focus {
+    background-color: white;
+    color: black;
+    outline: none;
+    border: none;
+}
+
+.chat-input-whatsapp:active {
+    outline: none;
+    border: none;
+}
+
+.chat-input-whatsapp::placeholder {
+    color: #666;
+}
+
+.send-button-whatsapp {
+    background: #25d366;
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.send-button-whatsapp:hover:not(:disabled) {
+    background: #128c7e;
+}
+
+.send-button-whatsapp:disabled {
+    background: #a8a8a8;
+    cursor: not-allowed;
+}
+
+/* Other sections */
+.executed-job-whatsapp {
+    padding: 16px;
+    background: #efeae2;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.executed-job-whatsapp h3 {
+    color: #075e54;
+    margin-bottom: 16px;
+}
+
+.note-section-whatsapp label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #000;
+}
+
+.note-section-whatsapp textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    resize: vertical;
+    background: white;
+}
+
+.media-section-whatsapp {
+    margin: 20px 0;
+}
+
+.media-header-whatsapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.media-header-whatsapp h4 {
+    margin: 0;
+    color: #075e54;
+    font-weight: 500;
+}
+
+.media-section-whatsapp ul {
+    list-style: none;
+    padding: 12px;
+    margin: 0 0 16px 0;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+}
+
+.media-section-whatsapp li {
+    padding: 8px 0;
+    color: #000;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.media-section-whatsapp li:last-child {
+    border-bottom: none;
+}
+
+.add-media-btn-whatsapp {
+    padding: 6px 12px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.save-btn-whatsapp,
+.generate-pdf-btn-whatsapp {
+    padding: 10px 20px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.generate-pdf-btn-whatsapp {
+    background: #ffcc00;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .message-bubble-whatsapp {
+        max-width: 85%;
+    }
+
+    .chat-header-whatsapp h3 {
+        font-size: 0.95rem;
+    }
+
+    .bubble-text-whatsapp {
+        font-size: 0.9rem;
+    }
+
+    .chat-input-container-whatsapp {
+        padding: 6px;
+    }
+
+    .chat-input-whatsapp {
+        padding: 6px 10px;
+    }
+
+    .send-button-whatsapp,
+    .attach-file-button-whatsapp {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sender name styling */
+.bubble-sender-name-whatsapp {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #075e54;
+    /* WhatsApp green color for sender names */
+    margin-bottom: 4px;
+    padding: 0 8px;
+    text-align: left;
+}
+
+/* Adjust message bubble padding for sender name */
+.message-bubble-whatsapp.received {
+    padding: 6px 12px 8px 12px;
+    /* Add extra padding at top for sender name */
+}
+
+.message-bubble-whatsapp.sent {
+    padding: 8px 12px;
+    /* Keep original padding for sent messages */
+}
+
+/* Make sure sender name doesn't appear on sent messages */
+.message-bubble-whatsapp.sent .bubble-sender-name-whatsapp {
+    display: none;
+}
+
+/* Optional: Add a subtle divider between sender name and message content */
+.bubble-sender-name-whatsapp::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.1);
+    margin: 4px -8px;
+}
+
+/* WhatsApp-Style Chat UI */
+.chat-container-whatsapp {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #efeae2;
+    /* WhatsApp chat background */
+}
+
+.chat-header-whatsapp {
+    padding: 12px 16px;
+    background: #075e54;
+    /* WhatsApp green header */
+    color: white;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1rem;
+    border-bottom: 1px solid #004d40;
+}
+
+.chat-messages-scrollable-whatsapp {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: #efeae2;
+    min-height: 0;
+}
+
+/* Message Bubble */
+.message-bubble-whatsapp {
+    max-width: 75%;
+    padding: 8px 12px;
+    border-radius: 7.5px;
+    position: relative;
+    word-wrap: break-word;
+    font-size: 0.92rem;
+    line-height: 1.4;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.message-bubble-whatsapp.sent {
+    align-self: flex-end;
+    background: #dcf8c6;
+    /* WhatsApp sent message green */
+    color: #000;
+    border-bottom-right-radius: 2px;
+}
+
+.message-bubble-whatsapp.received {
+    align-self: flex-start;
+    background: #ffffff;
+    /* WhatsApp received message white */
+    color: #000;
+    border: 1px solid #e5dfda;
+    border-bottom-left-radius: 2px;
+    box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+}
+
+/* Sender name at the top (only for received messages) */
+.bubble-sender-name-whatsapp {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #075e54;
+    /* WhatsApp green color for sender names */
+    margin-bottom: 4px;
+    padding: 0 8px;
+    text-align: left;
+}
+
+/* Adjust message bubble padding for sender name */
+.message-bubble-whatsapp.received {
+    padding: 6px 12px 8px 12px;
+    /* Add extra padding at top for sender name */
+}
+
+.message-bubble-whatsapp.sent {
+    padding: 8px 12px;
+    /* Keep original padding for sent messages */
+}
+
+/* Make sure sender name doesn't appear on sent messages */
+.message-bubble-whatsapp.sent .bubble-sender-name-whatsapp {
+    display: none;
+}
+
+/* Bubble content */
+.bubble-content-whatsapp {
+    margin-bottom: 4px;
+}
+
+.bubble-text-whatsapp {
+    font-size: 0.92rem;
+    line-height: 1.4;
+    white-space: pre-wrap;
+}
+
+/* Attachments */
+.attachment-preview-whatsapp {
+    margin: 6px 0;
+}
+
+.attachment-image-whatsapp {
+    max-width: 250px;
+    max-height: 250px;
+    border-radius: 8px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 1px solid #e5dfda;
+}
+
+.file-attachment-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    border: 1px solid #e5dfda;
+}
+
+.file-icon-whatsapp {
+    font-size: 1.5rem;
+}
+
+.file-info-whatsapp {
+    flex: 1;
+}
+
+.file-name-whatsapp {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.file-size-whatsapp {
+    font-size: 0.75rem;
+    color: #666;
+}
+
+/* Footer with timestamp */
+.bubble-footer-whatsapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 2px;
+    padding: 0 8px;
+}
+
+.bubble-time-whatsapp {
+    color: #666;
+}
+
+/* Footer Input Area */
+.chat-sticky-footer-whatsapp {
+    background: #f0f0f0;
+    padding: 8px 12px;
+    border-top: 1px solid #d9d9d9;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* chat-sticky-footer-whatsapp */
+
+.approval-actions-whatsapp {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.btn-whatsapp {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-whatsapp.approve {
+    background: #25d366;
+    /* WhatsApp green */
+    color: white;
+}
+
+.btn-whatsapp.reject {
+    background: #ea4c5b;
+    /* WhatsApp red */
+    color: white;
+}
+
+.btn-whatsapp:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.approval-status-whatsapp {
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 0.85rem;
+}
+
+.approval-status-whatsapp.approved {
+    background: rgba(37, 211, 102, 0.2);
+    color: #25d366;
+}
+
+.approval-status-whatsapp.rejected,
+.approval-status-whatsapp.denied {
+    background: rgba(234, 76, 91, 0.2);
+    color: #ea4c5b;
+}
+
+.attachments-preview-whatsapp {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+    background: #e9e9e9;
+    border-radius: 8px;
+}
+
+.attachment-item-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+    font-size: 0.8rem;
+}
+
+.attachment-icon-whatsapp {
+    font-size: 1.1rem;
+}
+
+.attachment-name-whatsapp {
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.8rem;
+}
+
+.remove-attachment-whatsapp {
+    background: none;
+    border: none;
+    color: #ff0000;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.remove-attachment-whatsapp:hover {
+    background: #ffeaea;
+}
+
+.chat-input-container-whatsapp {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border-radius: 22px;
+    padding: 4px 8px;
+    border: 1px solid #d9d9d9;
+}
+
+.attach-file-button-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    color: #54656f;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.attach-file-button-whatsapp:hover {
+    background: #e9edef;
+}
+
+.send-button-whatsapp {
+    background: #25d366;
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.send-button-whatsapp:hover:not(:disabled) {
+    background: #128c7e;
+}
+
+.send-button-whatsapp:disabled {
+    background: #a8a8a8;
+    cursor: not-allowed;
+}
+
+/* Other sections */
+.executed-job-whatsapp {
+    padding: 16px;
+    background: #efeae2;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.executed-job-whatsapp h3 {
+    color: #075e54;
+    margin-bottom: 16px;
+}
+
+.note-section-whatsapp label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #000;
+}
+
+.note-section-whatsapp textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    resize: vertical;
+    background: white;
+}
+
+.media-section-whatsapp {
+    margin: 20px 0;
+}
+
+.media-header-whatsapp {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.media-header-whatsapp h4 {
+    margin: 0;
+    color: #075e54;
+    font-weight: 500;
+}
+
+.media-section-whatsapp ul {
+    list-style: none;
+    padding: 12px;
+    margin: 0 0 16px 0;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #d9d9d9;
+}
+
+.media-section-whatsapp li {
+    padding: 8px 0;
+    color: #000;
+    font-size: 0.92rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.media-section-whatsapp li:last-child {
+    border-bottom: none;
+}
+
+.add-media-btn-whatsapp {
+    padding: 6px 12px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    cursor: pointer;
+}
+
+.save-btn-whatsapp,
+.generate-pdf-btn-whatsapp {
+    padding: 10px 20px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.92rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 16px;
+    align-self: flex-start;
+}
+
+.generate-pdf-btn-whatsapp {
+    background: #ffcc00;
+    color: #000;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .message-bubble-whatsapp {
+        max-width: 85%;
+    }
+
+    .chat-header-whatsapp h3 {
+        font-size: 0.95rem;
+    }
+
+    .bubble-text-whatsapp {
+        font-size: 0.9rem;
+    }
+
+    .chat-input-container-whatsapp {
+        padding: 6px;
+    }
+
+    .chat-input-whatsapp {
+        padding: 6px 10px;
+    }
+
+    .send-button-whatsapp,
+    .attach-file-button-whatsapp {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* Media Gallery Styles */
+.media-gallery-whatsapp {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    padding: 10px;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+.media-item-whatsapp {
+    position: relative;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: white;
+}
+
+/* chat-input-whatsapp */
+
+.media-preview-whatsapp {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+.media-file-whatsapp {
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+}
+
+.file-icon-whatsapp {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.file-name-whatsapp {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
+
+.remove-media-btn-whatsapp {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255, 0, 0, 0.7);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+}
+
+.remove-media-btn-whatsapp:hover {
+    background: rgba(255, 0, 0, 0.9);
+}
+
+.media-placeholder-whatsapp {
+    padding: 20px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    background: #f8f8f8;
+    border-radius: 8px;
+    margin: 10px 0;
+}
+
+/* Ensure textarea has proper styling */
+.note-section-whatsapp textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font: 400 0.95rem var(--font);
+    resize: vertical;
+    transition: var(--transition);
+    background: white;
+    color: #000;
+}
+
+.note-section-whatsapp textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Add media button styling */
+.add-media-btn-whatsapp {
+    padding: 6px 12px;
+    background: var(--info);
+    color: var(--white);
+    border: none;
+    border-radius: 6px;
+    font: 500 0.85rem var(--font);
+    cursor: pointer;
+    transition: var(--transition);
+    margin-left: 1rem;
+}
+
+.add-media-btn-whatsapp:hover {
+    background: #0284c7;
+    transform: scale(1.05);
+}
+
+/* Hidden file input */
+#hidden-media-input {
+    display: none;
+}
+
+
+/* Css for extention tab */
+/* Extension Tab Button Styling */
+.tab.extension-request {
+    background-color: #fff3cd;
+    /* Light yellow/orange */
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.tab.extension-rejected {
+    background-color: #f8d7da;
+    /* Light red */
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.tab.extension-approved {
+    background-color: #d4edda;
+    /* Light green */
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-badge {
+    padding: 0.3rem 0.8rem;
+    border-radius: 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    /* min-width: 120px; */
+}
+
+.status-badge.pending {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.status-badge.approved {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.status-badge.rejected {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Message Context Menu */
+.message-context-menu {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 4px 0;
+    z-index: 1000;
+}
+
+.context-menu-item {
+    width: 100%;
+    padding: 8px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.context-menu-item:hover {
+    background-color: #f5f5f5;
+}
+
+/* Seen Status */
+.seen-status-whatsapp {
+    margin-left: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.seen-count {
+    font-size: 10px;
+    color: #666;
+}
+
+/* Download Button in File Attachments */
+.download-btn-whatsapp {
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 4px 8px;
+    font-size: 12px;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background-color 0.2s;
+}
+
+.download-btn-whatsapp:hover {
+    background: #128c7e;
+}
+
+/* Right-clickable message area */
+.message-bubble-whatsapp {
+    cursor: context-menu;
+    user-select: none;
+}
+
+.message-bubble-whatsapp.sent {
+    cursor: context-menu;
+}
+
+/* Message status indicators */
+.message-status-sending {
+    opacity: 0.7;
+}
+
+.message-status-failed {
+    color: #ff4444;
+}
+
+/* Seen Status Styles */
+.seen-status-whatsapp {
+    margin-left: 8px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: bold;
+}
+
+.seen-count {
+    font-size: 10px;
+    color: #666;
+    font-weight: normal;
+}
+
+/* WhatsApp-like tick styles */
+.tick-single {
+    color: #999;
+    font-weight: bold;
+}
+
+.tick-double {
+    color: #999;
+    font-weight: bold;
+}
+
+.tick-double-blue {
+    color: #53bdeb;
+    font-weight: bold;
+}
+
+/* Message status tooltip */
+.seen-status-whatsapp:hover .seen-tooltip {
+    display: block;
+}
+
+.seen-tooltip {
+    display: none;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 1000;
+}
+
+/* Seen Info Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.seen-info-modal {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9) translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+    background: #f8f9fa;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+    background: #e0e0e0;
+    color: #333;
+}
+
+.message-preview {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fafafa;
+}
+
+.preview-header {
+    font-weight: 600;
+    color: #666;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+
+.preview-content {
+    background: white;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.message-text {
+    color: #333;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.no-text {
+    color: #999;
+    font-style: italic;
+}
+
+.attachments-count {
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 8px;
+}
+
+.message-time {
+    color: #999;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    text-align: right;
+}
+
+.seen-users-section {
+    padding: 20px 24px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.section-header {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 16px;
+    font-size: 1rem;
+}
+
+.seen-users-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.seen-user-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    position: relative;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #4f46e5;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.user-designation {
+    color: #666;
+    font-size: 0.8rem;
+}
+
+.seen-time {
+    color: #999;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 12px;
+}
+
+.divider {
+    position: absolute;
+    bottom: 0;
+    left: 52px;
+    right: 0;
+    height: 1px;
+    background: #f0f0f0;
+}
+
+.no-seen-users {
+    text-align: center;
+    padding: 40px 20px;
+    color: #999;
+}
+
+.no-data-icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+}
+
+.no-data-text {
+    font-size: 1rem;
+}
+
+.modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid #e0e0e0;
+    text-align: right;
+    background: #f8f9fa;
+}
+
+.close-modal-btn {
+    background: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.close-modal-btn:hover {
+    background: #4338ca;
+}
+
+/* Scrollbar styling for modal */
+.seen-users-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.seen-users-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.seen-users-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.seen-users-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Enhanced Context Menu */
+.message-context-menu {
+    position: fixed;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 8px 0;
+    z-index: 1000;
+    min-width: 180px;
+    backdrop-filter: blur(10px);
+    animation: contextMenuSlideIn 0.2s ease-out;
+}
+
+@keyframes contextMenuSlideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.context-menu-item {
+    width: 100%;
+    padding: 12px 16px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #333;
+    position: relative;
+    overflow: hidden;
+}
+
+.context-menu-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: transparent;
+    transition: background-color 0.2s ease;
+}
+
+.context-menu-item:hover::before {
+    background: currentColor;
+}
+
+.context-menu-item:hover {
+    background: linear-gradient(90deg, rgba(79, 70, 229, 0.08) 0%, rgba(79, 70, 229, 0.04) 100%);
+    transform: translateX(2px);
+}
+
+.context-menu-item:active {
+    transform: translateX(2px) scale(0.98);
+}
+
+/* Specific item styles */
+.context-menu-item.delete {
+    color: #ef4444;
+}
+
+.context-menu-item.download {
+    color: #10b981;
+}
+
+.context-menu-item.info {
+    color: #3b82f6;
+}
+
+.context-menu-item:first-child {
+    border-radius: 8px 8px 0 0;
+}
+
+.context-menu-item:last-child {
+    border-radius: 0 0 8px 8px;
+}
+
+.context-menu-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 4px 0;
+}
+
+/* Enhanced Download Button in File Attachments */
+.download-btn-whatsapp {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 4px rgba(16, 185, 129, 0.3);
+}
+
+.download-btn-whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+
+.download-btn-whatsapp:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(16, 185, 129, 0.3);
+}
+
+/* Enhanced Seen Info Modal */
+.seen-info-modal {
+    background: white;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 480px;
+    max-height: 85vh;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid #e5e7eb;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px;
+    border-bottom: 1px solid #f3f4f6;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #6b7280;
+    padding: 6px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.close-btn:hover {
+    background: #ef4444;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Enhanced Message Preview */
+.message-preview {
+    padding: 20px 24px;
+    border-bottom: 1px solid #f3f4f6;
+    background: #fafafa;
+}
+
+.preview-content {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.message-text {
+    color: #374151;
+    line-height: 1.5;
+    word-wrap: break-word;
+    font-size: 14px;
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.attachments-count {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+}
+
+/* Enhanced Seen Users List */
+.seen-users-section {
+    padding: 20px 24px;
+    flex: 1;
+    overflow-y: auto;
+    /* background-color: red; */
+    max-height: 400px;
+}
+
+.section-header {
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 16px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    /* background-color: red; */
+}
+
+.seen-users-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #f9fafb;
+    /* Light background for readability */
+    overflow-y: auto;
+    /* Use 'auto' instead of 'scroll' to hide scrollbar when not needed */
+    width: 100%;
+    max-height: 200px;
+    /* Better to use max-height for responsive layout */
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.seen-user-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.seen-user-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: linear-gradient(135deg, #10b981 0%, #3b82f6 100%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.seen-user-item:hover::before {
+    opacity: 1;
+}
+
+.seen-user-item:hover {
+    background-color: #f0f9ff;
+    transform: translateX(2px);
+}
+
+
+/* .seen-user-item:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #e5e7eb;
+} */
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-right: 16px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.user-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.user-name {
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 4px;
+    font-size: 1rem;
+}
+
+.user-designation {
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.seen-time {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-left: 12px;
+    font-weight: 600;
+    background: #f3f4f6;
+    padding: 4px 8px;
+    border-radius: 6px;
+}
+
+/* Enhanced Modal Footer */
+.modal-footer {
+    padding: 20px 24px;
+    border-top: 1px solid #f3f4f6;
+    text-align: right;
+    background: #fafafa;
+}
+
+.close-modal-btn {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+}
+
+.close-modal-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+    background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+}
+
+.close-modal-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.3);
+}
+
+/* Enhanced Empty State */
+.no-seen-users {
+    text-align: center;
+    padding: 60px 20px;
+    color: #9ca3af;
+}
+
+.no-data-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-10px);
+    }
+
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+.no-data-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #6b7280;
+}
+
+.no-data-subtext {
+    font-size: 0.9rem;
+    color: #9ca3af;
+}
+
+/* Enhanced Scrollbars */
+/* .seen-users-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.seen-users-list::-webkit-scrollbar-track {
+    background: #f8fafc;
+    border-radius: 4px;
+}
+
+.seen-users-list::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%);
+    border-radius: 4px;
+}
+
+.seen-users-list::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+} */
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .message-context-menu {
+        min-width: 160px;
+    }
+
+    .context-menu-item {
+        padding: 10px 12px;
+        font-size: 13px;
+    }
+
+    .seen-info-modal {
+        width: 95%;
+        margin: 20px;
+    }
+
+    .modal-header {
+        padding: 16px 20px;
+    }
+
+    .message-preview,
+    .seen-users-section {
+        padding: 16px 20px;
+    }
+
+    .seen-user-item {
+        padding: 12px;
+    }
+
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+        margin-right: 12px;
+    }
+}
+
+/* Enhanced Image Zoom Modal */
+.image-zoom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    animation: overlayFadeIn 0.3s ease-out;
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+        backdrop-filter: blur(0px);
+    }
+
+    to {
+        opacity: 1;
+        backdrop-filter: blur(10px);
+    }
+}
+
+.image-zoom-modal {
+    width: 95vw;
+    height: 95vh;
+    background: #1a1a1a;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: modalScaleIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes modalScaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Header */
+.zoom-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.image-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.image-name {
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 400px;
+}
+
+.image-size {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.85rem;
+}
+
+.zoom-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.zoom-control-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.zoom-control-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.zoom-control-btn.download-btn:hover {
+    background: rgba(16, 185, 129, 0.3);
+    border-color: rgba(16, 185, 129, 0.5);
+}
+
+.zoom-control-btn.close-btn:hover {
+    background: rgba(239, 68, 68, 0.3);
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.control-icon {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Main Image Container */
+.zoom-image-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+        linear-gradient(-45deg, rgba(255, 255, 255, 0.03) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%),
+        linear-gradient(-45deg, transparent 75%, rgba(255, 255, 255, 0.03) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+
+.zoomed-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+    cursor: grab;
+    border-radius: 8px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+.zoomed-image:active {
+    cursor: grabbing;
+}
+
+.zoomed-image.zoomed {
+    cursor: zoom-out;
+}
+
+/* Loading State */
+.image-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.1rem;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Footer */
+.zoom-modal-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: rgba(0, 0, 0, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.zoom-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.zoom-action-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.zoom-action-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.zoom-action-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.image-counter {
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.current-index {
+    color: white;
+}
+
+.total-count {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.navigation-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+}
+
+.nav-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Zoom Level Indicator */
+.zoom-level {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0;
+    }
+
+    10%,
+    90% {
+        opacity: 1;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-zoom-modal {
+        width: 100vw;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .zoom-modal-header {
+        padding: 12px 16px;
+    }
+
+    .image-name {
+        max-width: 200px;
+        font-size: 1rem;
+    }
+
+    .zoom-modal-footer {
+        padding: 12px 16px;
+    }
+
+    .zoom-control-btn,
+    .zoom-action-btn,
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Keyboard Shortcuts Hint */
+.keyboard-hint {
+    position: absolute;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: fadeInOut 3s ease-in-out;
+}
+
+/* Drag to Pan Hint */
+.drag-hint {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: rgba(255, 255, 255, 0.7);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeInOut 4s ease-in-out;
+    text-align: center;
+}
+
+.drag-hint::before {
+    content: "👆";
+    display: block;
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+
+.date-header {
+    color: grey;
+    background-color: rgba(255, 255, 255, 0.959);
+    padding: 10px 15px;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+    border-radius: 20px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 1px 1px 1cap rgba(128, 128, 128, 0.305);
+    margin-bottom: 10px;
+}
+
+/* message-bubble-whatsapp received */

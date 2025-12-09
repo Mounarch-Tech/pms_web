@@ -1,0 +1,826 @@
+/* login-corporate__title */
+/* components/LogInPage/LogInPage.css */
+/* OPTIMIZED PREMIUM MARINE EXPERIENCE */
+
+:root {
+    /* Premium Marine Color Palette */
+    --ocean-deep: #0a192f;
+    --ocean-mid: #112240;
+    --ocean-light: #1e3a5f;
+    --marine-blue: #4a90e2;
+    --marine-teal: #64ffda;
+    --marine-gold: #ffd700;
+    --marine-coral: #ff6b6b;
+    --marine-purple: #7c4dff;
+
+    /* Glass Morphism */
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================== */
+/* === OPTIMIZED ANIMATED BACKGROUND === */
+/* ==================================== */
+
+@keyframes floating-ship {
+    0% {
+        transform: translateX(-100px) translateY(10px) rotate(-5deg);
+    }
+
+    50% {
+        transform: translateX(50vw) translateY(-5px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateX(120vw) translateY(8px) rotate(-3deg);
+    }
+}
+
+@keyframes floating-island {
+
+    0%,
+    100% {
+        transform: translateY(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+
+    25% {
+        transform: translateY(-8px) rotate(1deg);
+        opacity: 1;
+    }
+
+    75% {
+        transform: translateY(4px) rotate(-1deg);
+        opacity: 0.7;
+    }
+}
+
+@keyframes sonar-wave {
+    0% {
+        transform: scale(0.8);
+        opacity: 1;
+        border-width: 2px;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+        border-width: 1px;
+    }
+}
+
+@keyframes bubble-rise {
+    0% {
+        transform: translateY(100vh) translateX(var(--start-x)) scale(0);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.8;
+        transform: translateY(80vh) translateX(calc(var(--start-x) + 10px)) scale(1);
+    }
+
+    90% {
+        opacity: 0.3;
+    }
+
+    100% {
+        transform: translateY(-50px) translateX(calc(var(--start-x) + 25px)) scale(0.5);
+        opacity: 0;
+    }
+}
+
+@keyframes lighthouse-sweep {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: rotate(-45deg);
+    }
+
+    25% {
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+
+    75% {
+        opacity: 0.5;
+        transform: rotate(45deg);
+    }
+}
+
+@keyframes water-shimmer {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes container-lift {
+
+    0%,
+    100% {
+        transform: translateY(0px) scale(1);
+    }
+
+    50% {
+        transform: translateY(-6px) scale(1.03);
+    }
+}
+
+@keyframes input-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 0px rgba(100, 255, 218, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 0 3px rgba(100, 255, 218, 0.6);
+    }
+}
+
+.login-corporate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 1rem;
+    background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--ocean-mid) 50%, var(--ocean-light) 100%);
+    background-size: 400% 400%;
+    animation: water-shimmer 15s ease infinite;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 11111;
+    overflow: hidden;
+}
+
+/* Optimized Background Elements */
+.login-corporate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(circle at 20% 80%, var(--marine-teal) 1px, transparent 1px),
+        radial-gradient(circle at 80% 20%, var(--marine-blue) 1px, transparent 1px);
+    background-size: 120px 120px, 80px 80px;
+    animation: bubble-rise 20s linear infinite;
+    opacity: 0.3;
+    z-index: 1;
+}
+
+/* Smaller Bubbles */
+.login-corporate .bubble {
+    position: absolute;
+    background: radial-gradient(circle, var(--marine-teal), transparent);
+    border-radius: 50%;
+    animation: bubble-rise linear infinite;
+    opacity: 0;
+}
+
+.login-corporate .bubble:nth-child(1) {
+    width: 6px;
+    height: 6px;
+    --start-x: 10%;
+    animation-duration: 10s;
+}
+
+.login-corporate .bubble:nth-child(2) {
+    width: 8px;
+    height: 8px;
+    --start-x: 20%;
+    animation-duration: 14s;
+    animation-delay: 1s;
+}
+
+.login-corporate .bubble:nth-child(3) {
+    width: 4px;
+    height: 4px;
+    --start-x: 30%;
+    animation-duration: 12s;
+    animation-delay: 2s;
+}
+
+.login-corporate .bubble:nth-child(4) {
+    width: 10px;
+    height: 10px;
+    --start-x: 70%;
+    animation-duration: 16s;
+    animation-delay: 3s;
+}
+
+/* Smaller Cargo Ship */
+.login-corporate .submarine {
+    position: absolute;
+    font-size: 3rem;
+    color: var(--marine-gold);
+    filter: drop-shadow(0 0 10px var(--marine-gold));
+    animation: floating-ship 35s linear infinite;
+    z-index: 2;
+    top: 20%;
+}
+
+/* Smaller Floating Islands */
+.login-corporate .island {
+    position: absolute;
+    width: 80px;
+    height: 40px;
+    background: linear-gradient(135deg, #2d5a27, #3a7c34);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    box-shadow: inset 0 -8px 15px rgba(0, 0, 0, 0.3), 0 8px 20px rgba(0, 0, 0, 0.4);
+    animation: floating-island 12s ease-in-out infinite;
+    z-index: 1;
+}
+
+.login-corporate .island::before {
+    content: '🏝️';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+}
+
+.login-corporate .island:nth-child(1) {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.login-corporate .island:nth-child(2) {
+    top: 80%;
+    right: 10%;
+    animation-delay: 4s;
+}
+
+/* Smaller Sonar Waves */
+.login-corporate .sonar {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--marine-teal);
+    border-radius: 50%;
+    animation: sonar-wave 5s ease-out infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.login-corporate .sonar:nth-child(2) {
+    animation-delay: 1.7s;
+    border-color: var(--marine-blue);
+}
+
+.login-corporate .sonar:nth-child(3) {
+    animation-delay: 3.4s;
+    border-color: var(--marine-purple);
+}
+
+/* Smaller Lighthouse */
+.login-corporate .lighthouse {
+    position: absolute;
+    bottom: 10%;
+    right: 5%;
+    font-size: 2.5rem;
+    color: var(--marine-gold);
+    filter: drop-shadow(0 0 12px var(--marine-gold));
+    z-index: 2;
+    animation: floating-island 8s ease-in-out infinite;
+}
+
+.login-corporate .lighthouse-beam {
+    position: absolute;
+    bottom: 13%;
+    right: 5.5%;
+    width: 150px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--marine-gold), transparent);
+    transform-origin: right center;
+    animation: lighthouse-sweep 8s linear infinite;
+    z-index: 1;
+    filter: blur(0.5px);
+}
+
+/* Smaller Container Stack */
+.login-corporate .container-stack {
+    position: absolute;
+    bottom: 15%;
+    left: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    z-index: 1;
+}
+
+.login-corporate .container {
+    width: 35px;
+    height: 18px;
+    background: linear-gradient(135deg, var(--marine-coral), var(--marine-gold));
+    border: 1px solid var(--ocean-deep);
+    border-radius: 3px;
+    animation: container-lift 6s ease-in-out infinite;
+    animation-delay: calc(var(--delay, 0) * 1s);
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.2), 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ==================================== */
+/* === COMPACT GLASS MORPHISM CARD === */
+/* ==================================== */
+
+.login-corporate__container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 2.5rem 2rem;
+    width: 100%;
+    max-width: 400px;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 10;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-corporate__container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(100, 255, 218, 0.3);
+}
+
+/* ==================================== */
+/* === COMPACT HEADER === */
+/* ==================================== */
+
+.login-corporate__header {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+.login-corporate__header::before {
+    content: '';
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--marine-teal), var(--marine-blue), transparent);
+    border-radius: 2px;
+    animation: water-shimmer 4s ease infinite;
+}
+
+.login-corporate__title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, var(--marine-teal), var(--marine-blue), var(--marine-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: -0.01em;
+}
+
+.login-corporate__subtitle {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* ==================================== */
+/* === COMPACT FORM ELEMENTS === */
+/* ==================================== */
+
+.login-corporate__form {
+    position: relative;
+}
+
+/* Compact Error Message */
+.login-error-message {
+    background: linear-gradient(135deg, rgba(255, 107, 107, 0.15), rgba(255, 107, 107, 0.05));
+    border: 1px solid rgba(255, 107, 107, 0.3);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+}
+
+.error-icon {
+    font-size: 1.2rem;
+    color: var(--marine-coral);
+    filter: drop-shadow(0 0 8px var(--marine-coral));
+}
+
+/* Compact Form Fields */
+.form-field-corporate {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.form-field-corporate__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.form-field-corporate__required {
+    color: var(--marine-coral);
+    font-weight: 700;
+}
+
+.form-field-corporate__input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    outline: none;
+    color: white;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-field-corporate__input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form-field-corporate__input:focus {
+    border-color: var(--marine-teal);
+    background: rgba(255, 255, 255, 0.112);
+    color: black;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.4);
+    transform: translateY(-2px);
+}
+.form-field-corporate__input:not(:focus) {
+    color: white;
+}
+/* ==================================== */
+/* === COMPACT PIN INPUT === */
+/* ==================================== */
+
+.pin-input-container {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.pin-input {
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 600;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    color: white;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.pin-input:focus {
+    border-color: var(--marine-teal);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(100, 255, 218, 0.4);
+    transform: scale(1.1);
+}
+
+.pin-input:valid {
+    border-color: var(--marine-teal);
+    background: rgba(100, 255, 218, 0.08);
+}
+
+.pin-hint {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    margin-top: 0.75rem;
+}
+
+/* ==================================== */
+/* === COMPACT OPTIONS === */
+/* ==================================== */
+
+.login-corporate__options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.login-corporate__remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.login-corporate__checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--marine-teal);
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.login-corporate__remember-label {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.login-corporate__forgot-link {
+    color: var(--marine-teal);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.login-corporate__forgot-link:hover {
+    color: var(--marine-gold);
+    background: rgba(255, 215, 0, 0.1);
+}
+
+/* ==================================== */
+/* === COMPACT BUTTON === */
+/* ==================================== */
+
+.login-corporate__actions {
+    position: relative;
+}
+
+.btn-corporate {
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-corporate--primary {
+    background: linear-gradient(135deg, var(--marine-teal), var(--marine-blue));
+    color: white;
+    box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.btn-corporate--primary:hover:not(:disabled) {
+    background: linear-gradient(135deg, var(--marine-blue), var(--marine-teal));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(100, 255, 218, 0.4);
+}
+
+.btn-corporate:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* Compact Loading State */
+.btn-loading {
+    position: relative;
+    color: transparent !important;
+}
+
+.btn-loading::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.loading-spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin-right: 0.75rem;
+    display: inline-block;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================================== */
+/* === COMPACT MODAL === */
+/* ==================================== */
+
+.reset-pin-corporate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 26, 48, 0.9);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.reset-pin-corporate__card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: var(--glass-shadow), 0 0 40px rgba(100, 181, 246, 0.2);
+    padding: 2.5rem;
+    max-width: 400px;
+    width: 90%;
+    animation: slide-up 0.3s ease-out;
+}
+
+@keyframes slide-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reset-pin-corporate__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.reset-pin-corporate__icon {
+    font-size: 2.5rem;
+    color: var(--marine-blue);
+    margin-bottom: 1rem;
+}
+
+.reset-pin-corporate__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.reset-pin-corporate__subtitle {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0;
+}
+
+.reset-pin-corporate__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.reset-pin-corporate__actions .btn-corporate {
+    width: 48%;
+    margin: 0;
+}
+
+.btn-corporate--secondary {
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-corporate--secondary:hover {
+    border-color: var(--marine-blue);
+    color: var(--marine-blue);
+    background: rgba(74, 144, 226, 0.1);
+}
+
+/* ==================================== */
+/* === RESPONSIVE DESIGN === */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    .login-corporate {
+        padding: 0.5rem;
+    }
+
+    .login-corporate__container {
+        padding: 2rem 1.5rem;
+        max-width: 95%;
+        border-radius: 16px;
+    }
+
+    .login-corporate__title {
+        font-size: 1.75rem;
+    }
+
+    .pin-input {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.2rem;
+    }
+
+    /* Hide some animations on mobile for performance */
+    .login-corporate .submarine,
+    .login-corporate .lighthouse,
+    .login-corporate .sonar,
+    .login-corporate .bubble,
+    .login-corporate .island {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-corporate__container {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .login-corporate__title {
+        font-size: 1.5rem;
+    }
+
+    .pin-input-container {
+        gap: 0.5rem;
+    }
+
+    .pin-input {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.1rem;
+    }
+
+    .login-corporate__options {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .reset-pin-corporate__actions {
+        flex-direction: column;
+    }
+
+    .reset-pin-corporate__actions .btn-corporate {
+        width: 100%;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}

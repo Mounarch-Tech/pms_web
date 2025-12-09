@@ -1,0 +1,240 @@
+/* ================= Modern Light Theme for JTH Page ================= */
+
+/* Main Container */
+#JTH-main-container {
+    width: 100%;
+    height: 90vh;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 30px;
+    padding: 30px 15px;
+    background: #f5f7fa; /* Light gray background */
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+/* Form Container */
+#JTH-add-from-container {
+    width: 100%;
+    max-width: 600px;
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 25px 30px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Form Fields */
+#JTH-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#JTH-form-container .form-field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#JTH-form-container label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #444;
+}
+
+#JTH-form-container input[type="text"],
+#JTH-form-container input[type="date"],
+#JTH-form-container select {
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background: #f9fafb;
+    color: #111;
+    font-size: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#JTH-form-container input[type="text"]:focus,
+#JTH-form-container input[type="date"]:focus,
+#JTH-form-container select:focus {
+    border-color: #3b82f6; /* Blue focus */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+#JTH-form-container input::placeholder {
+    color: #9ca3af;
+}
+
+/* Radio Buttons */
+#JTH-form-radio-group-container {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+#JTH-form-radio-group-container label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Buttons */
+#FTH-btn-submit {
+    width: 100%;
+    padding: 12px;
+    background: #3b82f6;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+#FTH-btn-submit:hover {
+    background: #2563eb;
+}
+
+#FTH-btn-submit.reset-btn {
+    background: #ef4444;
+}
+
+#FTH-btn-submit.reset-btn:hover {
+    background: #dc2626;
+}
+
+/* Table Container */
+#JTH-show-table-container {
+    width: 100%;
+    max-width: 900px;
+    overflow-x: auto;
+    border-radius: 12px;
+    background: #ffffff;
+    padding: 15px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+th,
+td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #e5e7eb;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+th {
+    background: #f3f4f6;
+    font-weight: 600;
+    cursor: pointer;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: #111;
+}
+
+/* Sort Arrows */
+th::after {
+    content: "";
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+/* Action Buttons */
+.FTH-ED-btn-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+#FTH-btn-edit {
+    background: #10b981;
+    color: #fff;
+}
+
+#FTH-btn-edit:hover {
+    background: #059669;
+}
+
+#FTH-btn-delete {
+    background: #ef4444;
+    color: #fff;
+}
+
+#FTH-btn-delete:hover {
+    background: #dc2626;
+}
+
+/* Popup Message */
+#JTH-form-popup-container {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    padding: 15px 20px;
+    background: #10b981;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    transform: translate(-50%, -120%);
+    transition: all 0.5s ease;
+}
+
+#JTH-form-popup-container.show {
+    opacity: 1;
+    transform: translate(-50%, 20px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #JTH-main-container {
+        padding: 20px 10px;
+    }
+
+    #JTH-add-from-container,
+    #JTH-show-table-container {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    table th,
+    table td {
+        padding: 10px 8px;
+        font-size: 13px;
+    }
+
+    #FTH-btn-submit {
+        font-size: 14px;
+    }
+}

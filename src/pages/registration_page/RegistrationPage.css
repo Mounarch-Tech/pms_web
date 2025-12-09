@@ -1,0 +1,449 @@
+/* RegistrationPage.css - Soft Corporate Slate Theme */
+/* Updated with Grayscale Corporate Style and Transparent Buttons */
+
+/* Corporate Grayscale Color Palette */
+:root {
+    --slate-light: #f5f7f9;
+    --slate-medium: #e8ecef;
+    --slate-dark: #6b7280;
+    --navy-primary: #1e293b;
+    --navy-dark: #0f172a;
+    --navy-light: #334155;
+    --navy-accent: #475569;
+    --text-primary: #374151;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --border-light: #d1d5db;
+    --border-medium: #9ca3af;
+    --border-dark: #6b7280;
+    --white: #ffffff;
+    --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* MAIN PAGE CONTAINER */
+.registration-corporate {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    padding: 2rem;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 11111;
+}
+
+/* REGISTRATION CARD */
+.registration-corporate__container {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-large);
+    width: 60%;
+    height: 100%;
+    overflow-y: scroll;
+    z-index: 1;
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}
+
+.registration-corporate__container:hover {
+    transform: translateY(-1px);
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.1),
+        0 0 0 1px var(--border-light);
+}
+
+/* HEADER SECTION */
+.registration-corporate__header {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 2.5rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 111;
+    padding: 2rem 3rem 0;
+    padding-bottom: 10px;
+}
+
+.registration-corporate__icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+    color: var(--navy-primary);
+}
+
+.registration-corporate__title {
+    color: var(--navy-primary);
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.registration-corporate__subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* FORM LAYOUT */
+.registration-corporate__form {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    padding: 0 3rem;
+}
+
+.registration-corporate__grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 480px) {
+    .registration-corporate__grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .registration-corporate__grid .form-field-corporate:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+    }
+}
+
+/* FORM FIELD STYLES */
+.form-field-corporate {
+    margin-bottom: 1.5rem;
+}
+
+.form-field-corporate__label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
+}
+
+.form-field-corporate__required {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+.form-field-corporate__input,
+.form-field-corporate__select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid var(--border-light);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    background: var(--white);
+    transition: all 0.2s ease;
+    outline: none;
+    color: var(--text-primary);
+}
+
+.form-field-corporate__input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+}
+
+.form-field-corporate__input:focus,
+.form-field-corporate__select:focus {
+    border-color: var(--navy-primary);
+    box-shadow: 0 0 0 2px rgba(30, 41, 59, 0.1);
+    background: var(--white);
+}
+
+.form-field-corporate__select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 14px;
+    padding-right: 2.5rem;
+}
+
+/* FORM FIELD GROUP */
+.form-field-corporate-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-field-corporate-group__inline {
+    display: grid;
+    gap: 1rem;
+}
+
+@media (min-width: 480px) {
+    .form-field-corporate-group__inline {
+        grid-template-columns: 140px 1fr;
+    }
+}
+
+/* COUNTRY CODE SPECIFIC STYLES */
+.form-field-corporate--country-code .form-field-corporate__select {
+    background: var(--slate-light);
+    font-weight: 500;
+    border-color: var(--border-light);
+}
+
+/* UPDATED BUTTON STYLES - Transparent with border and text matching theme */
+.registration-corporate__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;
+    margin-top: 2rem;
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--border-light);
+    background-color: white;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn-corporate {
+    padding: 0.75rem 2rem;
+    border: 1.5px solid;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    min-width: 120px;
+    background: transparent;
+}
+
+/* Primary button - Navy theme */
+.btn-corporate--primary {
+    border-color: var(--navy-primary);
+    color: var(--navy-primary);
+    background: rgba(30, 41, 59, 0.3) !important; /* 30% opacity background */
+}
+
+.btn-corporate--primary:hover {
+    background: rgba(30, 41, 59, 0.4) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-corporate--primary:active {
+    transform: translateY(0);
+    background: rgba(30, 41, 59, 0.5) !important;
+}
+
+/* Secondary button - Gray theme */
+.btn-corporate--secondary {
+    border-color: var(--border-medium);
+    color: var(--text-secondary);
+    background: rgba(156, 163, 175, 0.3) !important; /* 30% opacity background */
+}
+
+.btn-corporate--secondary:hover {
+    background: rgba(156, 163, 175, 0.4) !important;
+    border-color: var(--border-dark);
+}
+
+.btn-corporate--secondary:active {
+    background: rgba(156, 163, 175, 0.5) !important;
+}
+
+/* FOOTER SECTION */
+.registration-corporate__footer {
+    text-align: center;
+    padding: 1.5rem 3rem;
+    border-top: 1px solid var(--border-light);
+    width: 100%;
+    background-color: white;
+}
+
+.registration-corporate__footer-text {
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.registration-corporate__login-link {
+    background: none;
+    border: none;
+    color: var(--navy-primary);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: all 0.2s ease;
+    opacity: 0.9;
+}
+
+.registration-corporate__login-link:hover {
+    color: var(--navy-dark);
+    text-decoration: underline;
+    opacity: 1;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 1024px) {
+    .registration-corporate__container {
+        width: 80%;
+    }
+}
+
+@media (max-width: 768px) {
+    .registration-corporate {
+        padding: 1rem;
+    }
+
+    .registration-corporate__container {
+        width: 95%;
+        padding: 0;
+    }
+
+    .registration-corporate__header {
+        padding: 1.5rem 1.5rem 0;
+    }
+
+    .registration-corporate__form {
+        padding: 0 1.5rem;
+    }
+
+    .registration-corporate__actions {
+        padding: 1.5rem;
+        flex-direction: column-reverse;
+    }
+
+    .btn-corporate {
+        width: 100%;
+        text-align: center;
+    }
+
+    .registration-corporate__title {
+        font-size: 1.5rem;
+    }
+
+    .registration-corporate__subtitle {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .registration-corporate__container {
+        border-radius: 8px;
+    }
+
+    .registration-corporate__header {
+        margin-bottom: 2rem;
+        padding: 1rem 1rem 0;
+    }
+
+    .registration-corporate__icon {
+        font-size: 2.5rem;
+    }
+
+    .registration-corporate__title {
+        font-size: 1.3rem;
+    }
+
+    .form-field-corporate-group__inline {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-corporate__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .registration-corporate__form {
+        padding: 0 1rem;
+    }
+
+    .registration-corporate__actions {
+        padding: 1rem;
+    }
+
+    .registration-corporate__footer {
+        padding: 1rem;
+    }
+}
+
+/* FOCUS VISIBLE FOR ACCESSIBILITY */
+.btn-corporate:focus-visible,
+.form-field-corporate__input:focus-visible,
+.form-field-corporate__select:focus-visible {
+    outline: 2px solid var(--navy-primary);
+    outline-offset: 2px;
+}
+
+/* VALIDATION STATES */
+.form-field-corporate__input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+.form-field-corporate__input:valid:not(:focus):not(:placeholder-shown) {
+    border-color: #059669;
+    background-color: rgba(5, 150, 105, 0.05);
+}
+
+/* LOADING STATE */
+.btn-corporate:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* PRINT STYLES */
+@media print {
+    .registration-corporate {
+        background: white !important;
+        position: static;
+        height: auto;
+    }
+
+    .registration-corporate__container {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        height: auto;
+    }
+}
+
+/* HIGH CONTRAST MODE SUPPORT */
+@media (prefers-contrast: high) {
+    .form-field-corporate__input,
+    .form-field-corporate__select {
+        border-width: 2px;
+    }
+
+    .btn-corporate {
+        border-width: 2px;
+    }
+}
+
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+    .registration-corporate__container,
+    .btn-corporate,
+    .form-field-corporate__input,
+    .form-field-corporate__select {
+        transition: none;
+    }
+
+    .registration-corporate__container:hover {
+        transform: none;
+    }
+
+    .btn-corporate:hover {
+        transform: none;
+    }
+}

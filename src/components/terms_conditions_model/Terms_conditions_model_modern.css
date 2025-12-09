@@ -1,0 +1,359 @@
+/* Terms_conditions_model.css */
+
+/* --- Modern Color Palette ---
+Primary (Action): #2657A7 (Slightly deeper, more professional blue)
+Primary Hover: #1A3D7A
+Secondary (Neutral): #6B7280 (Modern gray)
+Secondary Hover: #4B5563
+Background: #F9FAFB (Softer, warmer white)
+Surface: #FFFFFF (Pure white for cards/modals)
+Border/Subtle: #E5E7EB (Lighter gray for borders)
+Header/Footer BG: #F3F4F6 (Slightly darker than background)
+Text Primary: #1F2937 (Dark gray for main text)
+Text Secondary: #4B5563 (Lighter gray for secondary text)
+Success/Highlight: #10B981 (Emerald green for success/positive actions)
+Warning/Highlight: #F59E0B (Amber for warnings/highlights)
+Overlay: rgba(31, 41, 55, 0.6) (Darker semi-transparent overlay)
+Box Shadow: rgba(0, 0, 0, 0.1) & rgba(0, 0, 0, 0.05)
+-------------------------------*/
+
+/* Overlay Background */
+.terms-conditions-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Updated: Darker, more effective overlay */
+    background-color: rgba(31, 41, 55, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Updated: Slightly stronger blur */
+    backdrop-filter: blur(4px);
+}
+
+/* Main Modal Container */
+.terms-conditions-modal {
+    /* Updated: Pure white surface */
+    background-color: #FFFFFF;
+    /* Updated: Slightly larger radius */
+    border-radius: 16px;
+    /* Updated: More layered, softer shadow */
+    box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 15px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Header Section */
+.terms-conditions-header {
+    padding: 24px; /* Increased padding */
+    border-bottom: 1px solid #E5E7EB; /* Updated border color */
+    /* Updated: Softer header background */
+    background-color: #F3F4F6;
+}
+
+.terms-conditions-title {
+    margin: 0;
+    font-size: 1.6rem; /* Slightly larger title */
+    font-weight: 600; /* Bolder title */
+    /* Updated: Darker, crisper text */
+    color: #1F2937;
+    text-align: center;
+}
+
+.job-type-name {
+    /* Updated: New primary action color */
+    color: #2657A7;
+    font-weight: 700; /* Bolder job type name */
+}
+
+/* Content Area (Scrollable) */
+.terms-conditions-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* Table Container (Makes table scrollable if needed) */
+.table-container {
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Updated: Increased padding */
+    padding: 0 20px 20px 20px;
+}
+
+/* Styled Table */
+.terms-conditions-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* Updated: Softer inner shadow */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    /* Updated: Larger radius */
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.terms-conditions-table thead {
+    /* Updated: Match header background */
+    background-color: #F3F4F6;
+}
+
+.terms-conditions-table th {
+    padding: 16px 12px; /* Increased padding */
+    text-align: left;
+    font-weight: 600;
+    /* Updated: Consistent text color */
+    color: #1F2937;
+    font-size: 0.95rem; /* Slightly larger */
+    border-bottom: 1px solid #E5E7EB; /* Updated border */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.terms-conditions-table td {
+    padding: 14px 12px; /* Increased padding */
+    border-bottom: 1px solid #E5E7EB; /* Updated border */
+    vertical-align: middle;
+    color: #4B5563; /* Updated: Softer text color for data */
+}
+
+.terms-conditions-table tbody tr {
+    transition: background-color 0.2s ease; /* Smooth transition for hover */
+}
+
+.terms-conditions-table tbody tr:hover {
+    /* Updated: Softer, more modern hover */
+    background-color: #F9FAFB;
+}
+
+/* Specific cell styling */
+.job-count-cell {
+    text-align: center;
+    font-weight: 600; /* Bolder numbers */
+    color: #1F2937; /* Darker numbers */
+}
+
+.no-data-cell {
+    text-align: center;
+    /* Updated: Consistent secondary text color */
+    color: #6B7280;
+    font-style: italic;
+    padding: 40px; /* Increased padding */
+    font-size: 1rem; /* Slightly larger */
+}
+
+/* Checkbox styling for ships */
+.ship-checkbox-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 500;
+    /* Updated: Crisper label text */
+    color: #1F2937;
+}
+
+.ship-checkbox {
+    margin-right: 12px; /* Increased spacing */
+    width: 20px; /* Slightly larger */
+    height: 20px; /* Slightly larger */
+    cursor: pointer;
+    /* Updated: New primary color for checkmark */
+    accent-color: #2657A7;
+    /* Add border for better visibility */
+    border: 1px solid #D1D5DB;
+    border-radius: 4px; /* Slight rounding */
+}
+
+.ship-checkbox:hover {
+    /* Subtle highlight on hover */
+    border-color: #9CA3AF;
+}
+
+.ship-name {
+    font-weight: 500; /* Ensure ship name stands out slightly */
+}
+
+/* Footer Section */
+.terms-conditions-footer {
+    padding: 24px; /* Increased padding */
+    border-top: 1px solid #E5E7EB; /* Updated border */
+    /* Updated: Match header background */
+    background-color: #F3F4F6;
+    display: flex;
+    flex-direction: column;
+    gap: 18px; /* Increased gap */
+}
+
+/* Terms Checkbox Label */
+.terms-checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    font-size: 1rem; /* Slightly larger */
+    /* Updated: Consistent secondary text color */
+    color: #4B5563;
+    line-height: 1.5; /* Improved readability */
+}
+
+.terms-checkbox {
+    margin-right: 12px; /* Increased spacing */
+    margin-top: 4px; /* Better alignment */
+    width: 20px; /* Slightly larger */
+    height: 20px; /* Slightly larger */
+    cursor: pointer;
+    /* Updated: New primary color */
+    accent-color: #2657A7;
+    /* Add border for better visibility */
+    border: 1px solid #D1D5DB;
+    border-radius: 4px; /* Slight rounding */
+}
+
+.terms-checkbox:hover {
+    /* Subtle highlight on hover */
+    border-color: #9CA3AF;
+}
+
+.terms-text {
+    /* Can add specific styles if needed, inherits from label */
+    color: crimson;
+}
+
+/* Buttons Container */
+.terms-conditions-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px; /* Increased gap */
+}
+
+/* Action Buttons */
+.action-button {
+    padding: 12px 24px; /* Increased padding */
+    border: none;
+    /* Updated: Larger radius */
+    border-radius: 8px;
+    font-weight: 600; /* Bolder text */
+    cursor: pointer;
+    transition: all 0.25s ease;
+    font-size: 1rem; /* Slightly larger */
+    min-width: 110px; /* Slightly wider */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Subtle base shadow */
+}
+
+.proceed-button {
+    /* Updated: New primary action color */
+    background-color: #2657A7;
+    color: white;
+    /* Add border for better definition */
+    border: 1px solid #1e4a99; /* Slightly darker than background */
+}
+
+.proceed-button:hover:not(.disabled) {
+    /* Updated: Darker hover state */
+    background-color: #1A3D7A;
+    border-color: #153264; /* Darker border on hover */
+    transform: translateY(-2px);
+    /* Updated: Softer, matching shadow */
+    box-shadow:
+        0 4px 6px rgba(38, 87, 167, 0.2),
+        0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.proceed-button:active:not(.disabled) {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Flatter shadow on click */
+}
+
+.proceed-button.disabled {
+    /* Updated: Softer disabled state */
+    background-color: #9CA3AF;
+    border-color: #9CA3AF; /* Match border */
+    color: #D1D5DB; /* Lighter text */
+    cursor: not-allowed;
+    opacity: 0.8; /* Slightly less opaque */
+    transform: none;
+    box-shadow: none;
+}
+
+.cancel-button {
+    /* Updated: New secondary color */
+    background-color: #F3F4F6; /* Light background */
+    color: #4B5563; /* Dark text */
+    border: 1px solid #D1D5DB; /* Visible border */
+}
+
+.cancel-button:hover {
+    /* Updated: Darker hover state */
+    background-color: #E5E7EB;
+    border-color: #9CA3AF; /* Darker border */
+    color: #1F2937; /* Darker text */
+    transform: translateY(-2px);
+    /* Updated: Softer, matching shadow */
+    box-shadow:
+        0 4px 6px rgba(107, 114, 128, 0.1),
+        0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.cancel-button:active {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); /* Flatter shadow on click */
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .terms-conditions-modal {
+        width: 95%;
+        max-height: 95vh;
+        border-radius: 12px; /* Adjust for smaller screens */
+    }
+
+    .terms-conditions-header,
+    .terms-conditions-footer {
+        padding: 20px; /* Adjust padding */
+    }
+
+    .terms-conditions-title {
+        font-size: 1.4rem; /* Adjust title size */
+    }
+
+    .terms-conditions-table th,
+    .terms-conditions-table td {
+        padding: 12px 10px; /* Adjust cell padding */
+        font-size: 0.9rem; /* Adjust font size */
+    }
+
+    .terms-checkbox-label {
+        font-size: 0.95rem; /* Adjust label size */
+    }
+
+    .terms-conditions-buttons {
+        flex-direction: column;
+        gap: 12px; /* Adjust button gap */
+    }
+
+    .action-button {
+        width: 100%;
+        padding: 14px; /* Increase padding for touch targets */
+        font-size: 1.1rem; /* Increase font size for buttons */
+    }
+}

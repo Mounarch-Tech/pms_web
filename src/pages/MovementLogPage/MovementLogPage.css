@@ -1,0 +1,1947 @@
+/* MovementLogPage.css - Modern Compact Design with Specific Selectors */
+
+:root {
+    /* Modern Color Palette */
+    --primary-50: #f0f9ff;
+    --primary-100: #e0f2fe;
+    --primary-500: #0ea5e9;
+    --primary-600: #0284c7;
+    --primary-700: #0369a1;
+
+    --gray-50: #f8fafc;
+    --gray-100: #f1f5f9;
+    --gray-200: #e2e8f0;
+    --gray-300: #cbd5e1;
+    --gray-400: #94a3b8;
+    --gray-500: #64748b;
+    --gray-600: #475569;
+    --gray-700: #334155;
+    --gray-800: #1e293b;
+    --gray-900: #0f172a;
+
+    /* Semantic Colors */
+    --success: #10b981;
+    --warning: #f59e0b;
+    --error: #ef4444;
+    --info: #8b5cf6;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+    /* Border Radius */
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+
+    /* Spacing - Compact */
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 12px;
+    --space-lg: 16px;
+    --space-xl: 20px;
+}
+
+/* Global Reset and Base Styles */
+#movement-log-page-main-container {
+    width: 100vw;
+    min-height: 87.8vh;
+    background: linear-gradient(135deg, var(--gray-50) 0%, var(--gray-100) 100%);
+    color: var(--gray-800);
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+    display: flex;
+    gap: var(--space-lg);
+    padding: var(--space-md);
+    box-sizing: border-box;
+    line-height: 1.4;
+    font-size: 13px;
+}
+
+/* Compact Card Design */
+#movement-log-page-main-container .compact-card {
+    background: white;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    transition: all 0.2s ease;
+}
+
+#movement-log-page-main-container .compact-card:hover {
+    box-shadow: var(--shadow-md);
+}
+
+/* Left Panel - Compact Design */
+#movement-log-page-main-container #movement-log-page-left-container {
+    padding: var(--space-md);
+    width: 35%;
+    height: 82vh;
+    overflow-y: auto;
+    position: relative;
+    composes: compact-card;
+}
+
+#movement-log-page-main-container #movement-log-page-left-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--primary-500), var(--info));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Right Panel - Compact Design */
+#movement-log-page-main-container #movement-log-page-right-container {
+    flex: 1;
+    padding: var(--space-md);
+    height: 82vh;
+    overflow-y: auto;
+    position: relative;
+    composes: compact-card;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--success), var(--primary-500));
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* Scrollbar Styling - Compact */
+#movement-log-page-main-container #movement-log-page-left-container::-webkit-scrollbar,
+#movement-log-page-main-container #movement-log-page-right-container::-webkit-scrollbar {
+    width: 3px;
+}
+
+#movement-log-page-main-container #movement-log-page-left-container::-webkit-scrollbar-track,
+#movement-log-page-main-container #movement-log-page-right-container::-webkit-scrollbar-track {
+    background: var(--gray-100);
+}
+
+#movement-log-page-main-container #movement-log-page-left-container::-webkit-scrollbar-thumb,
+#movement-log-page-main-container #movement-log-page-right-container::-webkit-scrollbar-thumb {
+    background: var(--gray-300);
+    border-radius: var(--radius-sm);
+}
+
+/* Ship Selection - Compact */
+/* #movement-log-page-main-container #select-ships-container {
+    margin-bottom: var(--space-md);
+} */
+
+#movement-log-page-main-container #select-ships-container #ship-selection {
+    width: 100%;
+    /* padding: 8px 10px; */
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-700);
+    font-size: 12px;
+    transition: all 0.2s ease;
+    height: fit-content;
+    /* min-height: 38px; */
+}
+
+#movement-log-page-main-container #select-ships-container #ship-selection:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.1);
+}
+
+/* Tree Section - Compact */
+#movement-log-page-main-container #movement-log-page-left-container .tree-section h2 {
+    color: var(--gray-700);
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--gray-200);
+}
+
+/* Tab Navigation - Compact */
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container {
+    display: flex;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-md);
+    border-bottom: 1px solid var(--gray-200);
+    padding-bottom: 2px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button {
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    border-bottom: 2px solid transparent;
+    background: transparent;
+    color: var(--gray-500);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button:hover {
+    color: var(--primary-600);
+    background: var(--primary-50);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button.active {
+    color: var(--primary-600);
+    border-bottom-color: var(--primary-500);
+    background: var(--primary-50);
+}
+
+/* Selected Components - Compact */
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node {
+    width: 100%;
+    max-height: 120px;
+    overflow-y: auto;
+    margin-top: var(--space-sm);
+    padding: var(--space-sm);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node .section-title {
+    color: var(--gray-700);
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node .checked-nodes-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 4px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node .checked-nodes-list .checked-node-item {
+    display: flex;
+    align-items: center;
+    padding: 6px 8px;
+    background: white;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    border: 1px solid var(--gray-200);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node .checked-nodes-list .checked-node-item .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+    border-radius: 3px;
+    color: white;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-visualize-checked-node .checked-nodes-list .checked-node-item .label {
+    flex: 1;
+    color: var(--gray-700);
+    font-weight: 500;
+}
+
+/* Form Fields - Compact */
+#movement-log-page-main-container #movement-log-page-right-container form {
+    max-width: 100%;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container form h1 {
+    color: var(--gray-800);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: var(--space-md);
+    text-align: center;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container form label {
+    font-size: 12px;
+    color: var(--gray-700);
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container form input[type="text"],
+#movement-log-page-main-container #movement-log-page-right-container form input[type="date"],
+#movement-log-page-main-container #movement-log-page-right-container form select {
+    width: 100%;
+    padding: 6px 8px;
+    margin-top: 2px;
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    background: white;
+    color: var(--gray-800);
+    font-size: 12px;
+    transition: all 0.2s ease;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container form input[type="text"]:focus,
+#movement-log-page-main-container #movement-log-page-right-container form input[type="date"]:focus,
+#movement-log-page-main-container #movement-log-page-right-container form select:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.1);
+}
+
+/* Buttons - Compact */
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container {
+    margin-top: var(--space-md);
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 32px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container .btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-sm);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container #submit-btn {
+    background: var(--primary-500);
+    color: white;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container #submit-btn:hover {
+    background: var(--primary-600);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container #reset-btn {
+    background: var(--gray-100);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-300);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container #reset-btn:hover {
+    background: var(--gray-200);
+}
+
+/* Error Messages - Compact */
+#movement-log-page-main-container #movement-log-page-right-container .error-msg {
+    font-size: 11px;
+    color: var(--error);
+    margin-top: 2px;
+    display: block;
+    font-weight: 500;
+}
+
+/* Table Styling - Ultra Compact */
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-top: var(--space-sm);
+    background: white;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--gray-200);
+    font-size: 12px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table thead {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table th {
+    padding: 8px 6px;
+    text-align: center;
+    color: black;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    border: none;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table td {
+    padding: 8px 6px;
+    text-align: center;
+    color: var(--gray-700);
+    font-size: 11px;
+    font-weight: 500;
+    border-bottom: 1px solid var(--gray-100);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table tbody tr:hover {
+    background: linear-gradient(90deg, var(--primary-50) 0%, rgba(14, 165, 233, 0.05) 100%);
+}
+
+/* Table Buttons - Compact */
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-see-components,
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-edit,
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-suspend {
+    padding: 4px 8px;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 60px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-see-components {
+    background: var(--info);
+    color: white;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-see-components:hover {
+    background: #7c3aed;
+    transform: translateY(-1px);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-edit {
+    background: var(--primary-500);
+    color: white;
+    margin-right: 4px;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-edit:hover {
+    background: var(--primary-600);
+    transform: translateY(-1px);
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-suspend {
+    background: var(--error);
+    color: white;
+}
+
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .btn-suspend:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+}
+
+/* Ship Tags - Compact */
+#movement-log-page-main-container #movement-log-page-right-container .movement-logs-table .ship-tag {
+    display: inline-block;
+    padding: 2px 6px;
+    background: var(--primary-100);
+    color: var(--primary-700);
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 500;
+    margin: 1px;
+}
+
+/* No Selection State - Compact */
+#movement-log-page-main-container #movement-log-page-right-container .no-selection {
+    text-align: center;
+    color: var(--gray-400);
+    font-style: italic;
+    padding: var(--space-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--gray-300);
+    font-size: 12px;
+}
+
+/* Modal Styling - Compact */
+#movement-log-page-main-container #applied-component-heirarchy-modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--space-md);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content {
+    background: white;
+    width: 90%;
+    max-width: 800px;
+    height: 80%;
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content h3 {
+    color: var(--gray-800);
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .movement-log-info {
+    background: var(--gray-50);
+    padding: var(--space-sm);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-md);
+    font-size: 11px;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .movement-log-info p {
+    margin: 2px 0;
+    color: var(--gray-600);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: var(--space-md);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy {
+    margin-bottom: var(--space-md);
+    padding: var(--space-sm);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-200);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy .component-header {
+    margin-bottom: var(--space-sm);
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy .component-header h4 {
+    color: var(--gray-800);
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy .component-header p {
+    font-size: 11px;
+    color: var(--gray-600);
+    margin: 1px 0;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .btn-close {
+    align-self: flex-end;
+    padding: 6px 12px;
+    background: var(--gray-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .btn-close:hover {
+    background: var(--gray-600);
+    transform: translateY(-1px);
+}
+
+/* Responsive Design - Compact */
+@media (max-width: 1200px) {
+    #movement-log-page-main-container {
+        gap: var(--space-md);
+        padding: var(--space-sm);
+    }
+}
+
+@media (max-width: 992px) {
+    #movement-log-page-main-container {
+        flex-direction: column;
+        gap: var(--space-md);
+    }
+
+    #movement-log-page-main-container #movement-log-page-left-container,
+    #movement-log-page-main-container #movement-log-page-right-container {
+        width: 100%;
+        height: auto;
+        min-height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    #movement-log-page-main-container {
+        padding: 8px;
+        gap: 10px;
+        font-size: 12px;
+    }
+
+    #movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    #movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container .btn {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+
+    #movement-log-page-main-container #movement-log-page-right-container .movement-logs-table {
+        font-size: 11px;
+    }
+
+    #movement-log-page-main-container #movement-log-page-right-container .movement-logs-table th,
+    #movement-log-page-main-container #movement-log-page-right-container .movement-logs-table td {
+        padding: 6px 4px;
+    }
+}
+
+/* Loading States */
+#movement-log-page-main-container .loading {
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+/* Focus States for Accessibility */
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button:focus-visible,
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container .btn:focus-visible,
+#movement-log-page-main-container #select-ships-container #ship-selection:focus-visible,
+#movement-log-page-main-container #movement-log-page-right-container form input:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 1px;
+}
+
+/* Animation for smooth transitions */
+#movement-log-page-main-container .compact-card,
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-header-btns-container .btn,
+#movement-log-page-main-container #movement-log-page-right-container #movement-log-page-right-top-container .tab-button {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Status Indicators */
+#movement-log-page-main-container .status-active {
+    color: var(--success);
+    font-weight: 600;
+}
+
+#movement-log-page-main-container .status-inactive {
+    color: var(--error);
+    font-weight: 600;
+}
+
+/* Icon Styling */
+#movement-log-page-main-container .icon-prefix {
+    margin-right: 6px;
+    color: var(--primary-500);
+    font-size: 12px;
+}
+
+/* Utility Classes */
+#movement-log-page-main-container .text-sm {
+    font-size: 11px;
+}
+
+#movement-log-page-main-container .text-xs {
+    font-size: 10px;
+}
+
+#movement-log-page-main-container .font-semibold {
+    font-weight: 600;
+}
+
+#movement-log-page-main-container .text-gray-600 {
+    color: var(--gray-600);
+}
+
+#movement-log-page-main-container .bg-primary-50 {
+    background: var(--primary-50);
+}
+
+#movement-log-page-main-container .border-primary-200 {
+    border-color: var(--primary-200);
+}
+
+/* Button Styling */
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background: #5a6268;
+}
+
+/* Add to your CSS file */
+.edit-mode-indicator {
+    margin-bottom: 10px;
+    padding: 8px;
+    background: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 4px;
+}
+
+.pre-selected {
+    box-shadow: 0 0 0 2px #ffc107;
+}
+
+.tree-label.pre-selected {
+    border: 2px solid #ffc107 !important;
+}
+
+/* MovementLogPage.css - Enhanced Modern Compact Design */
+
+/* ... (keep your existing root variables and base styles) ... */
+
+/* Enhanced Existing Components Section */
+#movement-log-page-main-container #existing-components-info {
+    background: linear-gradient(135deg, var(--primary-50) 0%, var(--gray-50) 100%);
+    border: 1px solid rgba(128, 128, 128, 0.277);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow-y: scroll;
+    max-height: 100px;
+    /* background-color: red; */
+}
+
+#movement-log-page-main-container #existing-components-info .section-title {
+    color: var(--gray-800);
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: var(--space-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+#movement-log-page-main-container .existing-components-list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2px;
+    margin-top: var(--space-sm);
+
+}
+
+#movement-log-page-main-container .existing-component-item {
+    background: red;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm);
+    font-size: 12px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
+
+    border-right-width: 5px;
+    border-right-color: black;
+}
+
+
+#movement-log-page-main-container .existing-component-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-300);
+}
+
+#movement-log-page-main-container .component-path {
+    color: var(--gray-700);
+    font-weight: 600;
+    flex: 1;
+    font-size: 11px;
+    line-height: 1.3;
+}
+
+#movement-log-page-main-container .component-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+#movement-log-page-main-container .component-status::before {
+    content: '✓';
+}
+
+/* Enhanced Edit Mode Instructions */
+#movement-log-page-main-container .edit-mode-instructions {
+    background: linear-gradient(135deg, var(--primary-50) 0%, #e3f2fd 100%);
+    border: 1px solid var(--primary-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+#movement-log-page-main-container .edit-mode-instructions::before {
+    content: '💡';
+    position: absolute;
+    top: var(--space-md);
+    right: var(--space-md);
+    font-size: 16px;
+    opacity: 0.3;
+}
+
+#movement-log-page-main-container .edit-mode-instructions p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--gray-700);
+}
+
+#movement-log-page-main-container .edit-mode-instructions strong {
+    color: var(--primary-700);
+    font-size: 13px;
+}
+
+/* Enhanced Form Sections */
+#movement-log-page-main-container #movement-log-header-display-name-feild-container,
+#movement-log-page-main-container #movement-log-header-frequency-container {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+#movement-log-page-main-container #movement-log-header-display-name-feild-container:hover,
+#movement-log-page-main-container #movement-log-header-frequency-container:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-200);
+}
+
+#movement-log-page-main-container #movement-log-header-display-name-feild-container label,
+#movement-log-page-main-container #movement-log-header-frequency-container label {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+#movement-log-page-main-container #movement-log-header-display-name-feild-container .icon-prefix {
+    color: var(--primary-500);
+    font-size: 13px;
+}
+
+/* Enhanced Input Fields */
+#movement-log-page-main-container #display-name,
+#movement-log-page-main-container #transaction-frequency {
+    border: 1px solid var(--gray-300);
+    border-radius: var(--radius-md);
+    padding: 8px 12px;
+    font-size: 12px;
+    transition: all 0.2s ease;
+    background: white;
+}
+
+#movement-log-page-main-container #display-name:focus,
+#movement-log-page-main-container #transaction-frequency:focus {
+    outline: none;
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.1);
+    transform: translateY(-1px);
+}
+
+/* Enhanced Button Container */
+#movement-log-page-main-container #movement-log-header-btns-container {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-top: var(--space-lg);
+    display: flex;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+/* Enhanced Buttons */
+#movement-log-page-main-container #movement-log-header-btns-container .btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 36px;
+    position: relative;
+    overflow: hidden;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn:hover::before {
+    left: 100%;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container #submit-btn {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    color: white;
+    min-width: 140px;
+    justify-content: center;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container #submit-btn:hover {
+    background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container #reset-btn {
+    background: var(--gray-100);
+    color: var(--gray-700);
+    border: 1px solid var(--gray-300);
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container #reset-btn:hover {
+    background: var(--gray-200);
+    border-color: var(--gray-400);
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn-cancel {
+    background: var(--gray-500);
+    color: white;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn-cancel:hover {
+    background: var(--gray-600);
+}
+
+/* Enhanced Loading States */
+#movement-log-page-main-container .loading-placeholder {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    margin: var(--space-sm) 0;
+    border: 1px dashed var(--gray-300);
+}
+
+#movement-log-page-main-container .mini-loader {
+    border: 2px solid var(--gray-200);
+    border-top: 2px solid var(--primary-500);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+}
+
+#movement-log-page-main-container .modal-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-xl);
+    background: white;
+    border-radius: var(--radius-lg);
+    margin: var(--space-md);
+    gap: var(--space-md);
+}
+
+/* Enhanced No Selection State */
+#movement-log-page-main-container .no-selection {
+    text-align: center;
+    color: var(--gray-400);
+    font-style: italic;
+    padding: var(--space-xl);
+    background: var(--gray-50);
+    border-radius: var(--radius-lg);
+    border: 2px dashed var(--gray-300);
+    font-size: 13px;
+    margin: var(--space-md) 0;
+    position: relative;
+}
+
+#movement-log-page-main-container .no-selection::before {
+    content: '🔧';
+    font-size: 24px;
+    display: block;
+    margin-bottom: var(--space-sm);
+    opacity: 0.5;
+}
+
+/* Enhanced Table Actions */
+#movement-log-page-main-container .movement-logs-table .btn-see-components,
+#movement-log-page-main-container .movement-logs-table .btn-edit,
+#movement-log-page-main-container .movement-logs-table .btn-suspend {
+    padding: 6px 12px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+#movement-log-page-main-container .movement-logs-table .btn-see-components {
+    background: linear-gradient(135deg, var(--info) 0%, #7c3aed 100%);
+    color: white;
+}
+
+#movement-log-page-main-container .movement-logs-table .btn-edit {
+    background: linear-gradient(135deg, var(--primary-500) 0%, var(--primary-600) 100%);
+    color: white;
+    margin-right: 4px;
+}
+
+#movement-log-page-main-container .movement-logs-table .btn-suspend {
+    background: linear-gradient(135deg, var(--error) 0%, #dc2626 100%);
+    color: white;
+}
+
+#movement-log-page-main-container .movement-logs-table .btn-see-components:hover,
+#movement-log-page-main-container .movement-logs-table .btn-edit:hover,
+#movement-log-page-main-container .movement-logs-table .btn-suspend:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Enhanced Modal Components */
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy {
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    margin-bottom: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.2s ease;
+}
+
+#movement-log-page-main-container #applied-component-heirarchy-modal #applied-component-heirarchy-modal-content .component-list .component-hierarchy:hover {
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-200);
+}
+
+/* Enhanced Status Indicators */
+#movement-log-page-main-container .status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#movement-log-page-main-container .status-active {
+    background: #10b98174;
+    padding: 2px 5px;
+    border-radius: 10px;
+    color: #000000;
+}
+
+#movement-log-page-main-container .status-inactive {
+    background: var(--error);
+    color: white;
+}
+
+/* Enhanced Empty States */
+#movement-log-page-main-container .no-data,
+#movement-log-page-main-container .no-components {
+    text-align: center;
+    color: var(--gray-400);
+    font-style: italic;
+    padding: var(--space-xl);
+    background: var(--gray-50);
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--gray-300);
+    font-size: 12px;
+}
+
+/* Enhanced Animation Keyframes */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* Apply animations to components */
+#movement-log-page-main-container .existing-component-item {
+    animation: fadeInUp 0.3s ease-out;
+}
+
+#movement-log-page-main-container #movement-log-header-btns-container .btn:disabled {
+    animation: pulse 2s infinite;
+}
+
+/* Enhanced Responsive Design */
+@media (max-width: 768px) {
+    #movement-log-page-main-container .existing-components-list {
+        grid-template-columns: 1fr;
+    }
+
+    #movement-log-page-main-container #movement-log-header-btns-container {
+        flex-direction: column;
+    }
+
+    #movement-log-page-main-container #movement-log-header-btns-container .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    #movement-log-page-main-container #existing-components-info {
+        padding: var(--space-sm);
+    }
+}
+
+/* Enhanced Focus States */
+#movement-log-page-main-container #movement-log-header-btns-container .btn:focus-visible,
+#movement-log-page-main-container .movement-logs-table .btn-see-components:focus-visible,
+#movement-log-page-main-container .movement-logs-table .btn-edit:focus-visible,
+#movement-log-page-main-container .movement-logs-table .btn-suspend:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+}
+
+/* Enhanced Utility Classes */
+#movement-log-page-main-container .text-success {
+    color: var(--success);
+}
+
+#movement-log-page-main-container .text-warning {
+    color: var(--warning);
+}
+
+#movement-log-page-main-container .text-error {
+    color: var(--error);
+}
+
+#movement-log-page-main-container .bg-success-light {
+    background: rgba(16, 185, 129, 0.1);
+}
+
+#movement-log-page-main-container .bg-warning-light {
+    background: rgba(245, 158, 11, 0.1);
+}
+
+#movement-log-page-main-container .bg-error-light {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+/* Enhanced Component Counter */
+#movement-log-page-main-container .components-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-500);
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: var(--space-sm);
+}
+
+/* Link Movement Log Modal */
+#link-movement-log-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#link-movement-log-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 900px;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.modal-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.btn-link {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-link:hover:not(:disabled) {
+    background: #138496;
+}
+
+.btn-link:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+/* status-active */
+
+/* Transaction Calendar Styles */
+.transaction-calendar {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 15px;
+}
+
+.calendar-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5em;
+}
+
+.movement-log-name {
+    margin: 5px 0 0 0;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    background: #f5f5f5;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.calendar-day-cell {
+    min-height: 80px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 5px;
+    position: relative;
+}
+
+.calendar-day-cell.empty {
+    background: #f9f9f9;
+    border: none;
+}
+
+.calendar-day-cell.today {
+    border: 2px solid #007bff;
+    background: #f0f8ff;
+}
+
+.calendar-day-cell.has-data {
+    background: #e8f5e8;
+    border-color: #4caf50;
+}
+
+.calendar-day-cell.no-data {
+    background: #fff;
+}
+
+.day-number {
+    font-weight: bold;
+    font-size: 0.8em;
+    margin-bottom: 4px;
+}
+
+.day-data {
+    font-size: 0.7em;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+.data-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.data-value {
+    color: #333;
+}
+
+.today-indicator {
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    background: #007bff;
+    color: white;
+    font-size: 0.6em;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+.calendar-legend {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #f9f9f9;
+    border-radius: 4px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    width: 16px;
+    height: 16px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+}
+
+.legend-color.today {
+    background: #f0f8ff;
+    border-color: #007bff;
+}
+
+.legend-color.has-data {
+    background: #e8f5e8;
+    border-color: #4caf50;
+}
+
+.legend-color.no-data {
+    background: #fff;
+    border-color: #e0e0e0;
+}
+
+.transaction-summary {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 4px solid #007bff;
+}
+
+.transaction-summary h4 {
+    margin: 0 0 10px 0;
+    color: #333;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.summary-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.summary-value {
+    color: #333;
+    font-weight: 500;
+}
+
+/* Modal Styles */
+.transaction-modal {
+    max-width: 1000px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.loading-transactions {
+    text-align: center;
+    padding: 40px;
+}
+
+.btn-see-transactions {
+    background: #17a2b8;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+}
+
+.btn-see-transactions:hover {
+    background: #138496;
+}
+
+.btn-see-transactions:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.debug-info-panel {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 0.8em;
+}
+
+.debug-info-panel p {
+    margin: 2px 0;
+}
+
+.no-transaction-data,
+.invalid-transaction-data {
+    text-align: center;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    border: 1px dashed #ccc;
+    margin: 10px 0;
+}
+
+.transaction-id {
+    font-size: 0.8em;
+    color: #666;
+    margin: 2px 0;
+}
+
+/* Enhanced Transaction Calendar Styles */
+.transaction-calendar-container {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Styles */
+.calendar-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.nav-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-button:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+.nav-button:hover:not(:disabled) {
+    background: #0056b3;
+}
+
+.month-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-dropdown {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+    font-size: 14px;
+}
+
+.month-counter {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Overview Stats */
+.transactions-overview {
+    margin-bottom: 20px;
+}
+
+.overview-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 20px;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    min-width: 100px;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.stat-label {
+    display: block;
+    font-size: 12px;
+    color: #666;
+    text-transform: uppercase;
+    margin-top: 5px;
+}
+
+/* Months Overview */
+.months-overview {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #e9ecef;
+}
+
+.months-overview h4 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+.months-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.month-chip {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 80px;
+}
+
+.month-chip:hover {
+    border-color: #007bff;
+    background: #e7f3ff;
+}
+
+.month-chip.active {
+    border-color: #007bff;
+    background: #007bff;
+    color: white;
+}
+
+.month-name {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.data-days {
+    font-size: 11px;
+    color: #666;
+    margin-top: 4px;
+}
+
+.month-chip.active .data-days {
+    color: #e0e0e0;
+}
+
+/* Single Month Calendar */
+.single-month-calendar {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 20px;
+    background: white;
+}
+
+.transaction-meta {
+    font-size: 0.8em;
+    color: #666;
+    margin: 5px 0 0 0;
+}
+
+.modal-subtitle {
+    font-size: 0.9em;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Enhanced Calendar Grid */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.calendar-day-header {
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    background: #f5f5f5;
+    border-radius: 6px;
+    font-size: 0.9em;
+}
+
+.calendar-day-cell {
+    min-height: 90px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.calendar-day-cell:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-day-cell.empty {
+    background: #f9f9f9;
+    border: 1px dashed #e0e0e0;
+}
+
+.calendar-day-cell.today {
+    border: 2px solid #007bff;
+    background: #f0f8ff;
+}
+
+.calendar-day-cell.has-data {
+    background: #e8f5e8;
+    border-color: #4caf50;
+}
+
+.calendar-day-cell.no-data {
+    background: #fff;
+}
+
+.day-number {
+    font-weight: bold;
+    font-size: 0.9em;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+.day-data {
+    font-size: 0.75em;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 3px;
+    padding: 2px 4px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+}
+
+.data-label {
+    font-weight: bold;
+    color: #666;
+    font-size: 0.7em;
+}
+
+.data-value {
+    color: #333;
+    font-weight: 500;
+    font-size: 0.7em;
+}
+
+.today-indicator {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: #007bff;
+    color: white;
+    font-size: 0.6em;
+    padding: 2px 6px;
+    border-radius: 10px;
+}
+
+/* Enhanced Summary */
+.transaction-summary {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid #007bff;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    background: white;
+    border-radius: 6px;
+    border: 1px solid #e9ecef;
+}
+
+.summary-label {
+    font-weight: bold;
+    color: #666;
+}
+
+.summary-value {
+    color: #333;
+    font-weight: 600;
+}
+
+/* Link Movement Log Modal Styles */
+#link-movement-log-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+#link-movement-log-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    background: #f9f9f9;
+}
+
+.modal-section h4 {
+    margin-bottom: 15px;
+    color: #3f5165;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 8px;
+}
+
+.reading-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.reading-fields label {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reading-fields input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.reading-fields input:focus {
+    outline: none;
+    border-color: #3f5165;
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.btn-primary {
+    background: #3f5165;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #2c3e50;
+}
+
+.btn-primary:disabled {
+    background: #cccccc;
+    cursor: not-allowed;
+}
+
+.btn-cancel {
+    background: #6c757d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-cancel:hover:not(:disabled) {
+    background: #545b62;
+}
+
+.tree-section {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    background: white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .reading-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    #link-movement-log-modal-content {
+        width: 95%;
+        margin: 10px;
+    }
+    
+    .modal-buttons {
+        flex-direction: column;
+    }
+    
+    .modal-buttons button {
+        width: 100%;
+    }
+}

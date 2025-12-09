@@ -1,0 +1,320 @@
+/* OTP_verification.css - Soft Corporate Slate Theme */
+
+/* Corporate Grayscale Color Palette */
+:root {
+    --slate-light: #f5f7f9;
+    --slate-medium: #e8ecef;
+    --slate-dark: #6b7280;
+    --navy-primary: #1e293b;
+    --navy-dark: #0f172a;
+    --navy-light: #334155;
+    --navy-accent: #475569;
+    --text-primary: #374151;
+    --text-secondary: #4b5563;
+    --text-muted: #9ca3af;
+    --border-light: #d1d5db;
+    --border-medium: #9ca3af;
+    --border-dark: #6b7280;
+    --white: #ffffff;
+    --shadow-soft: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07);
+    --shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --error-color: #dc2626;
+    --success-color: #059669;
+}
+
+/* MAIN OTP CONTAINER */
+.otp-corporate {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(31, 41, 55, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999999999999;
+    backdrop-filter: blur(4px);
+}
+
+/* OTP CARD */
+.otp-corporate__card {
+    background: var(--white);
+    border-radius: 12px;
+    box-shadow: var(--shadow-large);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 420px;
+    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.otp-corporate__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* HEADER SECTION */
+.otp-corporate__header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.otp-corporate__icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 0.8;
+}
+
+.otp-corporate__title {
+    color: var(--navy-primary);
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.01em;
+}
+
+.otp-corporate__subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.9;
+}
+
+/* CONTENT SECTION */
+.otp-corporate__content {
+    text-align: center;
+}
+
+/* OTP INPUTS */
+.otp-corporate__inputs {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.otp-corporate__input {
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    border: 1.5px solid var(--border-light);
+    border-radius: 6px;
+    background: var(--white);
+    transition: all 0.2s ease;
+    outline: none;
+    color: var(--text-primary);
+}
+
+.otp-corporate__input::placeholder {
+    color: var(--text-muted);
+    opacity: 0.5;
+}
+
+.otp-corporate__input:focus {
+    border-color: var(--navy-primary);
+    box-shadow: 0 0 0 2px rgba(30, 41, 59, 0.1);
+    transform: scale(1.05);
+}
+
+.otp-corporate__input--filled {
+    border-color: var(--success-color);
+    background-color: rgba(5, 150, 105, 0.05);
+}
+
+.otp-corporate__input--error {
+    border-color: var(--error-color);
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+/* MESSAGES */
+.otp-corporate__error {
+    color: var(--error-color);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.otp-corporate__success {
+    color: var(--success-color);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+/* BUTTON STYLES (Consistent with theme) */
+.otp-corporate__actions {
+    margin-bottom: 1.5rem;
+}
+
+.btn-corporate {
+    padding: 0.75rem 2rem;
+    border: 1.5px solid;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    outline: none;
+    width: 100%;
+    text-align: center;
+    background: transparent;
+}
+
+.btn-corporate--primary {
+    border-color: var(--navy-primary);
+    color: var(--navy-primary);
+    background: rgba(30, 41, 59, 0.3) !important;
+}
+
+.btn-corporate--primary:hover:not(:disabled) {
+    background: rgba(30, 41, 59, 0.4) !important;
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-soft);
+}
+
+.btn-corporate--primary:active {
+    transform: translateY(0);
+    background: rgba(30, 41, 59, 0.5) !important;
+}
+
+.btn-corporate--secondary {
+    border-color: var(--border-medium);
+    color: var(--text-secondary);
+    background: rgba(156, 163, 175, 0.3) !important;
+}
+
+.btn-corporate--secondary:hover:not(:disabled) {
+    background: rgba(156, 163, 175, 0.4) !important;
+    border-color: var(--border-dark);
+}
+
+/* FOOTER SECTION */
+.otp-corporate__footer {
+    text-align: center;
+}
+
+.otp-corporate__resend-text {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    opacity: 0.9;
+}
+
+.otp-corporate__resend-btn {
+    background: none;
+    border: none;
+    color: var(--navy-primary);
+    text-decoration: none;
+    font-weight: 600;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.otp-corporate__resend-btn:hover:not(:disabled) {
+    color: var(--navy-dark);
+    text-decoration: underline;
+}
+
+.otp-corporate__resend-btn:disabled {
+    color: var(--text-muted);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* FOCUS VISIBLE FOR ACCESSIBILITY */
+.btn-corporate:focus-visible,
+.otp-corporate__input:focus-visible,
+.otp-corporate__resend-btn:focus-visible {
+    outline: 2px solid var(--navy-primary);
+    outline-offset: 2px;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+    .otp-corporate__card {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        max-width: calc(100% - 2rem);
+    }
+
+    .otp-corporate__title {
+        font-size: 1.3rem;
+    }
+
+    .otp-corporate__subtitle {
+        font-size: 0.85rem;
+    }
+
+    .otp-corporate__inputs {
+        gap: 0.5rem;
+    }
+
+    .otp-corporate__input {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .otp-corporate__card {
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+
+    .otp-corporate__icon {
+        font-size: 2rem;
+    }
+
+    .otp-corporate__title {
+        font-size: 1.2rem;
+    }
+
+    .otp-corporate__input {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1rem;
+    }
+
+    .btn-corporate {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* LOADING STATE */
+.btn-corporate:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+/* REDUCED MOTION SUPPORT */
+@media (prefers-reduced-motion: reduce) {
+
+    .otp-corporate__card,
+    .btn-corporate,
+    .otp-corporate__input {
+        transition: none;
+    }
+
+    .otp-corporate__card:hover {
+        transform: none;
+    }
+
+    .btn-corporate:hover {
+        transform: none;
+    }
+
+    .otp-corporate__input:focus {
+        transform: none;
+    }
+}

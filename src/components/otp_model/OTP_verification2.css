@@ -1,0 +1,138 @@
+/* src/components/otp_model/OTP_verification.css */
+
+.otp-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.otp-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    color: white;
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.otp-card h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.otp-card p {
+    margin-bottom: 20px;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.otp-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.otp-box {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.otp-box:focus {
+    border-color: #00ffae;
+    outline: none;
+    transform: scale(1.05);
+}
+
+.otp-box.filled {
+    border-color: #00ffae;
+    background: rgba(0, 255, 174, 0.1);
+}
+
+.otp-box.error {
+    border-color: red;
+}
+
+.otp-error {
+    color: red;
+    margin: 10px 0;
+    font-size: 13px;
+}
+
+.otp-success {
+    color: #00ffae;
+    margin: 10px 0;
+    font-size: 13px;
+}
+
+.otp-button {
+    width: 100%;
+    padding: 12px;
+    background: #00ffae;
+    color: #111;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.otp-button:hover:not(:disabled) {
+    background: #00e6a0;
+}
+
+.otp-button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.otp-resend {
+    margin-top: 15px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+.resend-btn {
+    background: none;
+    border: none;
+    color: #00ffae;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+}
+
+.resend-btn:disabled {
+    color: gray;
+    cursor: not-allowed;
+}
+
+.otp-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}

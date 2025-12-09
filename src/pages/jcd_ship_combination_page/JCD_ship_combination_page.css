@@ -1,0 +1,550 @@
+/* === Compact Modern Light Theme === */
+
+:root {
+  --primary-color: #2563eb;
+  --primary-light: #dbeafe;
+  --secondary-color: #64748b;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --error-color: #ef4444;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --border-color: #e2e8f0;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+}
+
+/* Main Container */
+.jcd-ship-combination-container {
+  min-height: 100vh;
+  background: var(--bg-secondary);
+  font-family: 'Inter', sans-serif;
+  color: var(--text-primary);
+  padding: 0;
+}
+
+/* Page Header */
+.pageHeader {
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContent h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+}
+
+.headerContent p {
+  color: var(--text-secondary);
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/* Buttons */
+.primaryButton {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.primaryButton:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.actionButton {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  padding: 0.4rem 0.8rem;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.actionButton:hover:not(:disabled) {
+  background: var(--border-color);
+}
+
+.dangerButton {
+  background: #fef2f2;
+  color: var(--error-color);
+  border-color: #fecaca;
+}
+
+.dangerButton:hover:not(:disabled) {
+  background: #fee2e2;
+}
+
+/* Controls Section */
+.controlsSection {
+  background: var(--bg-primary);
+  margin: 0.75rem 1.5rem;
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 1.5rem;
+  align-items: end;
+}
+
+.shipSelector,
+.filterGroup,
+.searchGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.selectorLabel,
+.filterLabel,
+.searchLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--text-primary);
+}
+
+.filtersContainer {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+
+/* Form Elements */
+.formSelect,
+.formInput {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  transition: all 0.2s;
+  min-width: 160px;
+}
+
+.formSelect:focus,
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.formSelect:disabled,
+.formInput:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-muted);
+  cursor: not-allowed;
+}
+
+/* Main Content */
+.mainContent {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
+  padding: 0 1.5rem 1.5rem;
+  height: calc(100vh - 160px);
+  min-height: 500px;
+}
+
+/* Hierarchy Section - Fixed Scroll */
+.hierarchySection {
+  background: var(--bg-primary);
+  /* background-color: red; */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  /* overflow-x: hidden; */
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+  width: 100%;
+}
+
+.sectionHeader {
+  /* padding: 0.75rem 1rem; */
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.hierarchyContainer {
+  flex: 1;
+  position: relative;
+  min-height: 200px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.hierarchyContainer.disabled {
+  opacity: 0.6;
+}
+
+/* Make the actual component hierarchy content scrollable */
+.hierarchyContainer>*:first-child {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  max-height: 100%;
+}
+
+.disabledOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  z-index: 10;
+}
+
+/* JCD Management Section */
+.jcdManagementSection {
+  background: var(--bg-primary);
+  /* background-color: red; */
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 80%;
+}
+
+.jcdTabs {
+  display: flex;
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.tabButton {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.tabButton.active {
+  background: var(--bg-primary);
+  color: var(--primary-color);
+}
+
+.tabButton.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-color);
+}
+
+.countBadge {
+  background: var(--text-muted);
+  color: white;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.tabButton.active .countBadge {
+  background: var(--primary-color);
+}
+
+/* JCD Content - Fixed Scroll */
+.jcdContent {
+  flex: 1;
+  position: relative;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.jcdPanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1rem;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.jcdPanel.active {
+  display: flex;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.selectionInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* JCD List - Fixed Scroll */
+.jcdList {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.jcdCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+  transition: all 0.2s;
+  flex-shrink: 0;
+}
+
+.jcdCard:hover {
+  border-color: var(--primary-color);
+}
+
+.jcdCard.assigned {
+  background: var(--bg-secondary);
+  border-color: #bfdbfe;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  margin-top: 0.1rem;
+  accent-color: var(--primary-color);
+  transform: scale(0.9);
+}
+
+.jcdInfo {
+  flex: 1;
+}
+
+.jcdName {
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 0.2rem;
+}
+
+.jcdMeta {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.criticalityBadge {
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.criticalityBadge.critical {
+  background: #fef2f2;
+  color: var(--error-color);
+}
+
+.criticalityBadge.nonCritical {
+  background: #f0fdf4;
+  color: var(--success-color);
+}
+
+.generationRule {
+  background: #fffbeb;
+  color: var(--warning-color);
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.7rem;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.emptyState svg {
+  margin-bottom: 0.5rem;
+  opacity: 0.5;
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Scrollbar Styling for all scrollable areas */
+.hierarchyContainer>*:first-child::-webkit-scrollbar,
+.jcdList::-webkit-scrollbar {
+  width: 6px;
+}
+
+.hierarchyContainer>*:first-child::-webkit-scrollbar-track,
+.jcdList::-webkit-scrollbar-track {
+  background: var(--bg-tertiary);
+  border-radius: 3px;
+}
+
+.hierarchyContainer>*:first-child::-webkit-scrollbar-thumb,
+.jcdList::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+  border-radius: 3px;
+}
+
+.hierarchyContainer>*:first-child::-webkit-scrollbar-thumb:hover,
+.jcdList::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Firefox scrollbar */
+.hierarchyContainer>*:first-child {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) var(--bg-tertiary);
+}
+
+.jcdList {
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-muted) var(--bg-tertiary);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .mainContent {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: 600px;
+  }
+
+  .hierarchySection {
+    height: 300px;
+  }
+
+  .controlsSection {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .filtersContainer {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .mainContent {
+    padding: 0 1rem 1rem;
+    height: calc(100vh - 140px);
+  }
+
+  .controlsSection {
+    margin: 0.5rem 1rem;
+    padding: 0.75rem;
+  }
+
+  .filtersContainer {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .panelHeader {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .hierarchySection {
+    height: 250px;
+  }
+}
+
+/* Ensure proper scrolling for the entire layout */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  height: 100%;
+}
+
+/* hierarchySection */

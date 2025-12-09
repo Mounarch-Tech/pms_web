@@ -1,0 +1,25 @@
+#terms-conditions-main-container {
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    background-color: rgba(255, 0, 0, 0.434);
+
+    z-index: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#terms-conditions-main-content {
+    width: 50%;
+    height: fit-content;
+
+    background-color: royalblue;
+
+    padding: 20px;
+}
