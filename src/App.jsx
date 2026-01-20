@@ -10,7 +10,7 @@ const App = () => {
   const { user } = useContext(UserAuthContext);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/pms/client">
       {/* Show navbar only when user is logged in and not on registration page */}
       {user && <Navbar />}
       <_Routes />
