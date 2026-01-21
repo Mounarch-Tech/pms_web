@@ -144,7 +144,7 @@ const Navbar = () => {
 
             <NavLink className="navbar-corporate__link" to="/ShipsManagement">
               <span className="navbar-corporate__link-icon"></span>
-              Ships Management
+              Location Management
             </NavLink>
           )}
 
@@ -159,7 +159,7 @@ const Navbar = () => {
           {profiles?.filter(p => user?.profile_ids?.includes(p.PROFILE_ID))[0]?.process_ids?.includes("P_JSCA_0001") && (
             <NavLink className="navbar-corporate__link" to="/jcd-ship-combination">
               <span className="navbar-corporate__link-icon"></span>
-              JCD-SHIP Link
+              JCD-Location Link
             </NavLink>
           )}
 

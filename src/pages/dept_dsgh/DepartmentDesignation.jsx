@@ -283,13 +283,13 @@ const DepartmentDesignation = () => {
             className="slate-dd-select-input"
           >
             <option value="">-- Select Location --</option>
-            <option value="Ship">Vessel  🚢</option>
+            <option value="Ship">Location 🏭</option>
             <option value="Office">Office 🏢</option>
           </select>
         </div>
 
         <div className="slate-dd-select-card">
-          <label className="slate-dd-label">Vessel</label>
+          <label className="slate-dd-label">Location</label>
           <select
             disabled={operationalLocation !== 'Ship'}
             value={selectedShipId}
@@ -297,7 +297,7 @@ const DepartmentDesignation = () => {
             className={`slate-dd-select-input ${operationalLocation !== 'Ship' ? 'slate-dd-disabled' : ''}`}
           >
             <option value="">
-              {operationalLocation === 'Ship' ? '-- Select Ship --' : 'N/A for Office'}
+              {operationalLocation === 'Ship' ? '-- Select Location --' : 'N/A for Office'}
             </option>
             {ships.map((ship) => (
               <option key={ship.SHA_ID} value={ship.SHA_ID}>
@@ -344,7 +344,7 @@ const DepartmentDesignation = () => {
               )}
             </div>
           ) : (
-            <p className="slate-dd-placeholder-small">Select Location and Vessel first.</p>
+            <p className="slate-dd-placeholder-small">Select Operational Location and specific Location first.</p>
           )}
         </div>
 

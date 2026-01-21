@@ -157,14 +157,14 @@ const Component_meter_reinitializ = () => {
             {user.emp_type == 2 ? (
               <div id='component-meter-reinitializer-form-main-container-select-ship-container'>
                 <select value={formData.shipId || ''} onChange={handleShipChange}>
-                  <option value=''>Select Ship</option>
+                  <option value=''>Select Location</option>
                   {shipsList.map(ship => (
                     <option key={ship.SHA_ID} value={ship.SHA_ID}>{ship.ship_name}</option>
                   ))}
                 </select>
               </div>
             ) : (
-              <h2>You are on {user.ship_id}</h2>
+              <h2>You are at {user.ship_id}</h2>
             )}
 
             <div id='component-meter-reinitializer-form-main-container-selected-component-label'>

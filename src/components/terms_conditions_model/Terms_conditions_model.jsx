@@ -40,7 +40,7 @@ const Terms_conditions_model = ({ onProceed, onCancel, jobTypeName, jobTypeID })
                             <thead>
                                 <tr>
                                     {/* Use <th> for header cells, added scope for accessibility */}
-                                    <th scope="col">Check Ships</th>
+                                    <th scope="col">Check Locations</th>
                                     <th scope="col">No. of Active Jobs</th>
                                     <th scope="col">No. of Completed Jobs</th>
                                     <th scope="col">Upcoming Jobs</th>
@@ -119,7 +119,7 @@ const Terms_conditions_model = ({ onProceed, onCancel, jobTypeName, jobTypeID })
                                 ) : (
                                     <tr>
                                         <td colSpan="4" className="no-data-cell"> {/* Colspan and class for styling */}
-                                            No ships available.
+                                            No locations available.
                                         </td>
                                     </tr>
                                 )}

@@ -2593,7 +2593,7 @@ const JCD_Page2 = () => {
 
                                             {/* Job Will Generate On */}
                                             <div className="form-group">
-                                                <label>Check Ship Status for Job Generation <span style={{
+                                                <label>Check Location Status for Job Generation <span style={{
                                                     color: 'red'
                                                 }}>*</span></label>
                                                 <div className="checkbox-group">
@@ -2954,7 +2954,7 @@ const JCD_Page2 = () => {
                                                         )}
                                                     </th>
                                                     <th >Sr.</th>
-                                                    <th >Ship Name</th>
+                                                    <th >Location Name</th>
                                                     <th >Active Job NAME</th>
                                                     <th >Job Category</th>
                                                     <th >Assign TO</th>
@@ -3300,7 +3300,7 @@ const JCD_Page2 = () => {
                                             <thead>
                                                 <tr>
                                                     <th>Sr.</th>
-                                                    <th>Ship Name</th>
+                                                    <th>Location Name</th>
                                                     <th>Completed Job NAME</th>
                                                     <th>Exicuted By</th>
                                                     <th>Completed On</th>
@@ -3393,7 +3393,7 @@ const JCD_Page2 = () => {
                             {/* Ship Filter Dropdown */}
                             <div className="ship-filter-container" style={{ marginBottom: '20px' }}>
                                 <label htmlFor="upcoming-ship-select" style={{ marginRight: '10px', fontWeight: 'bold' }}>
-                                    Select Ship:
+                                    Select Location:
                                 </label>
                                 <select
                                     id="upcoming-ship-select"
@@ -3561,7 +3561,7 @@ const JCD_Page2 = () => {
                                                     }
                                                 }}
                                             /></th>
-                                            <th style={{ textAlign: 'center' }}>Ship Name</th>
+                                            <th style={{ textAlign: 'center' }}>Location Name</th>
                                             <th style={{ textAlign: 'center' }}>Applied From</th>
                                         </tr>
                                     </thead>

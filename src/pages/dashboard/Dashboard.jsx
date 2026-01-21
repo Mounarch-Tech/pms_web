@@ -1741,11 +1741,11 @@ const Dashboard = () => {
 
   const getConditionLabel = (condition) => {
     const labels = {
-      '1': 'Ship Sealing',
-      '2': 'Ship On Dock',
-      '3': 'Ship Inactive',
-      '4': 'Ship Under Repair (Dry Dock)',
-      '5': 'Ship at Sea'
+      '1': 'Location Sealing',
+      '2': 'Location On Dock',
+      '3': 'Location Inactive',
+      '4': 'Location Under Repair',
+      '5': 'Location Operational'
     };
     return labels[condition] || `Condition ${condition}`;
   };
@@ -2715,7 +2715,7 @@ const Dashboard = () => {
                     </button>
                     <span className="tooltip-text">
                       {!canScheduleJob
-                        ? `Only Superintendent of ${selectedShip?.ship_name || 'selected ship'} can schedule jobs`
+                        ? `Only Superintendent of ${selectedShip?.ship_name || 'selected location'} can schedule jobs`
                         : isAnyActiveJobOfCurrentJcd.length > 0
                           ? `There is already an active job, '${jcd.jcd_name}' Job ID '${isAnyActiveJobOfCurrentJcd[0].JPHA_ID}' `
                           : ''}
@@ -3526,14 +3526,14 @@ const Dashboard = () => {
         </div>
 
         <div className="ship-selector">
-          <label>Select Ship:</label>
+          <label>Select Location:</label>
           {user.emp_type == 2 && (
             <select
               className="ship-dropdown"
               value={selectedShipId || ''}
               onChange={(e) => { setSelectedShipId(e.target.value) }}
             >
-              <option value="">Select a ship</option>
+              <option value="">Select a location</option>
               {allocatedShipsIdsToOfficeStaff ? (
                 shipsList.filter(s => allocatedShipsIdsToOfficeStaff?.includes(s.SHA_ID)).map((s) => (
                   <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
@@ -3546,7 +3546,7 @@ const Dashboard = () => {
             </select>
           )}
           {user.emp_type == 1 && (
-            <h3>You are On {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
+            <h3>You are at {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
           )}
         </div>
       </div>
@@ -3665,14 +3665,14 @@ const Dashboard = () => {
               </div>
 
               <div id="ship-selector">
-                <label>Select Ship:</label>
+                <label>Select Location:</label>
                 {user.emp_type == 2 && (
                   <select
                     className="ship-dropdown"
                     value={selectedShipId || ''}
                     onChange={(e) => { setSelectedShipId(e.target.value) }}
                   >
-                    <option value="">Select a ship</option>
+                    <option value="">Select a location</option>
                     {allocatedShipsIdsToOfficeStaff ? (
                       shipsList.filter(s => allocatedShipsIdsToOfficeStaff?.includes(s.SHA_ID)).map((s) => (
                         <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
@@ -3685,7 +3685,7 @@ const Dashboard = () => {
                   </select>
                 )}
                 {user.emp_type == 1 && (
-                  <h3>You are On {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
+                  <h3>You are at {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
                 )}
 
                 {selectedShipId && (
@@ -6171,7 +6171,7 @@ const Dashboard = () => {
                 </div>
                 <div className="modern-notification-content">
                   <p className="modern-notification-text">
-                    <strong>Email notification</strong> will be sent to your Ship Superintendent about this lock release.
+                    <strong>Email notification</strong> will be sent to your Location Superintendent about this lock release.
                   </p>
                 </div>
               </div>

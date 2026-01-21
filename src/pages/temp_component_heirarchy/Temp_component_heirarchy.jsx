@@ -175,15 +175,15 @@ const Temp_component_heirarchy = ({ setIsCheckActive, componentTreeWantByWhichCo
     return (
         <div className="component-tree-layout">
             <div className="tree-section">
-                {/* Ship Selection Info */}
+                {/* Location Selection Info */}
                 {selectedShipID && (
                     <div className="ship-selection-info">
                         {/* <strong>
-                            Showing components for: {shipsList.find(s => s.SHA_ID === selectedShipID)?.ship_name || 'Unknown Ship'}
+                            Showing components for: {shipsList.find(s => s.SHA_ID === selectedShipID)?.ship_name || 'Unknown Location'}
                         </strong> */}
                         {filteredTree.length === 0 && (
                             <span style={{ color: '#666', fontSize: '0.9em', marginLeft: '10px' }}>
-                                No components found for this ship
+                                No components found for this location
                             </span>
                         )}
                     </div>
@@ -230,9 +230,9 @@ const Temp_component_heirarchy = ({ setIsCheckActive, componentTreeWantByWhichCo
                         <div className="no-components-message">
                             {selectedShipID ? (
                                 <div>
-                                    <p>No components found for <strong>{shipsList.find(s => s.SHA_ID === selectedShipID)?.ship_name || 'this ship'}</strong>.</p>
+                                    <p>No components found for <strong>{shipsList.find(s => s.SHA_ID === selectedShipID)?.ship_name || 'this location'}</strong>.</p>
                                     <p style={{ fontSize: '0.9em', color: '#666' }}>
-                                        Check if components are assigned to ship ID: <code>{selectedShipID}</code>
+                                        Check if components are assigned to location ID: <code>{selectedShipID}</code>
                                     </p>
                                 </div>
                             ) : searchTerm ? (

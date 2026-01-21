@@ -68,7 +68,7 @@ const RegistrationPage = () => {
                 <div className="registration-corporate__header">
                     <div className="registration-corporate__icon">🚢👨‍💼</div>
                     <h1 className="registration-corporate__title">Crew & Staff Registration</h1>
-                    <p className="registration-corporate__subtitle">Register for maritime and office operations access</p>
+                    <p className="registration-corporate__subtitle">Register for facility and office operations access</p>
                 </div>
 
                 <form className="registration-corporate__form" onSubmit={handleSubmit}>
@@ -204,7 +204,7 @@ const RegistrationPage = () => {
                             onChange={(e) => setFormData({ ...formData, user_type: e.target.value })}
                         >
                             <option value="">Select assignment type</option>
-                            <option value="1">Ship Crew Member</option>
+                            <option value="1">Location Crew Member</option>
                             <option value="2">Office Staff</option>
                         </select>
                     </div>

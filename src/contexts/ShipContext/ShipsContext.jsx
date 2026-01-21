@@ -22,7 +22,7 @@ export const ShipsProvider = ({ children }) => {
     try {
       const res = await fetch(`${API_BASE}getShipsIDandName`);
       // console.log('res :: ', res)
-      if (!res.ok) throw new Error("Failed to fetch ships");
+      if (!res.ok) throw new Error("Failed to fetch locations");
       const data = await res.json();
 
 

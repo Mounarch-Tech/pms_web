@@ -859,14 +859,14 @@ const ShipManagementPage = () => {
             {/* LEFT PANEL - SHIP LIST */}
             <div id='ship-management-page-main-container-left-container' className='ship-management-page-main-sub-containers'>
                 <div id='ship-management-page-left-container-shipDetails-container'>
-                    <h2 style={{ fontWeight: '400', fontSize: '2rem', textAlign: 'center' }}>Ship Management</h2>
+                    <h2 style={{ fontWeight: '400', fontSize: '2rem', textAlign: 'center' }}>Location Management</h2>
 
                     <div id='ship-management-page-left-container-shipDetails-content'>
                         <table id='left-container-shipDetails-content-table'>
                             <thead>
                                 <tr style={{ backgroundColor: 'royalblue' }}>
                                     <th></th>
-                                    <th>Ship Name</th>
+                                    <th>Location Name</th>
                                     <th>Code</th>
                                     <th>Operations</th>
                                 </tr>
@@ -896,7 +896,7 @@ const ShipManagementPage = () => {
                                 ) : (
                                     <tr>
                                         <td colSpan="4" className="no-ships">
-                                            No ships found
+                                            No locations found
                                         </td>
                                     </tr>
                                 )}
@@ -904,7 +904,7 @@ const ShipManagementPage = () => {
                         </table>
 
                         <button id='left-container-shipDetails-content-table-btn-add-new' onClick={handleAddNewShip}>
-                            <i className="fas fa-plus-circle"></i> Add New Ship
+                            <i className="fas fa-plus-circle"></i> Add New Location
                         </button>
                     </div>
                 </div>
@@ -919,7 +919,7 @@ const ShipManagementPage = () => {
                         onClick={() => selectedShip?.SHA_ID && setActiveTab('details')}
                         style={{ cursor: selectedShip?.SHA_ID ? 'pointer' : 'not-allowed', opacity: selectedShip?.SHA_ID ? 1 : 0.6 }}
                     >
-                        Ship Details
+                        Location Details
                     </h2>
                     <h2
                         className={activeTab === 'crew' ? 'active' : ''}
@@ -940,7 +940,7 @@ const ShipManagementPage = () => {
                         onClick={() => selectedShip?.SHA_ID && setActiveTab('health')}
                         style={{ cursor: selectedShip?.SHA_ID ? 'pointer' : 'not-allowed', opacity: selectedShip?.SHA_ID ? 1 : 0.6 }}
                     >
-                        Ship Health
+                        Location Health
                     </h2>
                 </div>
 
@@ -974,9 +974,9 @@ const ShipManagementPage = () => {
                                             {/* Sub Tabs */}
                                             <div style={{ display: 'flex', flexWrap: 'wrap', position: 'sticky', top: 0, left: 0, zIndex: 2, backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(2px)', padding: '20px 0px', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>
                                                 {[
-                                                    { key: 'vslOverview', label: 'Vessel Overview' },
-                                                    { key: 'vslParticular', label: 'Vessel Particulars' },
-                                                    { key: 'vslAllocation', label: 'Vessel Allocation' },
+                                                    { key: 'vslOverview', label: 'Location Overview' },
+                                                    { key: 'vslParticular', label: 'Location Particulars' },
+                                                    { key: 'vslAllocation', label: 'Location Allocation' },
                                                     { key: 'crewList', label: 'Crew List' },
                                                 ].map(({ key, label }) => (
                                                     <button
@@ -994,11 +994,11 @@ const ShipManagementPage = () => {
                                                 <>
                                                     {detailsSubActiveTab === 'vslOverview' && (
                                                         <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '30px' }}>Vessel Overview</h1>
+                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '30px' }}>Location Overview</h1>
 
                                                             <div style={grid2Col}>
-                                                                {field("Vessel Name", <input type="text" name="ship_name" value={shipDetailsFormData.ship_name} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Vessel Type", (
+                                                                {field("Location Name", <input type="text" name="ship_name" value={shipDetailsFormData.ship_name} onChange={handleChange} style={inputStyle} required />, true)}
+                                                                {field("Location Type", (
                                                                     <select name="vesselType" value={shipDetailsFormData.vesselType} onChange={handleChange} style={inputStyle} required>
                                                                         <option value="">Select Type</option>
                                                                         <option value="BULK_CARRIER">BULK CARRIER</option>
@@ -1015,7 +1015,7 @@ const ShipManagementPage = () => {
                                                                         <option value="Singapore">Singapore</option>
                                                                     </select>
                                                                 ), true)}
-                                                                {field("Vessel Code", <input type="text" name="vesselCode" value={shipDetailsFormData.vesselCode} onChange={handleChange} style={inputStyle} />)}
+                                                                {field("Location Code", <input type="text" name="vesselCode" value={shipDetailsFormData.vesselCode} onChange={handleChange} style={inputStyle} />)}
                                                             </div>
 
                                                             <div style={grid3Col}>
@@ -1027,7 +1027,7 @@ const ShipManagementPage = () => {
                                                                 ))}
                                                                 {field("Owner", <select name="owner" value={shipDetailsFormData.owner} onChange={handleChange} style={inputStyle} />)}
                                                                 {field("Charterer", <select name="charterer" value={shipDetailsFormData.charterer} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Ship Manager", <select name="shipManager" value={shipDetailsFormData.shipManager} onChange={handleChange} style={inputStyle} />)}
+                                                                {field("Location Manager", <select name="shipManager" value={shipDetailsFormData.shipManager} onChange={handleChange} style={inputStyle} />)}
                                                                 {field("P & I Club", <select name="pAndIClub" value={shipDetailsFormData.pAndIClub} onChange={handleChange} style={inputStyle} />)}
                                                                 {field("Life Boat Capacity", <input type="text" name="lifeBoatCapacity" value={shipDetailsFormData.lifeBoatCapacity} onChange={handleChange} style={inputStyle} />)}
                                                                 {field("Wage Scale", <input type="text" name="wageScale" value={shipDetailsFormData.wageScale} onChange={handleChange} style={inputStyle} />)}
@@ -1083,10 +1083,10 @@ const ShipManagementPage = () => {
                                                     {/* === Vessel Particulars === */}
                                                     {detailsSubActiveTab === 'vslParticular' && (
                                                         <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Vessel Particulars</h1>
+                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Particulars</h1>
 
                                                             <div style={grid2Col}>
-                                                                {field("Vessel Name", <input type="text" value={shipDetailsFormData.ship_name} disabled style={{ ...inputStyle }} />)}
+                                                                {field("Location Name", <input type="text" value={shipDetailsFormData.ship_name} disabled style={{ ...inputStyle }} />)}
                                                                 {field("Flag", <input type="text" value={shipDetailsFormData.flag} disabled style={{ ...inputStyle }} />)}
                                                             </div>
 
@@ -1162,10 +1162,10 @@ const ShipManagementPage = () => {
                                                     {/* === Vessel Allocation === */}
                                                     {detailsSubActiveTab === 'vslAllocation' && (
                                                         <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Vessel Allocation</h1>
+                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Allocation</h1>
 
                                                             <div style={grid2Col}>
-                                                                {field("Vessel Email", <input type="email" name="vesselEmail" value={shipDetailsFormData.vesselEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                                {field("Location Email", <input type="email" name="vesselEmail" value={shipDetailsFormData.vesselEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Technical Group Email", <input type="email" name="technicalGroupEmail" value={shipDetailsFormData.technicalGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Crew Group Email", <input type="email" name="crewGroupEmail" value={shipDetailsFormData.crewGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Owner Rep", <input type="text" name="ownerRep" value={shipDetailsFormData.ownerRep} onChange={handleChange} style={inputStyle} required />, true)}
@@ -1291,7 +1291,7 @@ const ShipManagementPage = () => {
                                 </div>
                             ) : activeTab == 'crew' && (
                                 <div className='no-selection-placeholder'>
-                                    <p>Select a ship to view Crew Details.</p>
+                                    <p>Select a location to view Crew Details.</p>
                                 </div>
                             )}
 
@@ -1356,7 +1356,7 @@ const ShipManagementPage = () => {
                             {activeTab === 'health' && (
                                 selectedShip?.SHA_ID ? (
                                     <div className="tab-content">
-                                        <h3>Ship : {selectedShip?.ship_name}</h3>
+                                        <h3>Location : {selectedShip?.ship_name}</h3>
 
                                         <table className="data-table">
                                             <thead>
@@ -1422,14 +1422,14 @@ const ShipManagementPage = () => {
                                     </div>
                                 ) : (
                                     <div className="no-selection-placeholder">
-                                        <p>Select a ship to view its health status.</p>
+                                        <p>Select a location to view its health status.</p>
                                     </div>
                                 )
                             )}
                         </>
                     ) : activeTab == 'health' && (
                         <div className='no-selection-placeholder'>
-                            <p>Select a ship to view details.</p>
+                            <p>Select a location to view details.</p>
                         </div>
                     )}
                 </div>

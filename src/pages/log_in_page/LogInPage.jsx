@@ -241,7 +241,7 @@ const LogInPage = () => {
             return;
         }
 
-        const confirmation = confirm('We are sending email with OTP to generate new pin to Your Ship Superintendent. Please connect with them for further procedure. Would you like to proceed?');
+        const confirmation = confirm('We are sending email with OTP to generate new pin to Your Location Superintendent. Please connect with them for further procedure. Would you like to proceed?');
         if (confirmation) {
             const user = usersList.filter(u => u.user_email == email)
             setForgetOTPrequestBy(user)
@@ -296,7 +296,7 @@ const LogInPage = () => {
             <div className="bubble"></div>
 
             {/* Your existing animated elements */}
-            <div className="submarine">🚢</div>
+            <div className="submarine">🏭</div>
             <div className="island"></div>
             <div className="island"></div>
             <div className="sonar"></div>
@@ -314,7 +314,7 @@ const LogInPage = () => {
                 <div className="login-corporate__header">
                     {/* <div className="login-corporate__icon">🚢👨‍💼</div> */}
                     <h1 className="login-corporate__title">Crew & Staff PMS Portal</h1>
-                    <p className="login-corporate__subtitle">Sign in to your maritime and office operations account</p>
+                    <p className="login-corporate__subtitle">Sign in to your facility and office operations account</p>
                 </div>
 
                 <form className="login-corporate__form" onSubmit={handleSubmit}>

@@ -202,8 +202,8 @@ const JCD_ship_combination_page = () => {
             {/* Header */}
             <div className="pageHeader">
                 <div className="headerContent">
-                    <h1>JCD Ship Combination</h1>
-                    <p>Manage JCD assignments to ships and configure generation rules</p>
+                    <h1>JCD Location Combination</h1>
+                    <p>Manage JCD assignments to locations and configure generation rules</p>
                 </div>
                 <div className="headerActions">
                     {profiles?.filter(p => user?.profile_ids?.includes(p.PROFILE_ID))[0]?.process_ids.includes("P_JSCA_0004") && (
@@ -223,7 +223,7 @@ const JCD_ship_combination_page = () => {
                 <div className="shipSelector">
                     <div className="selectorLabel">
                         <FaShip size={16} />
-                        <span>Select Ship</span>
+                        <span>Select Location</span>
                     </div>
                     {console.log('user :: ', officeStaffList)}
                     {user.emp_type == 2 ? (
@@ -232,7 +232,7 @@ const JCD_ship_combination_page = () => {
                             onChange={(e) => setSelectedShipID(e.target.value)}
                             className="formSelect"
                         >
-                            <option value="">Choose a ship...</option>
+                            <option value="">Choose a location...</option>
                             {shipsList?.map(ship => (
                                 <option key={ship.SHA_ID} value={ship.SHA_ID}>
                                     {ship.ship_name}
@@ -240,7 +240,7 @@ const JCD_ship_combination_page = () => {
                             ))}
                         </select>
                     ) : (
-                        <h4>You are on {shipsList?.filter(s => s.SHA_ID == user.ship_id)[0]?.ship_name}</h4>
+                        <h4>You are at {shipsList?.filter(s => s.SHA_ID == user.ship_id)[0]?.ship_name}</h4>
                     )}
                 </div>
 
@@ -291,7 +291,7 @@ const JCD_ship_combination_page = () => {
                         <Temp_component_heirarchy />
                         {!selectedShipID && (
                             <div className="disabledOverlay">
-                                <p>Select a ship to enable component filtering</p>
+                                <p>Select a location to enable component filtering</p>
                             </div>
                         )}
                     </div>
@@ -342,7 +342,7 @@ const JCD_ship_combination_page = () => {
                                         disabled={!selectedShipID || unassignedJCDCheckList.length === 0}
                                     >
                                         <FiArrowRight size={14} />
-                                        Assign to Ship
+                                        Assign to Location
                                     </button>
                                 )}
                             </div>
@@ -402,7 +402,7 @@ const JCD_ship_combination_page = () => {
                                         disabled={!selectedShipID || assignedJCDCheckList.length === 0}
                                     >
                                         <FiArrowLeft size={14} />
-                                        Unlink from Ship
+                                        Unlink from Location
                                     </button>
                                 )}
                             </div>
@@ -418,7 +418,7 @@ const JCD_ship_combination_page = () => {
                                             return (
                                                 <div className="emptyState">
                                                     <FaShip size={32} />
-                                                    <p>No JCDs assigned to this ship</p>
+                                                    <p>No JCDs assigned to this location</p>
                                                 </div>
                                             );
                                         }
@@ -455,7 +455,7 @@ const JCD_ship_combination_page = () => {
                                 ) : (
                                     <div className="emptyState">
                                         <FaShip size={32} />
-                                        <p>No JCDs assigned to this ship</p>
+                                        <p>No JCDs assigned to this location</p>
                                     </div>
                                 )}
                             </div>

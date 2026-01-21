@@ -1345,7 +1345,7 @@ const Communication_Comp = ({ jcd, onClose, refreshJCDPage, refreshTree, refresh
                         <div className="chat-sticky-footer-whatsapp">
                             {/* {isSheetClosed ? (
                                 <div className="approval-status-whatsapp rejected" style={{ textAlign: 'center', padding: '10px' }}>
-                                    🚫 Communication Disabled. Ship status is Closed.
+                                    🚫 Communication Disabled. Location status is Closed.
                                 </div>
                             ) : ( */}
                             <>

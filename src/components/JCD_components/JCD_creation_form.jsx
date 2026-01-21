@@ -379,7 +379,7 @@ const JCD_creation_form = ({ selected_jcd_from_view_jcd_module, toggelVeiwJobsOn
                         <line x1="12" y1="8" x2="12" y2="12"></line>
                         <line x1="12" y1="16" x2="12.01" y2="16"></line>
                     </svg>
-                    View-only mode: You are a ship-side user and cannot edit this JCD.
+                    View-only mode: You are a location-side user and cannot edit this JCD.
                 </div>
             )}
 

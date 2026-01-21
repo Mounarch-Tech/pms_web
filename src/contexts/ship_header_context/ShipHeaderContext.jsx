@@ -52,7 +52,7 @@ export const ShipHeaderProvider = ({ children }) => {
       setShipsList(response.data);
     } catch (err) {
       console.error("Failed to fetch All ships data:", err);
-      setError("Failed to fetch ships list");
+      setError("Failed to fetch locations list");
     } finally {
       setLoading(false);
     }

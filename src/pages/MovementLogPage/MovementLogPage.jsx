@@ -541,7 +541,7 @@ const MovementLogPage = () => {
                                     }}
                                     disabled={(userMLCAccessProcessIDs.includes('P_MLC_0006') && user.emp_type == 1)}
                                 >
-                                    {(userMLCAccessProcessIDs.includes('P_MLC_0006') && user.emp_type == 1) ? <option value="">You are on : {selectedShipID ? selectedShipID : shipDataByLoggedInUser.ship_name}</option> : <option value="">Select Ship</option>}
+                                    {(userMLCAccessProcessIDs.includes('P_MLC_0006') && user.emp_type == 1) ? <option value="">You are at : {selectedShipID ? selectedShipID : shipDataByLoggedInUser.ship_name}</option> : <option value="">Select Location</option>}
                                     {(user.emp_type === 2) && (
                                         <>
                                             {shipsList.map((ship, index) => (

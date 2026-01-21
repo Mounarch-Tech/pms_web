@@ -897,7 +897,7 @@ const UserAllocation = () => {
                 <table>
                     <tr><th>Field</th><th>Value</th></tr>
                     <tr><td>User Name</td><td>${crewOverview.userName || 'N/A'}</td></tr>
-                    <tr><td>Ship Name</td><td>${crewOverview.shipName || 'N/A'}</td></tr>
+                    <tr><td>Location Name</td><td>${crewOverview.shipName || 'N/A'}</td></tr>
                     <tr><td>Department</td><td>${crewOverview.department || 'N/A'}</td></tr>
                     <tr><td>Designation</td><td>${crewOverview.designation || 'N/A'}</td></tr>
                     <tr><td>Date of Boarding</td><td>${crewOverview.dateOfBoarding || 'N/A'}</td></tr>
@@ -3442,7 +3442,7 @@ const UserAllocation = () => {
                                                         onChange={(e) => setModalShip(e.target.value)}
                                                         required
                                                     >
-                                                        <option value="">Select Ship</option>
+                                                        <option value="">Select Location</option>
                                                         {shipsList.map(ship => (
                                                             <option key={ship.SHA_ID} value={ship.SHA_ID}>
                                                                 {ship.ship_name}

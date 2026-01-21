@@ -236,7 +236,7 @@ const JCDPage = () => {
                 <>
                     {/* Left Side Container */}
                     <div id="left-side-container">
-                        {/* Ship Selection for Office Users (emp_type 2) */}
+                        {/* Location Selection for Office Users (emp_type 2) */}
                         {user.emp_type === 2 && (
                             <div id="select-ships-container">
                                 <select
@@ -245,7 +245,7 @@ const JCDPage = () => {
                                     value={selectedShipID || ""} // Controlled component
                                     onChange={(e) => setSelectedShipID(e.target.value)}
                                 >
-                                    <option value="">Select Ship</option>
+                                    <option value="">Select Location</option>
                                     {shipsList.map((ship, index) => (
                                         <option key={index} value={ship.SHA_ID}>
                                             {ship.ship_name}
@@ -255,12 +255,12 @@ const JCDPage = () => {
                             </div>
                         )}
 
-                        {/* Ship Info for Ship Users (emp_type 1 or 3) */}
+                        {/* Location Info for Location Users (emp_type 1 or 3) */}
                         {(user.emp_type === 1 || user.emp_type === 3) && shipName && (
                             <>
                                 <div id="select-ships-container">
                                     <select name="ships-selection" id="ship-selection" disabled>
-                                        <option value={shipName.SHA_ID}>You are On: {shipName.ship_name}</option>
+                                        <option value={shipName.SHA_ID}>You are at: {shipName.ship_name}</option>
                                     </select>
                                 </div>
                                 <div className="tree-section">
@@ -508,7 +508,7 @@ const JCDPage = () => {
                                 </div>
                             )}
                         </div>
-                    ) : <h1>No SHip selected</h1>}
+                    ) : <h1>No Location selected</h1>}
                 </>
             ) : (
                 // Fallback if no user profile data
