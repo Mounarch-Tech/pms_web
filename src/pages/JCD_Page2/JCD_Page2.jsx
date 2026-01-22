@@ -1101,7 +1101,7 @@ const JCD_Page2 = () => {
             const result = await response.json();
 
             if (result.success) {
-                alert('Job lock released successfully! Email notification has been sent to the Ship Superintendent.');
+                alert('Job lock released successfully! Email notification has been sent to the Plant Incharge.');
 
                 // Update local state immediately
                 setJobLockStatus(prev => ({

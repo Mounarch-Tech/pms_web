@@ -371,7 +371,7 @@ const UserAllocation = () => {
                                                     <p className="user-name">
                                                         <strong>{allocatedUser.first_name} {allocatedUser.last_name}</strong>
                                                         <span className="allocation-type">
-                                                            {isOfficeAllocation ? 'Office' : 'Ship Crew'}
+                                                            {isOfficeAllocation ? 'Office' : 'Factory Staff'}
                                                         </span>
                                                     </p>
                                                     <p className="allocation-dates">
@@ -804,7 +804,7 @@ const UserAllocation = () => {
     `;
 
         const title = document.createElement('h2');
-        title.textContent = `Crew Deboarding Report - ${crewOverview.userName}`;
+        title.textContent = `Factory Staff Deboarding Report - ${crewOverview.userName}`;
         title.style.margin = '0';
 
         const buttonGroup = document.createElement('div');
@@ -891,9 +891,9 @@ const UserAllocation = () => {
     const generateReportHTML = (crewOverview, completedJobs, activeJobs) => {
         return `
         <div class="report-content">
-            <!-- Section 1: Crew Overview -->
-            <div class="section">
-                <h2>Crew Overview</h2>
+            <!-- Section 1: Factory Staff Overview -->
+                <div class="section">
+                <h2>Factory Staff Overview</h2>
                 <table>
                     <tr><th>Field</th><th>Value</th></tr>
                     <tr><td>User Name</td><td>${crewOverview.userName || 'N/A'}</td></tr>
@@ -2446,7 +2446,7 @@ const UserAllocation = () => {
                         <div className="stat-value" style={{ color: '#48bb78' }}>
                             {stats.otherCrewJobs}
                         </div>
-                        <div className="stat-label">To Other Crew</div>
+                        <div className="stat-label">To Other Factory Staff</div>
                     </div>
                     <div className="stat-card">
                         <div className="stat-value" style={{ color: '#ed8936' }}>
@@ -2459,7 +2459,7 @@ const UserAllocation = () => {
                 {/* Show detailed crew distribution */}
                 {stats.crewDistribution.length > 0 && (
                     <div className="crew-distribution-details">
-                        <h4>Crew Distribution Details:</h4>
+                        <h4>Factory Staff Distribution Details:</h4>
                         {stats.crewDistribution.map(crew => (
                             <div key={crew.userId} className="crew-distribution-item">
                                 <span className="crew-name">{crew.userName}</span>
@@ -2507,7 +2507,7 @@ const UserAllocation = () => {
                         : null;
 
                     return {
-                        type: isShipCrew ? 'Ship Crew' : 'Office Staff',
+                        type: isShipCrew ? 'Factory Staff' : 'Office Staff',
                         location: isShipCrew
                             ? ship?.ship_name || 'Ship Unavailable'
                             : allocatedShipsNames || 'Head Office',
@@ -3195,7 +3195,7 @@ const UserAllocation = () => {
                                                 })
                                                 .map((user) => (
                                                     <option key={user.UHA_ID} value={user.UHA_ID}>
-                                                        {user.first_name} {user.last_name} • {user.duty_level || 'Level-1'} • Ex-Crew
+                                                        {user.first_name} {user.last_name} • {user.duty_level || 'Level-1'} • Ex-Factory Staff
                                                     </option>
                                                 ))}
                                         </select>

@@ -926,7 +926,7 @@ const ShipManagementPage = () => {
                         onClick={() => selectedShip?.SHA_ID && setActiveTab('crew')}
                         style={{ cursor: selectedShip?.SHA_ID ? 'pointer' : 'not-allowed', opacity: selectedShip?.SHA_ID ? 1 : 0.6 }}
                     >
-                        Crew List
+                        Factory Staff List
                     </h2>
                     <h2
                         className={activeTab === 'components' ? 'active' : ''}
@@ -977,7 +977,7 @@ const ShipManagementPage = () => {
                                                     { key: 'vslOverview', label: 'Location Overview' },
                                                     { key: 'vslParticular', label: 'Location Particulars' },
                                                     { key: 'vslAllocation', label: 'Location Allocation' },
-                                                    { key: 'crewList', label: 'Crew List' },
+                                                    { key: 'crewList', label: 'Factory Staff List' },
                                                 ].map(({ key, label }) => (
                                                     <button
                                                         key={key}
@@ -1167,7 +1167,7 @@ const ShipManagementPage = () => {
                                                             <div style={grid2Col}>
                                                                 {field("Location Email", <input type="email" name="vesselEmail" value={shipDetailsFormData.vesselEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Technical Group Email", <input type="email" name="technicalGroupEmail" value={shipDetailsFormData.technicalGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Crew Group Email", <input type="email" name="crewGroupEmail" value={shipDetailsFormData.crewGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                                {field("Factory Staff Group Email", <input type="email" name="crewGroupEmail" value={shipDetailsFormData.crewGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Owner Rep", <input type="text" name="ownerRep" value={shipDetailsFormData.ownerRep} onChange={handleChange} style={inputStyle} required />, true)}
                                                                 {field("Charter Email", <input type="email" name="charterEmail" value={shipDetailsFormData.charterEmail} onChange={handleChange} style={inputStyle} required />, true)}
                                                             </div>
@@ -1180,13 +1180,13 @@ const ShipManagementPage = () => {
                                                                         <option value="supdt2">Anna Lee</option>
                                                                     </select>
                                                                 ), true)}
-                                                                {field("Superintendent", (
+                                                                {field("Plant Incharge", (
                                                                     <select name="superintendent" value={shipDetailsFormData.superintendent} onChange={handleChange} style={inputStyle} required>
                                                                         <option value="">Select</option>
                                                                         <option value="sp1">David Kim</option>
                                                                     </select>
                                                                 ), true)}
-                                                                {field("Fleet Manager", (
+                                                                {field("Plant Head", (
                                                                     <select name="fleetManager" value={shipDetailsFormData.fleetManager} onChange={handleChange} style={inputStyle} required>
                                                                         <option value="">Select</option>
                                                                         <option value="fm1">Robert Green</option>
@@ -1253,8 +1253,8 @@ const ShipManagementPage = () => {
                                                             color: '#6c757d',
                                                             animation: 'fadeIn 0.5s ease'
                                                         }}>
-                                                            <h1 style={{ color: '#6c757d' }}>Crew List</h1>
-                                                            <p>No crew data available yet.</p>
+                                                            <h1 style={{ color: '#6c757d' }}>Factory Staff List</h1>
+                                                            <p>No factory staff data available yet.</p>
                                                         </div>
                                                     )}
                                                 </>
@@ -1273,8 +1273,8 @@ const ShipManagementPage = () => {
                             {/* Crew List Tab */}
                             {(activeTab === 'crew' && selectedShip?.SHA_ID) ? (
                                 <div className="tab-content">
-                                    <h3>Crew List for "{selectedShip?.SHA_ID}"</h3>
-                                    <p>Number of crew members: <strong>24</strong></p>
+                                    <h3>Factory Staff List for "{selectedShip?.SHA_ID}"</h3>
+                                    <p>Number of factory staff members: <strong>24</strong></p>
                                     <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
                                         <thead>
                                             <tr style={{ background: '#2c3e50', color: 'white' }}>
@@ -1284,14 +1284,14 @@ const ShipManagementPage = () => {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr><td>John Doe</td><td>Captain</td><td>Master</td></tr>
+                                            <tr><td>John Doe</td><td>HOD</td><td>Master</td></tr>
                                             <tr><td>Jane Smith</td><td>Chief Engineer</td><td>Engineer</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
                             ) : activeTab == 'crew' && (
                                 <div className='no-selection-placeholder'>
-                                    <p>Select a location to view Crew Details.</p>
+                                    <p>Select a location to view Factory Staff Details.</p>
                                 </div>
                             )}
 

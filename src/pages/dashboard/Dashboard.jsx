@@ -1218,7 +1218,7 @@ const Dashboard = () => {
       const result = await response.json();
 
       if (result.success) {
-        alert('Job lock released successfully! Email notification has been sent to the Ship Superintendent.');
+        alert('Job lock released successfully! Email notification has been sent to the Plant Incharge.');
 
         // Update local state immediately
         setJobLockStatus(prev => ({
@@ -2715,7 +2715,7 @@ const Dashboard = () => {
                     </button>
                     <span className="tooltip-text">
                       {!canScheduleJob
-                        ? `Only Superintendent of ${selectedShip?.ship_name || 'selected location'} can schedule jobs`
+                        ? `Only Plant Incharge of ${selectedShip?.ship_name || 'selected location'} can schedule jobs`
                         : isAnyActiveJobOfCurrentJcd.length > 0
                           ? `There is already an active job, '${jcd.jcd_name}' Job ID '${isAnyActiveJobOfCurrentJcd[0].JPHA_ID}' `
                           : ''}
@@ -6171,7 +6171,7 @@ const Dashboard = () => {
                 </div>
                 <div className="modern-notification-content">
                   <p className="modern-notification-text">
-                    <strong>Email notification</strong> will be sent to your Location Superintendent about this lock release.
+                    <strong>Email notification</strong> will be sent to your Location Plant Incharge about this lock release.
                   </p>
                 </div>
               </div>

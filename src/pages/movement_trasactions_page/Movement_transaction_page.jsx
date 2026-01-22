@@ -176,7 +176,7 @@ const Movement_transaction_page = () => {
                 <div className="header-content-modern">
                     <h1 className="page-title-modern">Movement Transactions</h1>
                     <p className="page-subtitle-modern">
-                        Manage and track movement logs for {userBordedShip?.ship_name || 'your ship'}
+                        Manage and track movement logs for {userBordedShip?.ship_name || 'your factory'}
                     </p>
                 </div>
                 <div className="user-info-modern">
@@ -192,7 +192,7 @@ const Movement_transaction_page = () => {
                         <h3>Component Hierarchy</h3>
                         <div className="help-text-modern">
                             <span className="help-icon">ℹ️</span>
-                            <span>Need help? Contact Ship Superintendent</span>
+                            <span>Need help? Contact Plant Incharge</span>
                         </div>
                     </div>
                     
