@@ -6,7 +6,8 @@ import { Profile_header_context } from '../../contexts/profile_header_context/Pr
 import { ShipHeaderContext } from '../../contexts/ship_header_context/ShipHeaderContext';
 import { DesignationContext } from '../../contexts/Designation_context/DesignationContext';
 import axios from 'axios';
-// emp_name
+import logo from '../../assets/logo_with_name.png';
+
 const Navbar = () => {
   const navigate = useNavigate();
 
@@ -105,6 +106,7 @@ const Navbar = () => {
     <header className="navbar-corporate">
       <nav className="navbar-corporate__container">
         <div className="navbar-corporate__brand" onClick={goToDashboard}>
+          <img src={logo} alt="Uday ERP Logo" className="navbar-corporate__logo" />
           <h2 className="navbar-corporate__title">
             {user?.emp_name}
             {loggedUserDesignation && (

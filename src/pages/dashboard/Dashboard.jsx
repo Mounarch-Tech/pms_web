@@ -3521,33 +3521,37 @@ const Dashboard = () => {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <div className="welcome-section">
-          <h1>Welcome back, {user?.emp_name}!</h1>
-          <p>Here's what's happening with your jobs today</p>
+          <div className="welcome-text">
+            <h1>Welcome back, {user?.emp_name}!</h1>
+            <p>Here's what's happening with your jobs today</p>
+          </div>
         </div>
 
-        <div className="ship-selector">
-          <label>Select Location:</label>
-          {user.emp_type == 2 && (
-            <select
-              className="ship-dropdown"
-              value={selectedShipId || ''}
-              onChange={(e) => { setSelectedShipId(e.target.value) }}
-            >
-              <option value="">Select a location</option>
-              {allocatedShipsIdsToOfficeStaff ? (
-                shipsList.filter(s => allocatedShipsIdsToOfficeStaff?.includes(s.SHA_ID)).map((s) => (
-                  <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
-                ))
-              ) : (
-                shipsList.map((s) => (
-                  <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
-                ))
-              )}
-            </select>
-          )}
-          {user.emp_type == 1 && (
-            <h3>You are at {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
-          )}
+        <div className="header-right-section">
+          <div className="ship-selector">
+            <label>Select Location:</label>
+            {user.emp_type == 2 && (
+              <select
+                className="ship-dropdown"
+                value={selectedShipId || ''}
+                onChange={(e) => { setSelectedShipId(e.target.value) }}
+              >
+                <option value="">Select a location</option>
+                {allocatedShipsIdsToOfficeStaff ? (
+                  shipsList.filter(s => allocatedShipsIdsToOfficeStaff?.includes(s.SHA_ID)).map((s) => (
+                    <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
+                  ))
+                ) : (
+                  shipsList.map((s) => (
+                    <option key={s.SHA_ID} value={s.SHA_ID}>{s.ship_name}</option>
+                  ))
+                )}
+              </select>
+            )}
+            {user.emp_type == 1 && (
+              <h3>You are at {shipsList.filter(s => s.SHA_ID == selectedShipId)[0]?.ship_name}</h3>
+            )}
+          </div>
         </div>
       </div>
 
@@ -3722,6 +3726,7 @@ const Dashboard = () => {
                 className="btn-confirm-and-acknowledged"
                 onClick={handleAcknowledgeAllJobs}
               >
+                <span className="btn-icon">✓</span>
                 Confirm and Acknowledged
               </button>
             </div>

@@ -284,7 +284,7 @@ const DepartmentDesignation = () => {
           >
             <option value="">-- Select Location --</option>
             <option value="Ship">Location 🏭</option>
-            <option value="Office">Office 🏢</option>
+            <option value="Office">Main Office 🏢</option>
           </select>
         </div>
 

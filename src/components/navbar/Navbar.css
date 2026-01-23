@@ -40,8 +40,8 @@
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 2rem;
-  height: 64px;
-  /* slightly smaller height */
+  height: 80px;
+  /* larger height for better logo visibility */
 }
 
 /* BRAND SECTION */
@@ -54,6 +54,13 @@
 
 .navbar-corporate__brand:hover {
   opacity: 0.85;
+}
+
+.navbar-corporate__logo {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
+  margin-right: 1.25rem;
 }
 
 .navbar-corporate__title {
@@ -73,7 +80,6 @@
   font-weight: 400;
   color: var(--text-muted);
   margin-left: 0.5rem;
-  margin-top: -50px;
   font-style: italic;
   display: inline-block;
   width: fit-content;
