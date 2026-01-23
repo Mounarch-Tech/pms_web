@@ -1,0 +1,1 @@
+import{l as n}from"./index-0Zuh0jOl.js";const t=()=>n.jsx("div",{id:"page-not-found-error-main-container",children:n.jsx("h1",{children:"This Page is not Exist in Our System.."})});export{t as default};

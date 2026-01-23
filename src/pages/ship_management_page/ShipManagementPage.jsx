@@ -5,7 +5,6 @@ import Temp_component_heirarchy from '../temp_component_heirarchy/Temp_component
 import { ComponentTreeContext } from '../../contexts/ComponentTreeContext/ComponentTreeContext';
 import { UserAuthContext } from '../../contexts/userAuth/UserAuthContext';
 import axios from 'axios';
-import { Ship_health_details_context } from '../../contexts/ship_health_Context/Ship_health_details_context';
 import OTP_verification from '../../components/otp_model/OTP_verification';
 
 const ShipManagementPage = () => {
@@ -16,7 +15,6 @@ const ShipManagementPage = () => {
     const { user } = useContext(UserAuthContext)
     const { shipsList, refreshShipsList, agencyList, refreshAgencyList } = useContext(ShipHeaderContext);
     const { needToInvokeAddNewComponentForm, setNeedToInvokeAddNewComponentForm, needToInvokeEditComponentForm, setNeedToInvokeEditComponentForm, selectedNode, refreshTree } = useContext(ComponentTreeContext)
-    const { shipsHealthList, refreshShipsHealthList } = useContext(Ship_health_details_context)
 
 
     const [newComponentName, setNewComponentName] = useState('');
@@ -37,8 +35,7 @@ const ShipManagementPage = () => {
         }
     };
 
-    const [needToInvokeShipHealthStatusChangeForm, setNeedToInvokeShipHealthStatusChangeForm] = useState(false)
-    const [shipHealthNewStatus, setShipHealthNewStatus] = useState(0)
+
 
     // Prev Approach Ship Data
     const [shipData, setShipData] = useState({
@@ -166,7 +163,6 @@ const ShipManagementPage = () => {
     useEffect(() => { console.log(selectedShip) }, [selectedShip?.SHA_ID])
 
     useEffect(() => {
-        refreshShipsHealthList()
         refreshAgencyList()
         refreshShipsList()
         refreshTree()
@@ -174,7 +170,6 @@ const ShipManagementPage = () => {
         setNewComponentName('');
         setDesignFile(null);
         setNewCompHasDesignFile(false);
-        setShipHealthNewStatus(0)
     }, [])
 
     useEffect(() => {
@@ -743,8 +738,6 @@ const ShipManagementPage = () => {
             setNewComponentName('');
             setDesignFile(null);
             setNewCompHasDesignFile(false);
-            setShipHealthNewStatus(0)
-
         } catch (err) {
             console.error('Error updating component:', err);
             alert('Failed to update component: ' + (err.response?.data?.message || err.message));
@@ -754,20 +747,9 @@ const ShipManagementPage = () => {
     };
 
 
-    const handleShipHealthStatusChange = () => {
-        setNeedToInvokeShipHealthStatusChangeForm(true)
-    }
 
-    const handleConfirmShipHealthStatusChange = async (shipHealthStatusNumericValue) => {
 
-        if (shipHealthStatusNumericValue == 0 || !shipHealthStatusNumericValue) {
-            alert('Invalid Selection')
-            return
-        }
 
-        // if all is correct then Authentication will take care of next
-        setAuthRequired(true)
-    }
 
     // Reusable inline styles
     const fieldStyle = {
@@ -935,29 +917,22 @@ const ShipManagementPage = () => {
                     >
                         Components
                     </h2>
-                    <h2
-                        className={activeTab === 'health' ? 'active' : ''}
-                        onClick={() => selectedShip?.SHA_ID && setActiveTab('health')}
-                        style={{ cursor: selectedShip?.SHA_ID ? 'pointer' : 'not-allowed', opacity: selectedShip?.SHA_ID ? 1 : 0.6 }}
-                    >
-                        Location Health
-                    </h2>
+
                 </div>
 
                 {/* Tab Content */}
                 <div id='ship-management-page-right-container-content'>
-                    {selectedShip?.SHA_ID || !selectedShip?.SHA_ID ? (
-                        <>
-                            {/* Ship Details Tab */}
-                            {activeTab === 'details' && (
-                                <div style={{
-                                    fontFamily: 'Arial, sans-serif',
-                                    padding: '20px',
-                                    // backgroundColor: '#f8f9fa',
-                                    minHeight: '100vh',
-                                }}>
-                                    {/* Main Tabs */}
-                                    {/* <div style={{ marginBottom: '20px', borderBottom: '2px solid #dee2e6' }}>
+
+                    {/* Ship Details Tab */}
+                    {activeTab === 'details' && (
+                        <div style={{
+                            fontFamily: 'Arial, sans-serif',
+                            padding: '20px',
+                            // backgroundColor: '#f8f9fa',
+                            minHeight: '100vh',
+                        }}>
+                            {/* Main Tabs */}
+                            {/* <div style={{ marginBottom: '20px', borderBottom: '2px solid #dee2e6' }}>
                                         {['details', 'crew', 'components', 'health'].map((tab) => (
                                             <button
                                                 key={tab}
@@ -969,469 +944,388 @@ const ShipManagementPage = () => {
                                         ))}
                                     </div> */}
 
-                                    {activeTab === 'details' && (
-                                        <div style={{ animation: 'slideIn 0.4s ease-out', backgroundColor: 'transparent' }}>
-                                            {/* Sub Tabs */}
-                                            <div style={{ display: 'flex', flexWrap: 'wrap', position: 'sticky', top: 0, left: 0, zIndex: 2, backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(2px)', padding: '20px 0px', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>
-                                                {[
-                                                    { key: 'vslOverview', label: 'Location Overview' },
-                                                    { key: 'vslParticular', label: 'Location Particulars' },
-                                                    { key: 'vslAllocation', label: 'Location Allocation' },
-                                                    { key: 'crewList', label: 'Factory Staff List' },
-                                                ].map(({ key, label }) => (
-                                                    <button
-                                                        key={key}
-                                                        // onClick={() => selectedShip?.SHA_ID && setDetailsSubActiveTab(key)}
-                                                        style={subTabBtnStyle(detailsSubActiveTab === key)}
-                                                    >
-                                                        {label}
-                                                    </button>
-                                                ))}
-                                            </div>
+                            {activeTab === 'details' && (
+                                <div style={{ animation: 'slideIn 0.4s ease-out', backgroundColor: 'transparent' }}>
+                                    {/* Sub Tabs */}
+                                    <div style={{ display: 'flex', flexWrap: 'wrap', position: 'sticky', top: 0, left: 0, zIndex: 2, backgroundColor: 'rgba(255, 255, 255, 0.1)', backdropFilter: 'blur(2px)', padding: '20px 0px', justifyContent: 'center', alignItems: 'center', borderRadius: '10px' }}>
+                                        {[
+                                            { key: 'vslOverview', label: 'Location Overview' },
+                                            { key: 'vslParticular', label: 'Location Particulars' },
+                                            { key: 'vslAllocation', label: 'Location Allocation' },
+                                            { key: 'crewList', label: 'Factory Staff List' },
+                                        ].map(({ key, label }) => (
+                                            <button
+                                                key={key}
+                                                // onClick={() => selectedShip?.SHA_ID && setDetailsSubActiveTab(key)}
+                                                style={subTabBtnStyle(detailsSubActiveTab === key)}
+                                            >
+                                                {label}
+                                            </button>
+                                        ))}
+                                    </div>
 
-                                            {/* Sub Tab Content */}
-                                            {selectedShip?.SHA_ID && (
-                                                <>
-                                                    {detailsSubActiveTab === 'vslOverview' && (
-                                                        <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '30px' }}>Location Overview</h1>
+                                    {/* Sub Tab Content */}
+                                    {selectedShip?.SHA_ID && (
+                                        <>
+                                            {detailsSubActiveTab === 'vslOverview' && (
+                                                <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                                                    <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '30px' }}>Location Overview</h1>
 
-                                                            <div style={grid2Col}>
-                                                                {field("Location Name", <input type="text" name="ship_name" value={shipDetailsFormData.ship_name} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Location Type", (
-                                                                    <select name="vesselType" value={shipDetailsFormData.vesselType} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select Type</option>
-                                                                        <option value="BULK_CARRIER">BULK CARRIER</option>
-                                                                        <option value="Container">Container</option>
-                                                                        <option value="GENERAL_CARGO">GENERAL CARGO</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Flag", (
-                                                                    <select name="flag" value={shipDetailsFormData.flag} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select Flag</option>
-                                                                        <option value="India">India</option>
-                                                                        <option value="USA">USA</option>
-                                                                        <option value="UK">UK</option>
-                                                                        <option value="Singapore">Singapore</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Location Code", <input type="text" name="vesselCode" value={shipDetailsFormData.vesselCode} onChange={handleChange} style={inputStyle} />)}
-                                                            </div>
+                                                    <div style={grid2Col}>
+                                                        {field("Location Name", <input type="text" name="ship_name" value={shipDetailsFormData.ship_name} onChange={handleChange} style={inputStyle} required />, true)}
+                                                        {field("Location Type", (
+                                                            <select name="vesselType" value={shipDetailsFormData.vesselType} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select Type</option>
+                                                                <option value="BULK_CARRIER">BULK CARRIER</option>
+                                                                <option value="Container">Container</option>
+                                                                <option value="GENERAL_CARGO">GENERAL CARGO</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Flag", (
+                                                            <select name="flag" value={shipDetailsFormData.flag} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select Flag</option>
+                                                                <option value="India">India</option>
+                                                                <option value="USA">USA</option>
+                                                                <option value="UK">UK</option>
+                                                                <option value="Singapore">Singapore</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Location Code", <input type="text" name="vesselCode" value={shipDetailsFormData.vesselCode} onChange={handleChange} style={inputStyle} />)}
+                                                    </div>
 
-                                                            <div style={grid3Col}>
-                                                                {field("Management Type", (
-                                                                    <select name="managementType" value={shipDetailsFormData.managementType} onChange={handleChange} style={inputStyle}>
-                                                                        <option value="">Select</option>
-                                                                        <option value="Self">Self</option>
-                                                                    </select>
-                                                                ))}
-                                                                {field("Owner", <select name="owner" value={shipDetailsFormData.owner} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Charterer", <select name="charterer" value={shipDetailsFormData.charterer} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Location Manager", <select name="shipManager" value={shipDetailsFormData.shipManager} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("P & I Club", <select name="pAndIClub" value={shipDetailsFormData.pAndIClub} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Life Boat Capacity", <input type="text" name="lifeBoatCapacity" value={shipDetailsFormData.lifeBoatCapacity} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Wage Scale", <input type="text" name="wageScale" value={shipDetailsFormData.wageScale} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Take Over Date", <input type="date" name="takeOverDate" value={shipDetailsFormData.takeOverDate} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Status", (
-                                                                    <select name="status" value={shipDetailsFormData.ship_status} onChange={handleChange} style={inputStyle}>
-                                                                        <option value="">Select Status</option>
-                                                                        <option value="1">Active</option>
-                                                                        <option value="2">Inactive</option>
-                                                                    </select>
-                                                                ))}
-                                                                {field("Image", <input type="file" name="image" onChange={handleChange} style={inputStyle} />)}
-                                                            </div>
+                                                    <div style={grid3Col}>
+                                                        {field("Management Type", (
+                                                            <select name="managementType" value={shipDetailsFormData.managementType} onChange={handleChange} style={inputStyle}>
+                                                                <option value="">Select</option>
+                                                                <option value="Self">Self</option>
+                                                            </select>
+                                                        ))}
+                                                        {field("Owner", <select name="owner" value={shipDetailsFormData.owner} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Charterer", <select name="charterer" value={shipDetailsFormData.charterer} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Location Manager", <select name="shipManager" value={shipDetailsFormData.shipManager} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("P & I Club", <select name="pAndIClub" value={shipDetailsFormData.pAndIClub} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Life Boat Capacity", <input type="text" name="lifeBoatCapacity" value={shipDetailsFormData.lifeBoatCapacity} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Wage Scale", <input type="text" name="wageScale" value={shipDetailsFormData.wageScale} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Take Over Date", <input type="date" name="takeOverDate" value={shipDetailsFormData.takeOverDate} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Status", (
+                                                            <select name="status" value={shipDetailsFormData.ship_status} onChange={handleChange} style={inputStyle}>
+                                                                <option value="">Select Status</option>
+                                                                <option value="1">Active</option>
+                                                                <option value="2">Inactive</option>
+                                                            </select>
+                                                        ))}
+                                                        {field("Image", <input type="file" name="image" onChange={handleChange} style={inputStyle} />)}
+                                                    </div>
 
-                                                            <div style={grid3Col}>
-                                                                {field("LR / MO", <input type="text" name="lrMo" value={shipDetailsFormData.lrMo} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Registered Port", <select name="registeredPort" value={shipDetailsFormData.registeredPort} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Official Number", <input type="text" name="official" value={shipDetailsFormData.official} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("MMSI", <input type="text" name="mmsi" value={shipDetailsFormData.mmsi} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Current Class", <select name="currentClass" value={shipDetailsFormData.currentClass} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Group", <select name="group" value={shipDetailsFormData.group} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Group Email", <input type="email" name="groupEmail" value={shipDetailsFormData.groupEmail} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Email", <input type="email" name="email" value={shipDetailsFormData.email} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Year Built", <input type="number" name="yearBuilt" value={shipDetailsFormData.yearBuilt} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Age", <input type="text" value={shipDetailsFormData.age} readOnly style={{ ...inputStyle }} />)}
-                                                                {field("Yard", <input type="text" name="yard" value={shipDetailsFormData.yard} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("GRT / TWD", <input type="text" name="grtTwd" value={shipDetailsFormData.grtTwd} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("TEU", <input type="text" name="teu" value={shipDetailsFormData.teu} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("NRT", <input type="text" name="nrt" value={shipDetailsFormData.nrt} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Length", <input type="text" name="length" value={shipDetailsFormData.length} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Breadth", <input type="text" name="breadth" value={shipDetailsFormData.breadth} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Depth", <input type="text" name="depth" value={shipDetailsFormData.depth} onChange={handleChange} style={inputStyle} />)}
-                                                            </div>
+                                                    <div style={grid3Col}>
+                                                        {field("LR / MO", <input type="text" name="lrMo" value={shipDetailsFormData.lrMo} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Official Number", <input type="text" name="official" value={shipDetailsFormData.official} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("MMSI", <input type="text" name="mmsi" value={shipDetailsFormData.mmsi} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Current Class", <select name="currentClass" value={shipDetailsFormData.currentClass} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Group", <select name="group" value={shipDetailsFormData.group} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Group Email", <input type="email" name="groupEmail" value={shipDetailsFormData.groupEmail} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Email", <input type="email" name="email" value={shipDetailsFormData.email} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Year Built", <input type="number" name="yearBuilt" value={shipDetailsFormData.yearBuilt} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Age", <input type="text" value={shipDetailsFormData.age} readOnly style={{ ...inputStyle }} />)}
+                                                        {field("Yard", <input type="text" name="yard" value={shipDetailsFormData.yard} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("GRT / TWD", <input type="text" name="grtTwd" value={shipDetailsFormData.grtTwd} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("TEU", <input type="text" name="teu" value={shipDetailsFormData.teu} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("NRT", <input type="text" name="nrt" value={shipDetailsFormData.nrt} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Length", <input type="text" name="length" value={shipDetailsFormData.length} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Breadth", <input type="text" name="breadth" value={shipDetailsFormData.breadth} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Depth", <input type="text" name="depth" value={shipDetailsFormData.depth} onChange={handleChange} style={inputStyle} />)}
+                                                    </div>
 
-                                                            <div style={{ textAlign: 'center', marginTop: '30px' }}>
-                                                                <button type="button" style={{
-                                                                    padding: '12px 30px',
-                                                                    backgroundColor: '#27ae60',
-                                                                    color: 'white',
-                                                                    border: 'none',
-                                                                    borderRadius: '6px',
-                                                                    fontSize: '16px',
-                                                                    cursor: 'pointer'
-                                                                }}
-                                                                    onClick={handleNextSubTab}
-                                                                >
-                                                                    Next
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {/* === Vessel Particulars === */}
-                                                    {detailsSubActiveTab === 'vslParticular' && (
-                                                        <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Particulars</h1>
-
-                                                            <div style={grid2Col}>
-                                                                {field("Location Name", <input type="text" value={shipDetailsFormData.ship_name} disabled style={{ ...inputStyle }} />)}
-                                                                {field("Flag", <input type="text" value={shipDetailsFormData.flag} disabled style={{ ...inputStyle }} />)}
-                                                            </div>
-
-                                                            {['Main', 'AUX 1', 'AUX 2', 'AUX 3'].map((engine, idx) => {
-                                                                const prefix = idx === 0 ? 'mainEngine' : `aux${idx}Engine`;
-                                                                return (
-                                                                    <fieldset key={idx} style={{
-                                                                        marginBottom: '24px',
-                                                                        padding: '18px',
-                                                                        border: '1px solid #ccc',
-                                                                        borderRadius: '8px',
-
-                                                                    }}>
-                                                                        <legend style={{ fontWeight: 'bold', fontSize: '16px', padding: '0 10px' }}>
-                                                                            {engine} Engine
-                                                                        </legend>
-                                                                        <div style={grid3Col}>
-                                                                            {field("Maker", (
-                                                                                <select name={`${prefix}Maker`} value={shipDetailsFormData[`${prefix}Maker`]} onChange={handleChange} style={inputStyle}>
-                                                                                    <option value="">Select Maker</option>
-                                                                                    <option value="MAN">MAN</option>
-                                                                                    <option value="Wärtsilä">Wärtsilä</option>
-                                                                                    <option value="HSD">HSD</option>
-                                                                                </select>
-                                                                            ))}
-                                                                            {field("Model", <input type="text" name={`${prefix}Model`} value={shipDetailsFormData[`${prefix}Model`]} onChange={handleChange} style={inputStyle} />)}
-                                                                            {field("Stroke Type", (
-                                                                                <select name={`${prefix}StrokeType`} value={shipDetailsFormData[`${prefix}StrokeType`]} onChange={handleChange} style={inputStyle}>
-                                                                                    <option value="">Select Type</option>
-                                                                                    <option value="2-Stroke">2-Stroke</option>
-                                                                                    <option value="4-Stroke">4-Stroke</option>
-                                                                                </select>
-                                                                            ))}
-                                                                            {field("KW", <input type="text" name={`${prefix}KW`} value={shipDetailsFormData[`${prefix}KW`]} onChange={handleChange} style={inputStyle} />)}
-                                                                            {field("BHP", <input type="text" name={`${prefix}BHP`} value={shipDetailsFormData[`${prefix}BHP`]} onChange={handleChange} style={inputStyle} />)}
-                                                                            {field("RPM", <input type="text" name={`${prefix}RPM`} value={shipDetailsFormData[`${prefix}RPM`]} onChange={handleChange} style={inputStyle} />)}
-                                                                        </div>
-                                                                    </fieldset>
-                                                                );
-                                                            })}
-
-                                                            <div style={grid3Col}>
-                                                                {field("INM Terminal Type", <input type="text" name="inmTerminalType" value={shipDetailsFormData.inmTerminalType} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Call Sign", <input type="text" name="callSign" value={shipDetailsFormData.callSign} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Ins. Valid Days", <input type="number" name="insValidDays" value={shipDetailsFormData.insValidDays} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Tel1", <input type="text" name="tel1" value={shipDetailsFormData.tel1} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Tel2", <input type="text" name="tel2" value={shipDetailsFormData.tel2} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Mobile Number", <input type="text" name="mobileNumber" value={shipDetailsFormData.mobileNumber} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Fax", <input type="text" name="fax" value={shipDetailsFormData.fax} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Data", <input type="text" name="data" value={shipDetailsFormData.data} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("HSD", <input type="text" name="hsd" value={shipDetailsFormData.hsd} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Inm C", <input type="text" name="inmC" value={shipDetailsFormData.inmC} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Acc. Code", <input type="text" name="accCode" value={shipDetailsFormData.accCode} onChange={handleChange} style={inputStyle} />)}
-                                                                {field("Training Fees", <input type="number" name="trainingFees" value={shipDetailsFormData.trainingFees} onChange={handleChange} style={inputStyle} />)}
-                                                            </div>
-
-                                                            <div style={{ textAlign: 'center', marginTop: '30px' }}>
-                                                                <button type="button" style={{
-                                                                    padding: '12px 30px',
-                                                                    backgroundColor: '#27ae60',
-                                                                    color: 'white',
-                                                                    border: 'none',
-                                                                    borderRadius: '6px',
-                                                                    fontSize: '16px',
-                                                                    cursor: 'pointer'
-                                                                }} onClick={handleNextSubTab}>
-                                                                    Next
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {/* === Vessel Allocation === */}
-                                                    {detailsSubActiveTab === 'vslAllocation' && (
-                                                        <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
-                                                            <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Allocation</h1>
-
-                                                            <div style={grid2Col}>
-                                                                {field("Location Email", <input type="email" name="vesselEmail" value={shipDetailsFormData.vesselEmail} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Technical Group Email", <input type="email" name="technicalGroupEmail" value={shipDetailsFormData.technicalGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Factory Staff Group Email", <input type="email" name="crewGroupEmail" value={shipDetailsFormData.crewGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Owner Rep", <input type="text" name="ownerRep" value={shipDetailsFormData.ownerRep} onChange={handleChange} style={inputStyle} required />, true)}
-                                                                {field("Charter Email", <input type="email" name="charterEmail" value={shipDetailsFormData.charterEmail} onChange={handleChange} style={inputStyle} required />, true)}
-                                                            </div>
-
-                                                            <div style={grid3Col}>
-                                                                {field("Tech Supdt", (
-                                                                    <select name="techSupdt" value={shipDetailsFormData.techSupdt} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="supdt1">John Smith</option>
-                                                                        <option value="supdt2">Anna Lee</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Plant Incharge", (
-                                                                    <select name="superintendent" value={shipDetailsFormData.superintendent} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="sp1">David Kim</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Plant Head", (
-                                                                    <select name="fleetManager" value={shipDetailsFormData.fleetManager} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="fm1">Robert Green</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Tech Assistant", (
-                                                                    <select name="techAssistant" value={shipDetailsFormData.techAssistant} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="ta1">Chris Evans</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Marine Assistant", (
-                                                                    <select name="marineAssistant" value={shipDetailsFormData.marineAssistant} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="ma1">Daniel Craig</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("DPA", (
-                                                                    <select name="dpa" value={shipDetailsFormData.dpa} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="dpa1">Alice Johnson</option>
-                                                                    </select>
-                                                                ), true)}
-                                                                {field("Acct Officer", (
-                                                                    <select name="acctOfficer" value={shipDetailsFormData.acctOfficer} onChange={handleChange} style={inputStyle} required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="ao1">Kevin Hart</option>
-                                                                    </select>
-                                                                ), true)}
-                                                            </div>
-
-                                                            <div style={fieldContainer}>
-                                                                <label style={labelStyle}>Applicable for Performance Bonus <span style={requiredStar}>*</span></label>
-                                                                <div style={{ display: 'flex', gap: '30px', marginTop: '8px' }}>
-                                                                    <label><input type="radio" name="performanceBonus" value="yes" checked={shipDetailsFormData.performanceBonus === 'yes'} onChange={handleChange} required /> Yes</label>
-                                                                    <label><input type="radio" name="performanceBonus" value="no" checked={shipDetailsFormData.performanceBonus === 'no'} onChange={handleChange} required /> No</label>
-                                                                </div>
-                                                            </div>
-
-                                                            <div style={{ textAlign: 'center', marginTop: '30px' }}>
-                                                                <button type="button" style={{
-                                                                    padding: '12px 30px',
-                                                                    backgroundColor: '#27ae60',
-                                                                    color: 'white',
-                                                                    border: 'none',
-                                                                    borderRadius: '6px',
-                                                                    fontSize: '16px',
-                                                                    cursor: 'pointer'
-                                                                }} onClick={handleNextSubTab}>
-                                                                    Next
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    )}
-
-                                                    {/* === Crew List === */}
-                                                    {detailsSubActiveTab === 'crewList' && (
-                                                        <div style={{
-                                                            textAlign: 'center',
-                                                            padding: '60px 20px',
-                                                            // backgroundColor: '#fff',
-                                                            borderRadius: '8px',
-                                                            boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-                                                            color: '#6c757d',
-                                                            animation: 'fadeIn 0.5s ease'
-                                                        }}>
-                                                            <h1 style={{ color: '#6c757d' }}>Factory Staff List</h1>
-                                                            <p>No factory staff data available yet.</p>
-                                                        </div>
-                                                    )}
-                                                </>
+                                                    <div style={{ textAlign: 'center', marginTop: '30px' }}>
+                                                        <button type="button" style={{
+                                                            padding: '12px 30px',
+                                                            backgroundColor: '#27ae60',
+                                                            color: 'white',
+                                                            border: 'none',
+                                                            borderRadius: '6px',
+                                                            fontSize: '16px',
+                                                            cursor: 'pointer'
+                                                        }}
+                                                            onClick={handleNextSubTab}
+                                                        >
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             )}
-                                        </div>
-                                    )}
 
-                                    {/* Animations */}
-                                    <style>{`
+                                            {/* === Vessel Particulars === */}
+                                            {detailsSubActiveTab === 'vslParticular' && (
+                                                <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                                                    <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Particulars</h1>
+
+                                                    <div style={grid2Col}>
+                                                        {field("Location Name", <input type="text" value={shipDetailsFormData.ship_name} disabled style={{ ...inputStyle }} />)}
+                                                        {field("Flag", <input type="text" value={shipDetailsFormData.flag} disabled style={{ ...inputStyle }} />)}
+                                                    </div>
+
+                                                    {['Main', 'AUX 1', 'AUX 2', 'AUX 3'].map((engine, idx) => {
+                                                        const prefix = idx === 0 ? 'mainEngine' : `aux${idx}Engine`;
+                                                        return (
+                                                            <fieldset key={idx} style={{
+                                                                marginBottom: '24px',
+                                                                padding: '18px',
+                                                                border: '1px solid #ccc',
+                                                                borderRadius: '8px',
+
+                                                            }}>
+                                                                <legend style={{ fontWeight: 'bold', fontSize: '16px', padding: '0 10px' }}>
+                                                                    {engine} Engine
+                                                                </legend>
+                                                                <div style={grid3Col}>
+                                                                    {field("Maker", (
+                                                                        <select name={`${prefix}Maker`} value={shipDetailsFormData[`${prefix}Maker`]} onChange={handleChange} style={inputStyle}>
+                                                                            <option value="">Select Maker</option>
+                                                                            <option value="MAN">MAN</option>
+                                                                            <option value="Wärtsilä">Wärtsilä</option>
+                                                                            <option value="HSD">HSD</option>
+                                                                        </select>
+                                                                    ))}
+                                                                    {field("Model", <input type="text" name={`${prefix}Model`} value={shipDetailsFormData[`${prefix}Model`]} onChange={handleChange} style={inputStyle} />)}
+                                                                    {field("Stroke Type", (
+                                                                        <select name={`${prefix}StrokeType`} value={shipDetailsFormData[`${prefix}StrokeType`]} onChange={handleChange} style={inputStyle}>
+                                                                            <option value="">Select Type</option>
+                                                                            <option value="2-Stroke">2-Stroke</option>
+                                                                            <option value="4-Stroke">4-Stroke</option>
+                                                                        </select>
+                                                                    ))}
+                                                                    {field("KW", <input type="text" name={`${prefix}KW`} value={shipDetailsFormData[`${prefix}KW`]} onChange={handleChange} style={inputStyle} />)}
+                                                                    {field("BHP", <input type="text" name={`${prefix}BHP`} value={shipDetailsFormData[`${prefix}BHP`]} onChange={handleChange} style={inputStyle} />)}
+                                                                    {field("RPM", <input type="text" name={`${prefix}RPM`} value={shipDetailsFormData[`${prefix}RPM`]} onChange={handleChange} style={inputStyle} />)}
+                                                                </div>
+                                                            </fieldset>
+                                                        );
+                                                    })}
+
+                                                    <div style={grid3Col}>
+                                                        {field("INM Terminal Type", <input type="text" name="inmTerminalType" value={shipDetailsFormData.inmTerminalType} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Call Sign", <input type="text" name="callSign" value={shipDetailsFormData.callSign} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Ins. Valid Days", <input type="number" name="insValidDays" value={shipDetailsFormData.insValidDays} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Tel1", <input type="text" name="tel1" value={shipDetailsFormData.tel1} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Tel2", <input type="text" name="tel2" value={shipDetailsFormData.tel2} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Mobile Number", <input type="text" name="mobileNumber" value={shipDetailsFormData.mobileNumber} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Fax", <input type="text" name="fax" value={shipDetailsFormData.fax} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Data", <input type="text" name="data" value={shipDetailsFormData.data} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("HSD", <input type="text" name="hsd" value={shipDetailsFormData.hsd} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Inm C", <input type="text" name="inmC" value={shipDetailsFormData.inmC} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Acc. Code", <input type="text" name="accCode" value={shipDetailsFormData.accCode} onChange={handleChange} style={inputStyle} />)}
+                                                        {field("Training Fees", <input type="number" name="trainingFees" value={shipDetailsFormData.trainingFees} onChange={handleChange} style={inputStyle} />)}
+                                                    </div>
+
+                                                    <div style={{ textAlign: 'center', marginTop: '30px' }}>
+                                                        <button type="button" style={{
+                                                            padding: '12px 30px',
+                                                            backgroundColor: '#27ae60',
+                                                            color: 'white',
+                                                            border: 'none',
+                                                            borderRadius: '6px',
+                                                            fontSize: '16px',
+                                                            cursor: 'pointer'
+                                                        }} onClick={handleNextSubTab}>
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* === Vessel Allocation === */}
+                                            {detailsSubActiveTab === 'vslAllocation' && (
+                                                <div style={{ padding: '24px', borderRadius: '8px', boxShadow: '0 2px 10px rgba(0,0,0,0.1)' }}>
+                                                    <h1 style={{ textAlign: 'center', color: '#6c757d', marginBottom: '24px' }}>Location Allocation</h1>
+
+                                                    <div style={grid2Col}>
+                                                        {field("Location Email", <input type="email" name="vesselEmail" value={shipDetailsFormData.vesselEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                        {field("Technical Group Email", <input type="email" name="technicalGroupEmail" value={shipDetailsFormData.technicalGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                        {field("Factory Staff Group Email", <input type="email" name="crewGroupEmail" value={shipDetailsFormData.crewGroupEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                        {field("Owner Rep", <input type="text" name="ownerRep" value={shipDetailsFormData.ownerRep} onChange={handleChange} style={inputStyle} required />, true)}
+                                                        {field("Charter Email", <input type="email" name="charterEmail" value={shipDetailsFormData.charterEmail} onChange={handleChange} style={inputStyle} required />, true)}
+                                                    </div>
+
+                                                    <div style={grid3Col}>
+                                                        {field("Tech Supdt", (
+                                                            <select name="techSupdt" value={shipDetailsFormData.techSupdt} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="supdt1">John Smith</option>
+                                                                <option value="supdt2">Anna Lee</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Plant Incharge", (
+                                                            <select name="superintendent" value={shipDetailsFormData.superintendent} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="sp1">David Kim</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Plant Head", (
+                                                            <select name="fleetManager" value={shipDetailsFormData.fleetManager} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="fm1">Robert Green</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Tech Assistant", (
+                                                            <select name="techAssistant" value={shipDetailsFormData.techAssistant} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="ta1">Chris Evans</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Marine Assistant", (
+                                                            <select name="marineAssistant" value={shipDetailsFormData.marineAssistant} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="ma1">Daniel Craig</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("DPA", (
+                                                            <select name="dpa" value={shipDetailsFormData.dpa} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="dpa1">Alice Johnson</option>
+                                                            </select>
+                                                        ), true)}
+                                                        {field("Acct Officer", (
+                                                            <select name="acctOfficer" value={shipDetailsFormData.acctOfficer} onChange={handleChange} style={inputStyle} required>
+                                                                <option value="">Select</option>
+                                                                <option value="ao1">Kevin Hart</option>
+                                                            </select>
+                                                        ), true)}
+                                                    </div>
+
+                                                    <div style={fieldContainer}>
+                                                        <label style={labelStyle}>Applicable for Performance Bonus <span style={requiredStar}>*</span></label>
+                                                        <div style={{ display: 'flex', gap: '30px', marginTop: '8px' }}>
+                                                            <label><input type="radio" name="performanceBonus" value="yes" checked={shipDetailsFormData.performanceBonus === 'yes'} onChange={handleChange} required /> Yes</label>
+                                                            <label><input type="radio" name="performanceBonus" value="no" checked={shipDetailsFormData.performanceBonus === 'no'} onChange={handleChange} required /> No</label>
+                                                        </div>
+                                                    </div>
+
+                                                    <div style={{ textAlign: 'center', marginTop: '30px' }}>
+                                                        <button type="button" style={{
+                                                            padding: '12px 30px',
+                                                            backgroundColor: '#27ae60',
+                                                            color: 'white',
+                                                            border: 'none',
+                                                            borderRadius: '6px',
+                                                            fontSize: '16px',
+                                                            cursor: 'pointer'
+                                                        }} onClick={handleNextSubTab}>
+                                                            Next
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
+
+                                            {/* === Crew List === */}
+                                            {detailsSubActiveTab === 'crewList' && (
+                                                <div style={{
+                                                    textAlign: 'center',
+                                                    padding: '60px 20px',
+                                                    // backgroundColor: '#fff',
+                                                    borderRadius: '8px',
+                                                    boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+                                                    color: '#6c757d',
+                                                    animation: 'fadeIn 0.5s ease'
+                                                }}>
+                                                    <h1 style={{ color: '#6c757d' }}>Factory Staff List</h1>
+                                                    <p>No factory staff data available yet.</p>
+                                                </div>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Animations */}
+                            <style>{`
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes slideIn { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
       `}</style>
-                                </div>
-                            )}
-
-                            {/* Crew List Tab */}
-                            {(activeTab === 'crew' && selectedShip?.SHA_ID) ? (
-                                <div className="tab-content">
-                                    <h3>Factory Staff List for "{selectedShip?.SHA_ID}"</h3>
-                                    <p>Number of factory staff members: <strong>24</strong></p>
-                                    <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
-                                        <thead>
-                                            <tr style={{ background: '#2c3e50', color: 'white' }}>
-                                                <th style={{ padding: '8px', textAlign: 'left' }}>Name</th>
-                                                <th style={{ padding: '8px', textAlign: 'left' }}>Role</th>
-                                                <th style={{ padding: '8px', textAlign: 'left' }}>Rank</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr><td>John Doe</td><td>HOD</td><td>Master</td></tr>
-                                            <tr><td>Jane Smith</td><td>Chief Engineer</td><td>Engineer</td></tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            ) : activeTab == 'crew' && (
-                                <div className='no-selection-placeholder'>
-                                    <p>Select a location to view Factory Staff Details.</p>
-                                </div>
-                            )}
-
-                            {/* Components Tab */}
-                            {activeTab === 'components' && (
-                                <div className="tab-content">
-                                    <div id='component-add-new-or-edit-funtionality-tab-container'>
-                                        {/* Add New */}
-                                        <div className="toggle-option-wrapper">
-                                            <input
-                                                type="radio"
-                                                name="addNewOrEditFunctionalityForComponent"
-                                                id="addNewForComponent"
-                                                checked={isAddNewComponentChecked}
-                                                onChange={() => {
-                                                    setIsEditComponentChecked(false);
-                                                    setIsAddNewComponentChecked(true);
-                                                }}
-                                            />
-                                            <label htmlFor="addNewForComponent" className="toggle-option">
-                                                Add New
-                                            </label>
-                                        </div>
-
-                                        {/* Edit Existing */}
-                                        <div className="toggle-option-wrapper">
-                                            <input
-                                                type="radio"
-                                                name="addNewOrEditFunctionalityForComponent"
-                                                id="editForComponent"
-                                                checked={isEditComponentChecked}
-                                                onChange={() => {
-                                                    setIsEditComponentChecked(true);
-                                                    setIsAddNewComponentChecked(false);
-                                                }}
-                                            />
-                                            <label htmlFor="editForComponent" className="toggle-option">
-                                                Edit Existing
-                                            </label>
-                                        </div>
-                                    </div>
-
-                                    {/* Add New Component */}
-                                    {isAddNewComponentChecked && (
-                                        <div id='addNewFunctionalityForComponent-component-heirarchy-container' className="functionality-container">
-                                            <h3>Add New Component</h3>
-                                            <Temp_component_heirarchy componentTreeWantByWhichComp={'ShipManagementPage_add_new_comp'} selectedShipID={selectedShip.SHA_ID} />
-                                        </div>
-                                    )}
-
-                                    {/* Edit Existing Component */}
-                                    {isEditComponentChecked && (
-                                        <div id='editFunctionalityForComponent-component-heirarchy-container' className="functionality-container">
-                                            <h3>Edit Existing Component</h3>
-                                            <Temp_component_heirarchy componentTreeWantByWhichComp={'ShipManagementPage_edit_comp'} selectedShipID={selectedShip.SHA_ID} />
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-
-                            {/* Ship Health Tab */}
-                            {activeTab === 'health' && (
-                                selectedShip?.SHA_ID ? (
-                                    <div className="tab-content">
-                                        <h3>Location : {selectedShip?.ship_name}</h3>
-
-                                        <table className="data-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Sr.</th>
-                                                    <th>Prev Status</th>
-                                                    <th>Current Status</th>
-                                                    <th>From DT</th>
-                                                    <th>To DT</th>
-                                                    <th>Actions</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {/* <tr>
-                                                    <td>1</td>
-                                                    <td><span className="status-badge active">SEALING</span></td>
-                                                    <td>25-07-2025</td>
-                                                    <td>28-07-2025</td>
-                                                    <td>
-                                                        <button type="button" className="btn btn-preset">Preset</button>
-                                                    </td>
-                                                </tr> */}
-
-                                                {shipsHealthList.filter(shipHealth => shipHealth.SHA_ID === selectedShip?.SHA_ID).length > 0 ? (
-                                                    // If records exist, map through them
-                                                    shipsHealthList
-                                                        .filter(shipHealth => shipHealth.SHA_ID === selectedShip?.SHA_ID)
-                                                        .map((shipHealth, index) => (
-                                                            <tr key={shipHealth.SHH_ID || index}>
-                                                                <td>{index + 1}</td>
-                                                                <td>
-                                                                    <span className="status-badge active">
-                                                                        {shipHealth.previous_status}
-                                                                    </span>
-                                                                </td>
-                                                                <td>
-                                                                    <span className="status-badge active">
-                                                                        {shipHealth.present_status}
-                                                                    </span>
-                                                                </td>
-                                                                <td>{(shipHealth.inserted_on).split('T')[0].split('-').reverse().join('-')}</td>
-                                                                <td>28-08-2025</td>
-                                                                <td>
-                                                                    <button type="button" className="btn btn-preset">Preset</button>
-                                                                </td>
-                                                            </tr>
-                                                        ))
-                                                ) : (
-                                                    // If no records found, show placeholder row
-                                                    <tr>
-                                                        <td colSpan="6" className="no-records">
-                                                            No health records found for {selectedShip?.SHA_ID.ship_name}.
-                                                        </td>
-                                                    </tr>
-                                                )}
-
-                                            </tbody>
-                                        </table>
-
-                                        <div className="health-actions">
-                                            <button type="button" className="btn btn-primary" onClick={handleShipHealthStatusChange}>Change Status</button>
-                                        </div>
-                                    </div>
-                                ) : (
-                                    <div className="no-selection-placeholder">
-                                        <p>Select a location to view its health status.</p>
-                                    </div>
-                                )
-                            )}
-                        </>
-                    ) : activeTab == 'health' && (
-                        <div className='no-selection-placeholder'>
-                            <p>Select a location to view details.</p>
                         </div>
                     )}
+
+                    {/* Crew List Tab */}
+                    {(activeTab === 'crew' && selectedShip?.SHA_ID) ? (
+                        <div className="tab-content">
+                            <h3>Factory Staff List for "{selectedShip?.SHA_ID}"</h3>
+                            <p>Number of factory staff members: <strong>24</strong></p>
+                            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px' }}>
+                                <thead>
+                                    <tr style={{ background: '#2c3e50', color: 'white' }}>
+                                        <th style={{ padding: '8px', textAlign: 'left' }}>Name</th>
+                                        <th style={{ padding: '8px', textAlign: 'left' }}>Role</th>
+                                        <th style={{ padding: '8px', textAlign: 'left' }}>Rank</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td>John Doe</td><td>HOD</td><td>Master</td></tr>
+                                    <tr><td>Jane Smith</td><td>Chief Engineer</td><td>Engineer</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    ) : activeTab == 'crew' && (
+                        <div className='no-selection-placeholder'>
+                            <p>Select a location to view Factory Staff Details.</p>
+                        </div>
+                    )}
+
+                    {/* Components Tab */}
+                    {activeTab === 'components' && (
+                        <div className="tab-content">
+                            <div id='component-add-new-or-edit-funtionality-tab-container'>
+                                {/* Add New */}
+                                <div className="toggle-option-wrapper">
+                                    <input
+                                        type="radio"
+                                        name="addNewOrEditFunctionalityForComponent"
+                                        id="addNewForComponent"
+                                        checked={isAddNewComponentChecked}
+                                        onChange={() => {
+                                            setIsEditComponentChecked(false);
+                                            setIsAddNewComponentChecked(true);
+                                        }}
+                                    />
+                                    <label htmlFor="addNewForComponent" className="toggle-option">
+                                        Add New
+                                    </label>
+                                </div>
+
+                                {/* Edit Existing */}
+                                <div className="toggle-option-wrapper">
+                                    <input
+                                        type="radio"
+                                        name="addNewOrEditFunctionalityForComponent"
+                                        id="editForComponent"
+                                        checked={isEditComponentChecked}
+                                        onChange={() => {
+                                            setIsEditComponentChecked(true);
+                                            setIsAddNewComponentChecked(false);
+                                        }}
+                                    />
+                                    <label htmlFor="editForComponent" className="toggle-option">
+                                        Edit Existing
+                                    </label>
+                                </div>
+                            </div>
+
+                            {/* Add New Component */}
+                            {isAddNewComponentChecked && (
+                                <div id='addNewFunctionalityForComponent-component-heirarchy-container' className="functionality-container">
+                                    <h3>Add New Component</h3>
+                                    <Temp_component_heirarchy componentTreeWantByWhichComp={'ShipManagementPage_add_new_comp'} selectedShipID={selectedShip.SHA_ID} />
+                                </div>
+                            )}
+
+                            {/* Edit Existing Component */}
+                            {isEditComponentChecked && (
+                                <div id='editFunctionalityForComponent-component-heirarchy-container' className="functionality-container">
+                                    <h3>Edit Existing Component</h3>
+                                    <Temp_component_heirarchy componentTreeWantByWhichComp={'ShipManagementPage_edit_comp'} selectedShipID={selectedShip.SHA_ID} />
+                                </div>
+                            )}
+                        </div>
+                    )}
+
                 </div>
             </div>
 
@@ -1634,79 +1528,7 @@ const ShipManagementPage = () => {
                 </div>
             )}
 
-            {/* Ship Status Change Container */}
-            {needToInvokeShipHealthStatusChangeForm && (
-                <div id='ship-management-page-right-container-content-ship-health-status-change-form-container'>
-                    <div id='ship-management-page-right-container-content-ship-health-status-change-form'>
-                        <form onSubmit={(e) => {
-                            e.preventDefault();
-                            // Call your actual handler here
-                            console.log('New Status:', shipHealthNewStatus);
 
-                            handleConfirmShipHealthStatusChange(shipHealthNewStatus);
-                        }}>
-                            <div id='ship-management-page-right-container-content-ship-health-status-change-form-status-container'>
-                                <label htmlFor='shipHealthStatus'>Set New Status</label>
-                                <select
-                                    name="shipHealthStatus"
-                                    id="shipHealthStatus"
-                                    value={shipHealthNewStatus} // ✅ Controlled component
-                                    onChange={(e) => {
-                                        setShipHealthNewStatus(e.target.value)
-                                    }}
-                                >
-                                    <option value={0}>Select Status</option>
-                                    <option value="1">Sealing</option>
-                                    <option value="2">On Dock</option>
-                                    <option value="3">In-Active</option>
-                                    <option value="4">Under Repair</option>
-                                </select>
-                            </div>
-
-                            <div id='ship-health-status-change-form-actions'>
-                                <button type='submit' className="btn-submit">Confirm</button>
-                                <button
-                                    type="button"
-                                    className="btn-close"
-                                    onClick={() => {
-                                        setShipHealthNewStatus(0)
-                                        setNeedToInvokeShipHealthStatusChangeForm(false)
-                                    }}
-                                >
-                                    Close
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            )}
-
-            {/* Ship Health Status Authentication when update ship health */}
-            {authRequired && (
-                <div id='ship-management-page-right-container-content-ship-health-status-change-auth-container'>
-                    <OTP_verification
-                        onVerifySuccess={async () => {
-
-                            try {
-                                await axios.post(`${API_BASE_URL}addShipHealthData`, { shipHealthStatusNumericValue, shipID: selectedShip?.SHA_ID, changeBy: user.EHA_ID, changeFrom: user.emp_type })
-                            } catch (err) {
-                                console.log('Error while updating status of ship health')
-                                alert('Error Occured..')
-                            }
-                            // alert("Updated Successfully : " + shipHealthStatusNumericValue)
-
-                            setAuthRequired(false);
-                            setNeedToInvokeShipHealthStatusChangeForm(false)
-                            refreshShipsHealthList()
-                            setShipHealthNewStatus(0)
-                        }}
-                        onCancel={() => {
-                            setAuthRequired(false);
-                            setNeedToInvokeShipHealthStatusChangeForm(false)
-                        }}
-                    />
-                </div>
-            )}
 
         </div>
     );

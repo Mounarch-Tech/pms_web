@@ -22,7 +22,6 @@ import { Third_sub_category_context } from '../../contexts/CategoriesContext/Thi
 import { CrewContext } from '../../contexts/crew_context/CrewContext';
 import { JobFailedContext } from '../../contexts/Job_failed_context/JobFailedContext';
 import { DesignationContext } from '../../contexts/Designation_context/DesignationContext';
-import { Ship_health_details_context } from '../../contexts/ship_health_Context/Ship_health_details_context';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
@@ -50,7 +49,6 @@ const Dashboard = () => {
   const { thirdSubCategoryList, refreshThirdSubCategoryList } = useContext(Third_sub_category_context)
   const { employeeList, refreshEmployeeList } = useContext(CrewContext)
   const { designationList, refreshDesignationList } = useContext(DesignationContext)
-  const { shipsHealthList, refreshShipsHealthList } = useContext(Ship_health_details_context)
   const { getComponentHierarchyForJCD } = useContext(ComponentTreeContext);
 
 
@@ -1741,8 +1739,8 @@ const Dashboard = () => {
 
   const getConditionLabel = (condition) => {
     const labels = {
-      '1': 'Location Sealing',
-      '2': 'Location On Dock',
+      '1': 'Active',
+      '2': 'Active',
       '3': 'Location Inactive',
       '4': 'Location Under Repair',
       '5': 'Location Operational'
@@ -3043,63 +3041,23 @@ const Dashboard = () => {
     console.log('handleScheduleJob jcd :: ', jcd);
     setSelectedJCD(jcd);
 
-    // Get the latest ship health record for selectedShipId
-    const selectedShipHealthList = shipsHealthList.filter(
-      shl => shl.SHA_ID == selectedShipId
-    );
+    setScheduleFormData({
+      issued_to: '',
+      secondary_user: '',
+      job_completed_till: getDefaultDeadline(),
+      first_verification_by: '',
+      first_verification_desg: '',
+      first_verification_deadline: '',
+      second_verification_by: '',
+      second_verification_desg: '',
+      second_verification_deadline: '',
+      extensions_authority: '',
+      uploaded_images: '',
+      uploaded_video: '',
+      communication: ''
+    });
 
-    // Sort by status_change_on descending and pick the latest
-    const latestShipHealth = selectedShipHealthList
-      .filter(shl => shl.status_change_on) // ignore nulls
-      .sort((a, b) => new Date(b.status_change_on) - new Date(a.status_change_on))[0];
-
-    const healthStatuses = {
-      'Sealing': 1,
-      'On Dock': 2,
-      'In-Active': 3,
-      'Under Repair': 4
-    };
-
-    console.log('Latest Ship Health :: ', latestShipHealth);
-
-    const currentHealthCode = healthStatuses[latestShipHealth?.present_status];
-
-    // ✅ Ensure job_will_generate_on is in a consistent type
-    let jobHealthArray = [];
-
-    if (typeof jcd.job_will_generate_on === 'string') {
-      // Example: "1,2,3"
-      jobHealthArray = jcd.job_will_generate_on.split(',').map(Number);
-    } else if (Array.isArray(jcd.job_will_generate_on)) {
-      jobHealthArray = jcd.job_will_generate_on.map(Number);
-    }
-
-    console.log('jobHealthArray.includes(currentHealthCode) :: ', jobHealthArray.includes(currentHealthCode))
-
-    if (jobHealthArray.includes(currentHealthCode)) {
-      // ✅ CORRECT - Initialize with empty values or proper defaults
-      setScheduleFormData({
-        issued_to: '',
-        secondary_user: '',
-        job_completed_till: getDefaultDeadline(),
-        first_verification_by: '', // Will be populated from dropdown
-        first_verification_desg: '', // Will be auto-populated when user is selected
-        first_verification_deadline: '',
-        second_verification_by: '', // Will be populated from dropdown
-        second_verification_desg: '', // Will be auto-populated when user is selected
-        second_verification_deadline: '',
-        extensions_authority: '',
-        uploaded_images: '',
-        uploaded_video: '',
-        communication: ''
-      });
-
-      console.log('jcdddd ::: ', jcd)
-
-      setShowScheduleModal(true);
-    } else {
-      toast.warn('⚠️ Current ship health status not allowed for job generation.');
-    }
+    setShowScheduleModal(true);
   };
 
   const handleUserSelection = (field, userId) => {
@@ -3224,12 +3182,7 @@ const Dashboard = () => {
       return;
     }
 
-    // Optionally validate ship_status (if you let user choose)
-    const shipStatus = 1; // default Sealing
-    if (![1, 2, 3, 4].includes(shipStatus)) {
-      alert('Invalid ship status');
-      return;
-    }
+
 
     setIsScheduling(true);
 

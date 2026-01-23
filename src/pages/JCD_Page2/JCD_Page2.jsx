@@ -1203,11 +1203,11 @@ const JCD_Page2 = () => {
 
     const getConditionLabel = (condition) => {
         const labels = {
-            '1': 'Ship Sealing',
-            '2': 'Ship On Dock',
-            '3': 'Ship Inactive',
-            '4': 'Ship Under Repair (Dry Dock)',
-            '5': 'Ship at Sea'
+            '1': 'Location Active',
+            '2': 'Location Active',
+            '3': 'Location Inactive',
+            '4': 'Location Under Repair',
+            '5': 'Location Operational'
         };
         return labels[condition] || `Condition ${condition}`;
     };
@@ -2591,27 +2591,7 @@ const JCD_Page2 = () => {
                                             )}
 
 
-                                            {/* Job Will Generate On */}
-                                            <div className="form-group">
-                                                <label>Check Location Status for Job Generation <span style={{
-                                                    color: 'red'
-                                                }}>*</span></label>
-                                                <div className="checkbox-group">
-                                                    {[1, 2, 3, 4].map((val) => (
-                                                        <label key={val}>
-                                                            <input
-                                                                type="checkbox"
-                                                                value={val}
-                                                                checked={JCD_form_data.job_will_generate_on.includes(val.toString())}
-                                                                onChange={handleChange}
-                                                                name="job_will_generate_on"
-                                                                disabled={isReadOnly}
-                                                            />
-                                                            {['Sealing', 'On Dock', 'Inactive', 'Under Repair'][val - 1]}
-                                                        </label>
-                                                    ))}
-                                                </div>
-                                            </div>
+
 
                                             {/* Designation Dropdowns */}
                                             {[
@@ -2827,7 +2807,7 @@ const JCD_Page2 = () => {
                                                 {user.emp_type == 2 && (
                                                     <>
                                                         <th>OPERATIONS</th>
-                                                        <th>No Of Ships Attached</th>
+                                                        <th>No Of Locations Affected</th>
                                                     </>
                                                 )}
                                             </tr>

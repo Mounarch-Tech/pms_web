@@ -10,6 +10,8 @@ import { UserAuthContext } from '../../contexts/userAuth/UserAuthContext';
 import { OfficeStaffCombination_Context } from '../../contexts/OfficeStaffCombinationContext/OfficeStaffCombination_Context';
 import { ShipsContext } from '../../contexts/ShipContext/ShipsContext';
 
+import logo from '../../assets/logo_with_name.png';
+
 const LogInPage = () => {
     // === Use Context ===
     const { officeStaffList, refreshOfficeStaffList } = useContext(OfficeStaffCombination_Context)
@@ -288,32 +290,12 @@ const LogInPage = () => {
 
     return (
         <div className="login-corporate">
-            {/* Bubble Elements */}
-            <div className="bubble"></div>
-            <div className="bubble"></div>
-            <div className="bubble"></div>
-            <div className="bubble"></div>
-            <div className="bubble"></div>
-
-            {/* Your existing animated elements */}
-            <div className="submarine">🏭</div>
-            <div className="island"></div>
-            <div className="island"></div>
-            <div className="sonar"></div>
-            <div className="sonar"></div>
-            <div className="sonar"></div>
-            <div className="lighthouse">🗼</div>
-            <div className="lighthouse-beam"></div>
-            <div className="container-stack">
-                <div className="container" style={{ '--delay': 0 }}></div>
-                <div className="container" style={{ '--delay': 1 }}></div>
-                <div className="container" style={{ '--delay': 2 }}></div>
-            </div>
-
             <div className="login-corporate__container">
                 <div className="login-corporate__header">
-                    {/* <div className="login-corporate__icon">🚢👨‍💼</div> */}
-                    <h1 className="login-corporate__title">Factory Staff & Staff PMS Portal</h1>
+                    <div className="login-corporate__logo-container">
+                        <img src={logo} alt="Uday ERP Logo" className="login-corporate__logo" />
+                    </div>
+                    <h1 className="login-corporate__title">Factory Staff PMS Portal</h1>
                     <p className="login-corporate__subtitle">Sign in to your facility and office operations account</p>
                 </div>
 

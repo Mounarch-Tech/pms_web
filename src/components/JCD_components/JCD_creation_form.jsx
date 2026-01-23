@@ -603,38 +603,7 @@ const JCD_creation_form = ({ selected_jcd_from_view_jcd_module, toggelVeiwJobsOn
                     </div>
                 )}
 
-                {/* Job Will Generate On */}
-                <div className="form-group">
-                    <label>Job Will Generate On</label>
-                    <div className="checkbox-group">
-                        {[1, 2, 3, 4, 5].map((val) => (
-                            <label key={val}>
-                                <input
-                                    type="checkbox"
-                                    name="job_will_generate_on"
-                                    value={val}
-                                    checked={JCD_form_data.job_will_generate_on.includes(val.toString())}
-                                    onChange={handleChange}
-                                    disabled={isReadOnly}
-                                />
-                                {['Sealing', 'On Dock', 'Inactive', 'Under Repair', 'Other'][val - 1]}
-                            </label>
-                        ))}
-                    </div>
-                </div>
 
-                {JCD_form_data.job_will_generate_on.includes('5') && (
-                    <div className="form-group">
-                        <input
-                            type="text"
-                            placeholder='Enter reason for selecting "Other"'
-                            autoFocus
-                            required
-                            disabled={isReadOnly}
-                            className="form-control"
-                        />
-                    </div>
-                )}
 
                 {/* Designation Dropdowns */}
                 {[
